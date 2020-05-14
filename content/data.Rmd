@@ -1,0 +1,26 @@
+---
+title: 'Data overview'
+date: ''
+---
+
+Below you can find reproducible data sources for every one of my papers:
+
+
+## The Political Elite and The Welfare State
+
+- Figures
+- Analyses
+- Tables
+
+## Political Rents under a Changing Electoral Regime
+
+- Figures
+- Analyses
+- Tables
+
+## Political Connections in Colonial Indonesia
+
+- Figures
+- Analyses
+- Tables
+
