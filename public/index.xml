@@ -20,5 +20,25 @@
       <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
     </item>
     
+    <item>
+      <title>My R Packages</title>
+      <link>/packages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/packages/</guid>
+      <description>Here are some links to some of the R packages I have created:
+ Clio   Clio is a package that facilitates the usage of the Clio-Infra database. It helps the user extract data based on simple queries, instead of repeatedly downloading Excel files. In addition, it facilitates reproducible research by explicitly documenting data collection.
+  hdng   hdng is a package that serves as an interface for the HDNG Database.</description>
+    </item>
+    
+    <item>
+      <title>My Resume</title>
+      <link>/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resume/</guid>
+      <description>You can access my resume here.</description>
+    </item>
+    
   </channel>
 </rss>
