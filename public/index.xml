@@ -6,18 +6,47 @@
     <description>Recent content on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 May 2016 21:48:51 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      <title>Dplyr: filtering with across</title>
+      <link>/2020/05/17/dplyr-filtering-with-across/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
-      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
+      <guid>/2020/05/17/dplyr-filtering-with-across/</guid>
+      <description>Introduction The newest versions of the dplyr package introduced a new function, across(), to be used within summarise, mutate and filter functions, and I am trying to learn it. I am, however, having a hard time understanding the use and the mechanics of the function in combination with filter. While this vignette has ample examples on mutate and summarise, the examples on filter are few and not very insightful. The same is true for several non-official guides that I have read.</description>
+    </item>
+    
+    <item>
+      <title>First post: Making a website with blogdown</title>
+      <link>/2020/05/17/first-post-making-a-website-with-blogdown/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/17/first-post-making-a-website-with-blogdown/</guid>
+      <description>Introduction This is the first blog post on my own website. I&amp;rsquo;ve decided to make this website using the R package blogdown. The website looks very nice now (in my humble opinion), but it was tedious to make. When attempting to create the website, I first tried out a couple of themes before I settled on the basic &amp;ldquo;lithium&amp;rdquo; theme, because it was by far the easiest theme to wrap your head around.</description>
+    </item>
+    
+    <item>
+      <title>Blogs</title>
+      <link>/blogs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/</guid>
+      <description>On this page, I link to several blog posts. Some of them might serve merely as documentation, or as reminders, and others might take a more specific blog character.</description>
+    </item>
+    
+    <item>
+      <title>Classes</title>
+      <link>/classes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/classes/</guid>
+      <description>Here is an overview of classes which I have organized or participated in:
+ Introduction to R and Data Science  An extensive course aiming to familiarize students with the R programming language, RStudio, and functional programming.
+ Bachelor Thesis: Political Connections  This serves as a repository for the Political Connections in Firms theme for the course Bachelor Thesis at RSM, Erasmus University. Various subthemes, templates, guidse and examples are available.</description>
     </item>
     
     <item>

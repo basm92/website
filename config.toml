@@ -8,27 +8,31 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
-
+    
 [[menu.main]]
-    name = "About Me"
-    url = "/about/"
+    name = "Home"
+    url = "/"
     weight = 1
+[[menu.main]]
+    name = "Blog"
+    url = "/blogs/"
+    weight = 2
 [[menu.main]]
     name = "Resume"
     url = "/resume/"
-    weight = 2
+    weight = 3
 [[menu.main]]
     name = "Classes"
     url = "/classes/"
-    weight = 3
+    weight = 4
 [[menu.main]]
     name = "R Packages"
     url = "/packages/"
-    weight = 4
+    weight = 5
 [[menu.main]]
     name = "Data"
     url = "/data/"
-    weight = 5
+    weight = 6
 
 
 [params]
@@ -52,18 +56,4 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     height = 60
     alt = "Logo"
     
-[[params.social]]
-    icon = "linkedin"
-    icon_pack = "fa"
-    link = "//linkedin.com/in/USERNAME"
-
- [[params.social]]
-    icon = "github"
-    icon_pack = "fa"
-    link = "//github.com/USERNAME"
-
- [[params.social]]
-    icon = "twitter"
-    icon_pack = "fa"
-    link = "//twitter.com/USERNAME"
 

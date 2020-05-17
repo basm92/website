@@ -1,0 +1,22 @@
+---
+title: 'Classes'
+date: ''
+---
+
+Here is an overview of classes which I have organized or participated in:
+
+- [Introduction to R and Data Science](https://github.com/Introduction-to-R)
+
+An extensive course aiming to familiarize students with the R programming language, RStudio, and functional programming.
+
+- [Bachelor Thesis: Political Connections](https://github.com/Bachelor-Thesis-Political-Connections)
+
+This serves as a repository for the Political Connections in Firms theme for the course Bachelor Thesis at RSM, Erasmus University. Various subthemes, templates, guidse and examples are available. 
+
+- [Big Data, Big Questions](https://github.com/Big-Data-Big-Questions)
+
+This is a repository for the course _Big Data, Big Questions_, in which I was a teacher for two years. The repository includes data files, as well as slides for a tutorial on how to use Microsoft Excel. 
+
+- [Corporate Finance](https://github.com/Corporate-Finance-with-R)
+
+I have participated in [CuriousU Summer School](http://www.link.com) at University of Twente for 4 years, in which I taught various Corporate Finance modules, which you can find here. 

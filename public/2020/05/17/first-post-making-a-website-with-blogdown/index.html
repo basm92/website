@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.70.0" />
+
+
+<title>First post: Making a website with blogdown - Bas Machielsen</title>
+<meta property="og:title" content="First post: Making a website with blogdown - Bas Machielsen">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/bas_m.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/blogs/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+    <li><a href="/classes/">Classes</a></li>
+    
+    <li><a href="/packages/">R Packages</a></li>
+    
+    <li><a href="/data/">Data</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">First post: Making a website with blogdown</h1>
+
+    
+    <span class="article-date">2020-05-17</span>
+    
+
+    <div class="article-content">
+      <h1 id="introduction">Introduction</h1>
+<p>This is the first blog post on my own website. I&rsquo;ve decided to make this website using the R package <code>blogdown</code>. The website looks very nice now (in my humble opinion), but it was tedious to make. When attempting to create the website, I first tried out a couple of themes before I settled on the basic &ldquo;lithium&rdquo; theme, because it was by far the easiest theme to wrap your head around. I want to summarize some difficulties I experienced while making the website, thereby (possibly) helping people who run into the same or similar problems.</p>
+<h1 id="good-things">Good things</h1>
+<p>First of all, I think it pays to go over the good things of <code>blogdown</code>. You can literally create a site in seconds, by executing:</p>
+<pre><code class="language-{r}" data-lang="{r}">install.packages('blogdown')
+
+library(blogdown)
+
+# If you haven't done so yet:
+blogdown::install_hugo()
+
+blogdown::new_site(theme = &quot;githubrepo/theme&quot;) 
+# It will pick this 'lithium' theme as the default.
+</code></pre><p>Then you can start filling out some information in the <code>config.toml</code> file, which is very intuitive, you can create some posts by executing <code>blogdown::new_post()</code> and your blog is up and running (albeit off-line :) ). So far the easy part: picking a theme is the first tedious aspect.</p>
+<h1 id="picking-a-theme">Picking A Theme</h1>
+<h1 id="changing-your-favicon">Changing your favicon</h1>
+<h1 id="the-logic-of-gohugo">The logic of Go/Hugo</h1>
+<h1 id="arranging-the-site-and-blog">Arranging the site and blog</h1>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

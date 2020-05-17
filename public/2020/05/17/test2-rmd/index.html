@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.70.0" />
+
+
+<title>Dplyr: filter with across() - Bas Machielsen</title>
+<meta property="og:title" content="Dplyr: filter with across() - Bas Machielsen">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/bas_m.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/blogs/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+    <li><a href="/classes/">Classes</a></li>
+    
+    <li><a href="/packages/">R Packages</a></li>
+    
+    <li><a href="/data/">Data</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">11 min read</span>
+    
+
+    <h1 class="article-title">Dplyr: filter with across()</h1>
+
+    
+    <span class="article-date">2020-05-17</span>
+    
+
+    <div class="article-content">
+      <h1 id="introduction">Introduction</h1>
+<p>The newest versions of the dplyr package introduced a new function, <code>across()</code>, to be used within summarise, mutate and filter functions, and I am trying to learn it. I am, however, having a hard time understanding the use and the mechanics of the function in combination with filter. While <a href="https://dplyr.tidyverse.org/dev/articles/colwise.html">this vignette</a> has ample examples on mutate and summarise, the examples on filter are few and not very insightful. The same is true for several non-official guides that I have read.</p>
+<p>As mentioned, the <code>dplyr</code> documentation provides examples with the <code>summarise</code> and <code>mutate</code> functions, but it does not deal extensively with the <code>filter</code> function, which is not (in my opinion) straightforward to use at all. The objective of this pamphlet is to introduce the reader to the (proper and transparent) usage of <code>across()</code> in conjunction with <code>filter</code>, but also to remind the writer of the functionality of <code>across()</code>. Finally, it aims to help new and experienced programmers wrap their head around this new function.
+After reading this pamphlet, you should be familiar enough with <code>across()</code> to be able to replace the <code>_all</code>, <code>_at</code>, and <code>_if</code> function family intuitively. I will illustrate how this works with the help of some examples.</p>
+<h1 id="filter-with-all_vars">Filter with all_vars</h1>
+<p>First, let us look at the most basic usage of <code>across</code> in <code>filter</code>: filtering a dataset based on all rows meeting a certain condition or requirement.</p>
+<p>Suppose we want to select rows in a dataset such that for every character variable, the length of the string should be larger than a particular number, in this example, 5. This would be the equivalent of <code>filter_all</code> in a data.frame consisting purely of character vectors, or otherwise, of <code>filter_at</code>.</p>
+<p>First, load the relevant packages..</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(tidyverse)
+</code></pre></div><pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+</code></pre><pre><code>## ✓ ggplot2 3.2.1           ✓ purrr   0.3.4      
+## ✓ tibble  3.0.1           ✓ dplyr   0.8.99.9002
+## ✓ tidyr   1.0.2           ✓ stringr 1.4.0      
+## ✓ readr   1.3.1           ✓ forcats 0.5.0
+</code></pre><pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(stringr)
+</code></pre></div><p>As mentioned in the vignette, the across function without any additions works automatically as <code>all_vars</code>, as evidenced by the following behavior:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">numbers <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(a <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">90000</span>, <span style="color:#ae81ff">60000</span>, <span style="color:#ae81ff">3000</span>), b <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">20000</span>, <span style="color:#ae81ff">4000</span>, <span style="color:#ae81ff">30000</span>))
+
+numbers
+</code></pre></div><pre><code>##       a     b
+## 1 10000 10000
+## 2 90000 20000
+## 3 60000  4000
+## 4  3000 30000
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">numbers <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(),<span style="color:#f92672">~</span>.x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9999</span>))
+</code></pre></div><pre><code>##       a     b
+## 1 10000 10000
+## 2 90000 20000
+</code></pre><p>We can also specify which variables we want to meet the condition. Let&rsquo;s take the dataset from before and apply the filter only on the first column:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">numbers <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(a, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9999</span>))
+</code></pre></div><pre><code>##       a     b
+## 1 10000 10000
+## 2 90000 20000
+## 3 60000  4000
+</code></pre><p>As as second example, et&rsquo;s implement a condition requiring that the string length of every character variable be greater than 2 (or 3) in the dplyr::starwars dataset:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">starwars <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>))
+</code></pre></div><pre><code>## # A tibble: 69 x 14
+##    name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke…    172    77 blond      fair       blue            19   male  mascu…
+##  2 Dart…    202   136 none       white      yellow          41.9 male  mascu…
+##  3 Leia…    150    49 brown      light      brown           19   fema… femin…
+##  4 Owen…    178   120 brown, gr… light      blue            52   male  mascu…
+##  5 Beru…    165    75 brown      light      blue            47   fema… femin…
+##  6 Bigg…    183    84 black      light      brown           24   male  mascu…
+##  7 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+##  8 Anak…    188    84 blond      fair       blue            41.9 male  mascu…
+##  9 Wilh…    180    NA auburn, g… fair       blue            64   male  mascu…
+## 10 Chew…    228   112 brown      unknown    blue           200   male  mascu…
+## # … with 59 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">starwars <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>))
+</code></pre></div><pre><code>## # A tibble: 63 x 14
+##    name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke…    172    77 blond      fair       blue            19   male  mascu…
+##  2 Dart…    202   136 none       white      yellow          41.9 male  mascu…
+##  3 Leia…    150    49 brown      light      brown           19   fema… femin…
+##  4 Owen…    178   120 brown, gr… light      blue            52   male  mascu…
+##  5 Beru…    165    75 brown      light      blue            47   fema… femin…
+##  6 Bigg…    183    84 black      light      brown           24   male  mascu…
+##  7 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+##  8 Anak…    188    84 blond      fair       blue            41.9 male  mascu…
+##  9 Wilh…    180    NA auburn, g… fair       blue            64   male  mascu…
+## 10 Chew…    228   112 brown      unknown    blue           200   male  mascu…
+## # … with 53 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
+</code></pre><p>We select all character variables with <code>is.character</code>, and condition the filter on the string length of all variables being larger than 5.</p>
+<p>Similarly, consider the following modified dataframe from the colwise vignette I mentioned above:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>), 
+             y <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), 
+             z <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>),
+             w <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Hanz&#34;</span>, <span style="color:#e6db74">&#34;Genghis Khan&#34;</span>),
+             u <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Werner&#34;</span>, <span style="color:#e6db74">&#34;Monsieur Eugene Duchene&#34;</span>))
+
+df
+</code></pre></div><pre><code>## # A tibble: 2 x 5
+##   x         y     z w            u                      
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
+## 1 a         1    -1 Hanz         Werner                 
+## 2 b         1     1 Genghis Khan Monsieur Eugene Duchene
+</code></pre><p>Supppose we want to select, in parallel to the example given in the vignete, the rows for which all numeric variables are greater than -1:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">-1</span>))
+</code></pre></div><pre><code>## # A tibble: 1 x 5
+##   x         y     z w            u                      
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
+## 1 b         1     1 Genghis Khan Monsieur Eugene Duchene
+</code></pre><p>So it is very straightforward to use the <code>filter()</code> function if you want to filter such that <strong>all</strong> variables meet a criterion. It is also very straightforward to filter using multiple criteria, as long as you want all variables, and <strong>NOT</strong> some variables, to which you apply the criterion have to meet it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">-1</span>), <span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">c</span>(w,u), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>))
+</code></pre></div><pre><code>## # A tibble: 1 x 5
+##   x         y     z w            u                      
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
+## 1 b         1     1 Genghis Khan Monsieur Eugene Duchene
+</code></pre><p>.. or perhaps better illustrated by:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># All numeric variables must be larger than 10</span>
+starwars <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>))
+</code></pre></div><pre><code>## # A tibble: 35 x 14
+##    name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke…    172    77 blond      fair       blue            19   male  mascu…
+##  2 C-3PO    167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+##  3 R2-D2     96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+##  4 Dart…    202   136 none       white      yellow          41.9 male  mascu…
+##  5 Leia…    150    49 brown      light      brown           19   fema… femin…
+##  6 Owen…    178   120 brown, gr… light      blue            52   male  mascu…
+##  7 Beru…    165    75 brown      light      blue            47   fema… femin…
+##  8 Bigg…    183    84 black      light      brown           24   male  mascu…
+##  9 Obi-…    182    77 auburn, w… fair       blue-gray       57   male  mascu…
+## 10 Anak…    188    84 blond      fair       blue            41.9 male  mascu…
+## # … with 25 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># All numeric variables must be larger than 10 </span>
+<span style="color:#75715e"># and both name AND hair_color should contain an a. </span>
+
+starwars <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>), 
+         <span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">c</span>(name, hair_color), <span style="color:#f92672">~</span> <span style="color:#a6e22e">grepl</span>(<span style="color:#e6db74">&#34;a&#34;</span>, .)))
+</code></pre></div><pre><code>## # A tibble: 7 x 14
+##   name  height  mass hair_color skin_color eye_color birth_year sex   gender
+##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 Bigg…    183  84   black      light      brown           24   male  mascu…
+## 2 Obi-…    182  77   auburn, w… fair       blue-gray       57   male  mascu…
+## 3 Boba…    183  78.2 black      fair       brown           31.5 male  mascu…
+## 4 Land…    177  79   black      dark       brown           31   male  mascu…
+## 5 Lumi…    170  56.2 black      yellow     blue            58   fema… femin…
+## 6 Barr…    166  50   black      yellow     blue            40   fema… femin…
+## 7 Jang…    183  79   black      tan        brown           66   male  mascu…
+## # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;
+</code></pre><h1 id="filter-with-any_vars">Filter with any_vars</h1>
+<p>Problems arise when we attempt to do the following: Suppose we want to laxen the condition, and instead, we want to require that at least one condition be met.</p>
+<p>For example, in the data.frame <code>df</code> below, we want <em>at least</em> one character string to be larger than 7. How do we go about this? Instead of using the <code>any_vars</code> and <code>all_vars</code> helpers, we must use an auxiliary function, as documented <a href="https://dplyr.tidyverse.org/dev/articles/colwise.html">here</a>. In my opinion, this way of filtering is far from intuitive and transparent, and it took me a while to figure it out what I should do in each specific case: it is the reason why I wrote this pamphlet.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>), y <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), z <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>), w <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Harry&#34;</span>, <span style="color:#e6db74">&#34;Potterisverycool&#34;</span>))
+
+df
+</code></pre></div><pre><code>## # A tibble: 2 x 4
+##   x         y     z w               
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
+## 1 a         1    -1 Harry           
+## 2 b         1     1 Potterisverycool
+</code></pre><p>Now, suppose we want to filter the data.frame <code>df</code> to include only the rows in which at least one character vector has a string length greater than 6. The vignette advises us to use a helper function, which is defined to be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">rowAny <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">rowSums</span>(x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>In my view, this seems to be pretty much the only &lsquo;helper&rsquo; function I can think of and that works, so I don&rsquo;t see why it is not included as a function in the package. In any case, the job consists of apply the <code>across()</code> function as an argument to <code>rowAny</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(stringr)
+
+df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">6</span>)))
+</code></pre></div><pre><code>## # A tibble: 1 x 4
+##   x         y     z w               
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
+## 1 b         1     1 Potterisverycool
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>)))
+</code></pre></div><pre><code>## # A tibble: 2 x 4
+##   x         y     z w               
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
+## 1 a         1    -1 Harry           
+## 2 b         1     1 Potterisverycool
+</code></pre><p>In other words, we are asking R to filter to any rows to which the following condition aplies:</p>
+<ol>
+<li>
+<p>For any row, check all character vectors</p>
+</li>
+<li>
+<p>Compute the string length (<code>str_length</code>) of the cells</p>
+</li>
+<li>
+<p>Ask whether it is larger than 6 (or 4, respectively, in the examples)</p>
+</li>
+<li>
+<p>We get back a logical in every cell</p>
+</li>
+<li>
+<p>If the rowwise-sum of all these conditions is larger than 0, then keep the row</p>
+</li>
+</ol>
+<p>Let&rsquo;s go over each of these individual steps quickly and try to emulate R&rsquo;s behavior over this function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#First, this is what we get when we evaluate the condition in each cell</span>
+df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>))
+</code></pre></div><pre><code>## # A tibble: 2 x 4
+##   x     y     z     w    
+##   &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+## 1 FALSE FALSE FALSE FALSE
+## 2 FALSE FALSE FALSE TRUE
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#Then, we sum the value of all the logicals per row:</span>
+df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">rowwise</span>() <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">rowSums</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><pre><code>## [1] FALSE  TRUE
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#which gives us back the rows eligible for inclusion</span>
+  
+df[df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">rowwise</span>() <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">rowSums</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>,
+]
+</code></pre></div><pre><code>## # A tibble: 1 x 4
+##   x         y     z w               
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
+## 1 b         1     1 Potterisverycool
+</code></pre><p>Similarly, going back to the df example, we could have also changed the zero to go from &ldquo;at least one&rdquo; to &ldquo;at least two&rdquo;, for example. So this would mean &ldquo;select all Rows in which at least 2 variables meet a certain condition&rdquo;. More concretely:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">rowAny <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">rowSums</span>(x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">mutate</span>(u <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Hermione&#34;</span>, <span style="color:#e6db74">&#34;Granger&#34;</span>))
+
+df
+</code></pre></div><pre><code>## # A tibble: 2 x 5
+##   x         y     z w                u       
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;   
+## 1 a         1    -1 Harry            Hermione
+## 2 b         1     1 Potterisverycool Granger
+</code></pre><p>Let&rsquo;s see if filter now works as expected, that is to say, it should only include the second row, as I&rsquo;ve specified that the amount of occurrences (the count of the logical vectors) should be larger than one. (In case of the first row, it is 1.)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)))
+</code></pre></div><pre><code>## # A tibble: 1 x 5
+##   x         y     z w                u      
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;  
+## 1 b         1     1 Potterisverycool Granger
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">7</span>)))
+</code></pre></div><pre><code>## # A tibble: 0 x 5
+## # … with 5 variables: x &lt;chr&gt;, y &lt;dbl&gt;, z &lt;dbl&gt;, w &lt;chr&gt;, u &lt;chr&gt;
+</code></pre><h1 id="conclusion">Conclusion</h1>
+<p>Whereas <code>across()</code> has many other benefits clearly demonstrated in various vignettes, and has enormous potential, in the specific case of filtering, it might have become more awkward to use: the functions of <code>filter_all</code> or <code>filter_at</code> in combination with <code>any_vars</code> and <code>all_vars</code> were (i) at least as, or more intuitive, and (ii) did not require the user to specify a helper function. As for me, I hope this <code>rowAny</code> will get a place inside <code>dplyr</code>, preferably under an intuitive monniker. In any case, I hope you&rsquo;ve found the small demonstration useful. Feel free to contact me at any time via <a href="mailto:a.h.machielsen@uu.nl">e-mail</a> or <a href="www.github.com/basm92">Github</a>.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
