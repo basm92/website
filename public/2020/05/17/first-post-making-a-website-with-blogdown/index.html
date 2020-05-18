@@ -69,7 +69,7 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">9 min read</span>
     
 
     <h1 class="article-title">First post: Making a website with blogdown</h1>
@@ -92,11 +92,108 @@ blogdown::install_hugo()
 
 blogdown::new_site(theme = &quot;githubrepo/theme&quot;) 
 # It will pick this 'lithium' theme as the default.
-</code></pre><p>Then you can start filling out some information in the <code>config.toml</code> file, which is very intuitive, you can create some posts by executing <code>blogdown::new_post()</code> and your blog is up and running (albeit off-line :) ). So far the easy part: picking a theme is the first tedious aspect.</p>
+</code></pre><p>RStudio will start up a new directory with a .Rproj file, and you can start filling out some information in the <code>config.toml</code> file, which is very intuitive, and you can create some posts by executing <code>blogdown::new_post()</code> and your blog is up and running (albeit off-line :) ). You can preview your website by running <code>blogdown::serve_site()</code>, in which case it will pop up in your viewer. You also have the possibility to preview your site in your browsers by clicking the 3rd icon on the left (in the viewer). So far the easy part: picking a theme is the first tedious aspect.</p>
 <h1 id="picking-a-theme">Picking A Theme</h1>
+<p>There are a variety of Hugo themes available <a href="https://themes.gohugo.io/"><strong>here</strong></a>. To reiterate, you can install any one of those themes with <code>blogdown</code> by entering <code>blogdown::new_site(theme = &quot;alex-shpak/hugo-book&quot;)</code> to pick just one random example. As soon as you do that, your website will look exactly like this one:</p>
+<p>![](../Screenshot from 2020-05-18 09-59-56.png)</p>
+<p>And you can start changing the .toml header to include your own preferences. If you want to keep to the basics, this is pretty much all there is to create a site.</p>
+<p>But.</p>
+<p>It seems that the way themes are configured internally differs greatly among themes. So themes have wildly different built-in possibilities, and some themes facilitate doing some thing (e.g., creating a timeline of blog posts), whereas others facilitate doing something else (e.g. make an overview of pictures on some page), while making it <em>very</em> difficult to do the other thing.</p>
+<h1 id="academic">Academic</h1>
+<p>One of the most popular themes seems to be &lsquo;Academic&rsquo;. Whereas I like the look of it (check it out <a href="https://themes.gohugo.io//theme/academic/courses/">here</a>), I also thought it was completely overwhelming to somebody just starting with <code>blogdown</code> and hugo. First of all, the file structure in the basic theme is mind-boggling, so you don&rsquo;t really know where you should start, and second of all, not all basic options are included in the standard config.toml file. That means that if you want to change, for example, your name and profession, you have to find some other way.</p>
+<p>Secondly, one of the things I didn&rsquo;t like about Academic is that you basically have one large <code>/index/</code> page, and if you use the menu, it just redirects you to a differrent position on the page. I realize that&rsquo;s more of a subjective thing, but anyway. I don&rsquo;t like scrolling, and I thought it might be nicer to have multiple pages instead of one long one. I&rsquo;m sure Academic provides the tools and the possibilities to do this, but in that case, you would have to spend a lot of time on familiarizing yourself with the Hugo language, and if you aren&rsquo;t already, with html.</p>
 <h1 id="changing-your-favicon">Changing your favicon</h1>
-<h1 id="the-logic-of-gohugo">The logic of Go/Hugo</h1>
+<p>The next thing which I insisted on doing was to change the icon of my website in your browser to my custom <code>bas_m</code> icon. The standard icon is the symbol of the chemical element Lithium, and I thought that wasn&rsquo;t <em>that</em> appropriate for my website. After a while, I figured out the thing is called a <em>favicon</em>, and if you have a picture, you can generate free <em>favicons</em> on, for example, <a href="https://favicon.io/">this website</a>. Any other website you find with a Google search will also do. The website will give you a couple of <em>favicons</em> as output, of which you can select the most appropriate, and place it in the <code>/static/img/</code> folder of your website. At least, this is the case in the <code>Lithium</code> theme which I use. It might be supposed that the <em>favicon</em> should end up somewhere else in a different theme, which illustrate the point that I was trying to get across before: there is a large heterogeneity in configurations among Hugo themes, which does not contribute to user-friendliness, especially for the uninitiated in web development.</p>
+<p>By the way, if you&rsquo;re looking for a nice <em>favicon</em>, you can generate one using the R package <code>hexSticker</code>. The package&rsquo;s <a href="https://github.com/GuangchuangYu/hexSticker"><strong>github page</strong></a> provides some nice examples you can get started with. You might have to install some new fonts, first on your system, and then in R using:</p>
+<pre><code class="language-{r}" data-lang="{r}">library(extrafont)
+font_import(pattern=&quot;Roboto&quot;)
+</code></pre><p>Anyway, that&rsquo;s basically it: you&rsquo;re set-up with your own website, and you got rid of the most annoying features of the standard theme. Next, I address some of the layout which I wanted to get done, and because of which I had to deviate from the standard theme.</p>
+<h1 id="html-code">Html code</h1>
+<p>One advantage of <code>blogdown</code> and similar tools is that you don&rsquo;t have to manually code huge chunks of .html and .css yourself: you can just build a website practically without any knowledge of html or css. However, one of the things that I wanted to get done is including some of my contact information next to the introduction on my <a href="https://bas-m.netlify.app">home page</a>. As far as I know, I could do this in two ways:</p>
+<ul>
+<li>create a custom .html layout for my home page supported by some .css in separate files (I&rsquo;ll talk about this later)</li>
+<li>make use of the possibility that Markdown supports html code, and create a separate <code>&lt;div&gt;</code> for my contact info, and wrap my introduction text around it.</li>
+</ul>
+<p>As you hopefully noticed, I opted for the second choice, although the first one would have been possible. The point that I&rsquo;m trying to make is: if you&rsquo;re looking for even the slightest bit of customization, you <em>will</em> end up having to make some changes in the html or css files of the theme. If you don&rsquo;t want to do that, Hugo and <code>blogdown</code> is probably not the best option. If you do, a Hugo website works just great! You don&rsquo;t have to apply <em>that</em> many changes, and you will still end up with a website with a unique flavor, which looks, in my opinion, nicer than a Google or Wordpress website.</p>
 <h1 id="arranging-the-site-and-blog">Arranging the site and blog</h1>
+<p>Lastly, I wanted to get one more thing done. The Lithium-theme comes with a blog integration, and the Hugo/javascript backend makes it such that as soon as you make a new blog post, a link to the title and the date end up on the index page. I didn&rsquo;t want that. I wanted my index page to be just my own text, and I wanted to relegate my blogs to appear on the page &lsquo;Blogs&rsquo;! As you&rsquo;ve guessed, I worked that out, but I thought it was quite tricky, and I ended up finding the solution using my own common sense: the Hugo documentation and searching the fora provided no significant help.</p>
+<p>(To be fair, I know nothing about the Hugo language, but I thought its documentation and fora weren&rsquo;t that accessible either.)</p>
+<p>So what I did was the following: I created a new folder in the root directory called <code>layouts</code> (this I got from the forums), a subfolder called <code>_default</code>, which allows the user to include page-specific layouts that differ from the default, and I copied the first part of the &lsquo;list&rsquo; default layout to a new file called <code>index.html</code>:</p>
+<pre><code>{{ partial &quot;header.html&quot; . }}
+
+&lt;main class=&quot;content&quot; role=&quot;main&quot;&gt;
+
+  {{ if .Content }}
+  &lt;article class=&quot;article&quot;&gt;
+    {{ if .Title }}
+    &lt;h1 class=&quot;article-title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+    {{ end }}
+    &lt;div class=&quot;article-content&quot;&gt;
+      {{ .Content }}
+    &lt;/div&gt;
+  &lt;/article&gt;
+  {{ end }}
+
+&lt;/main&gt;
+{{ partial &quot;footer.html&quot; . }}
+</code></pre><p>As far as I understand, this gives me an index page with <em>just</em> a header, the content with the appropriate <code>&lt;h1&gt;, &lt;h2&gt;</code>'s, etc., and a footer. That worked for the index page.</p>
+<p>Next, I wanted to relegate the blog widget to the blogs page. This was a little more confusing, but what I did was the following:</p>
+<ol>
+<li>
+<p>I created a new .html file in the same /layouts/ folder called <strong>blogs.html</strong>, and I pasted the entire content of the default layout&rsquo;s <code>list.html</code> (the default layout, in the Lithium theme, can be found under /themes/hugo-lithium/layouts/_default, but don&rsquo;t change them) to a new page in the <code>~/layouts/_default</code> folder.</p>
+</li>
+<li>
+<p>This didn&rsquo;t work yet. After some initial testing, I found that the Blogs-page wasn&rsquo;t responding at all to changes in the layout file, so I had to do some Googling to find out that I was supposed to explicitly include in the YAML-header of my <code>Blogs.Rmd</code> file the item: <code>layout: blogs</code> (<code>blogs</code> because my layout file was also called blogs.html). After doing that, I found that the layout was responsive to changes, but I still struggled to get the widget to appear.</p>
+</li>
+<li>
+<p>Finally, what solved the issue was the following: the code of <code>list.html</code>, and up until this point, of my <code>blogs.html</code> looked like this:</p>
+</li>
+</ol>
+<pre><code>{{ partial &quot;header.html&quot; . }}
+
+&lt;main class=&quot;content&quot; role=&quot;main&quot;&gt;
+
+  {{ if .Content }}
+  &lt;article class=&quot;article&quot;&gt;
+    {{ if .Title }}
+    &lt;h1 class=&quot;article-title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+    {{ end }}
+    &lt;div class=&quot;article-content&quot;&gt;
+      {{ .Content }}
+    &lt;/div&gt;
+  &lt;/article&gt;
+  {{ end }}
+  &lt;div class=&quot;archive&quot;&gt;
+    {{ $pages := .Pages }}
+    {{ if .IsHome }}
+    {{ $pages = .Site.RegularPages }}
+    {{ end }}
+    {{ range (where $pages &quot;Section&quot; &quot;!=&quot; &quot;&quot;).GroupByDate &quot;2006&quot; }}
+    &lt;h2 class=&quot;archive-title&quot;&gt;{{ .Key }}&lt;/h2&gt;
+    {{ range .Pages }}
+    &lt;article class=&quot;archive-item&quot;&gt;
+      &lt;a href=&quot;{{ .RelPermalink }}&quot; class=&quot;archive-item-link&quot;&gt;{{ .Title }}&lt;/a&gt;
+      &lt;span class=&quot;archive-item-date&quot;&gt;
+        {{ .Date.Format &quot;2006-01-02&quot; }}
+      &lt;/span&gt;
+    &lt;/article&gt;
+    {{ end }}
+    {{ end }}
+  &lt;/div&gt;
+
+&lt;/main&gt;
+
+{{ partial &quot;footer.html&quot; . }}
+</code></pre><ol start="4">
+<li>
+<p>Specifically, I started to pay attention to the <code>{{ if .IsHome}}</code> line, and I thought: &ldquo;Given that my Blogs page isn&rsquo;t the homepage, shouldn&rsquo;t I change <code>{{ if .IsHome }}</code> to <code>{{ if not .IsHome }}</code>?&rdquo; As soon as I did that, the issue was solved!</p>
+</li>
+<li>
+<p>For the interested, I figured out that the upper part of the chunk is just Hugo telling us to place the normal content (e.g. introductory text) on the blog page, and then the lower part of the chunk tells us to fetch all the names and dates of the blog posts we&rsquo;ve made and put them in a list.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>After all, that didn&rsquo;t seem that difficult, but it was difficult enough to figure out the logic of Hugo, and in the end, I did end up having to read documentation about a system I was competely unfamiliar with. Anyway, I think it worked out great, and if I want, I can always change the css of the website to give it a more individual flavor. I have to think about that, though: I really like this default layout. Thanks for reading, and hope it helps!</p>
 
     </div>
   </article>
@@ -133,6 +230,9 @@ blogdown::new_site(theme = &quot;githubrepo/theme&quot;)
 
 
     
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 
     
   </body>
