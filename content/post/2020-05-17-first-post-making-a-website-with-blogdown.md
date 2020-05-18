@@ -145,9 +145,8 @@ Next, I wanted to relegate the blog widget to the blogs page. This was a little 
 
 {{ partial "footer.html" . }}
 ```
-
 4. Specifically, I started to pay attention to the `{{ if .IsHome}}` line, and I thought: "Given that my Blogs page isn't the homepage, shouldn't I change `{{ if .IsHome }}` to `{{ if not .IsHome }}`?" As soon as I did that, the issue was solved!
-
+  
 5. For the interested, I figured out that the upper part of the chunk is just Hugo telling us to place the normal content (e.g. introductory text) on the blog page, and then the lower part of the chunk tells us to fetch all the names and dates of the blog posts we've made and put them in a list. 
 
 ## Conclusion
