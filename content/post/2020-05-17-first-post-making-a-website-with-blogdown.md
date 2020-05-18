@@ -35,6 +35,10 @@ There are a variety of Hugo themes available [**here**](https://themes.gohugo.io
 
 ![](/themescrsho.png)
 
+Test
+
+<img src="/post/2020-05-17-first-post-making-a-website-with-blogdown_files/themescrsho.png" width="200" />
+
 And you can start changing the .toml header to include your own preferences. If you want to keep to the basics, this is pretty much all there is to create a site.
 
 But.
