@@ -33,7 +33,7 @@ RStudio will start up a new directory with a .Rproj file, and you can start fill
 
 There are a variety of Hugo themes available [**here**](https://themes.gohugo.io/). To reiterate, you can install any one of those themes with `blogdown` by entering `blogdown::new_site(theme = "alex-shpak/hugo-book")` to pick just one random example. As soon as you do that, your website will look exactly like this one:
 
-![](~/Screenshot from 2020-05-18 09-59-56.png)
+![](Screenshot from 2020-05-18 09-59-56.png)
 
 And you can start changing the .toml header to include your own preferences. If you want to keep to the basics, this is pretty much all there is to create a site.
 
