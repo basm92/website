@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R vs. Excel: A Quick Comparison</title>
+      <link>/2020/05/25/r-vs-excel-a-quick-comparison/</link>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/25/r-vs-excel-a-quick-comparison/</guid>
+      <description>Introduction and link to .pdf Once upon a time, I wrote a small pamphlet called &amp;lsquo;R vs. Excel: A quick comparison&amp;rsquo; aimed at former or current Excel users to convince them to take up R, and leave aside Microsoft Excel entirely. I think the pamphlet contains some good arguments, so you can read about it here.</description>
+    </item>
     
     <item>
       <title>Dplyr: filtering with across</title>
