@@ -14,14 +14,11 @@ tags: []
 <p>In this blogpost, I want to tell you about web scraping using <code>RSelenium</code>, something which I’ve recently been learning and which I am very enthusiastic about, because it is very powerful. I want to do this in the context of an example. I have been supervising undergraduate students, and a group of students asked me where they could get a list of members of the Iranian parliament. So I went to <a href="https://en.parliran.ir/eng/en/10th%20Term">the official English-language website</a> of the Iranian parliament, and looked up the list of members.</p>
 <p>Naturally, I wanted to scrape all of these names. For those of you familiar with scraping, a first approach would be something like the following. For those who aren’t, I have another nice blog post about elementary web scraping, but maybe you can follow along!</p>
 <ul>
-<li>First, we observe, by looking at the html-structure of the page, that all the names are stored in a
-<div>
-<p>of class <code>text-left h4</code>.</p></li>
+<li><p>First, we observe, by looking at the html-structure of the page, that all the names are stored in a <code>&lt;div&gt;</code> of class <code>text-left h4</code>.</p></li>
 <li><p>We can use <a href="https://www.w3schools.com/css/css_selectors.asp">CSS selectors</a> to find the specific elements of these classes:</p></li>
 </ul>
-<pre class="r"><code>library(rvest)</code></pre>
-<pre><code>## Loading required package: xml2</code></pre>
-<pre class="r"><code>url &lt;- &quot;https://en.parliran.ir/eng/en/10th%20Term&quot;
+<pre class="r"><code>library(rvest)
+url &lt;- &quot;https://en.parliran.ir/eng/en/10th%20Term&quot;
 
 read_html(url) %&gt;%
   html_nodes(&quot;div .text-left.h4:not(.blue)&quot;)</code></pre>
@@ -250,9 +247,7 @@ for(i in 2:10) {
 </div>
 <div id="final-showcase-capturing-names-and-biographical-information" class="section level2">
 <h2>Final Showcase: Capturing Names and Biographical Information</h2>
-So far the small tutorial, of which I hope it was easy enough for any readers to follow along. Now, I want to illustrate some more serious applications: some of you might have noticed that the names also contain links to personalized pages of the MP’s, which in turn contains
-<div>
-<p>’s with personal (biographical) information. I want to do this in 3 steps:</p>
+<p>So far the small tutorial, of which I hope it was easy enough for any readers to follow along. Now, I want to illustrate some more serious applications: some of you might have noticed that the names also contain links to personalized pages of the MP’s, which in turn contains <code>&lt;div&gt;</code>’s with personal (biographical) information. I want to do this in 3 steps:</p>
 <ol style="list-style-type: decimal">
 <li>I gather all the links of the MP’s over the 10 pages.</li>
 <li>I go to each of those 100 links and extract the information</li>

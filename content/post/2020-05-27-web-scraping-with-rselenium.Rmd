@@ -8,7 +8,7 @@ tags: []
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
 ## Introduction
@@ -17,7 +17,7 @@ In this blogpost, I want to tell you about web scraping using `RSelenium`, somet
 
 Naturally, I wanted to scrape all of these names. For those of you familiar with scraping, a first approach would be something like the following. For those who aren't, I have another nice blog post about elementary web scraping, but maybe you can follow along! 
 
-- First, we observe, by looking at the html-structure of the page, that all the names are stored in a <div> of class `text-left h4`. 
+- First, we observe, by looking at the html-structure of the page, that all the names are stored in a `<div>` of class `text-left h4`. 
 
 - We can use [CSS selectors](https://www.w3schools.com/css/css_selectors.asp) to find the specific elements of these classes:
 
@@ -235,7 +235,7 @@ remDr$close()
 
 And assuming only that we've set up our Selenium server using Docker:
 
-```{r scraping all, results="hide"}
+```{r scraping all, results="hide", cache = TRUE}
 remDr <- RSelenium::remoteDriver(remoteServerAddr = "localhost",
                                  port = 4445L,
                                  browserName = "chrome")
@@ -291,7 +291,7 @@ names %>%
 
 ## Final Showcase: Capturing Names and Biographical Information
 
-So far the small tutorial, of which I hope it was easy enough for any readers to follow along. Now, I want to illustrate some more serious applications: some of you might have noticed that the names also contain links to personalized pages of the MP's, which in turn contains <div>'s with personal (biographical) information. I want to do this in 3 steps:
+So far the small tutorial, of which I hope it was easy enough for any readers to follow along. Now, I want to illustrate some more serious applications: some of you might have noticed that the names also contain links to personalized pages of the MP's, which in turn contains `<div>`'s with personal (biographical) information. I want to do this in 3 steps:
 
 1. I gather all the links of the MP's over the 10 pages.
 2. I go to each of those 100 links and extract the information
@@ -301,7 +301,7 @@ So far the small tutorial, of which I hope it was easy enough for any readers to
 
 In this step, I use `RSelenium` to browse through each of the ten pages, and extract the hyperlink for each politician on a particular page (check out the CSS Selector that I use). 
 
-```{r ditisgeweest}
+```{r ditisgeweest, cache = TRUE}
 remDr$navigate("https://en.parliran.ir/eng/en/10th%20Term")
 links <- NULL
 
@@ -341,7 +341,7 @@ head(links)
 
 In this step, I will go through each of the 100 obtained links, and extract the necessary information.
 
-```{r}
+```{r, cache = TRUE}
 info <- list()
 for(i in 1:length(links)){
   info[[i]] <- read_html(links[i]) %>%
@@ -373,7 +373,7 @@ iranianmps <- lapply(info, data.frame) %>%
 
 In this blog post, I demonstrated how to install and use RSelenium in the context of scraping information about Iranian Members of Parliament. I hope it was useful to some of you aiming to learn RSelenium, and tears down some barriers to first usage. Anyway, after you're done, you can close the connection with the Selenium server in R with:
 
-```{r close server}
+```{r close server, eval = FALSE}
 remDr$close()
 ```
 
