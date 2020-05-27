@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.70.0" />
+
+
+<title>Web Scraping with RSelenium - Bas Machielsen</title>
+<meta property="og:title" content="Web Scraping with RSelenium - Bas Machielsen">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/bas_m.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/blogs/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+    <li><a href="/classes/">Classes</a></li>
+    
+    <li><a href="/packages/">R Packages</a></li>
+    
+    <li><a href="/data/">Data</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">10 min read</span>
+    
+
+    <h1 class="article-title">Web Scraping with RSelenium</h1>
+
+    
+    <span class="article-date">2020-05-27</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this blogpost, I want to tell you about web scraping using <code>RSelenium</code>, something which I’ve recently been learning and which I am very enthusiastic about, because it is very powerful. I want to do this in the context of an example. I have been supervising undergraduate students, and a group of students asked me where they could get a list of members of the Iranian parliament. So I went to <a href="https://en.parliran.ir/eng/en/10th%20Term">the official English-language website</a> of the Iranian parliament, and looked up the list of members.</p>
+<p>Naturally, I wanted to scrape all of these names. For those of you familiar with scraping, a first approach would be something like the following. For those who aren’t, I have another nice blog post about elementary web scraping, but maybe you can follow along!</p>
+<ul>
+<li>First, we observe, by looking at the html-structure of the page, that all the names are stored in a
+<div>
+<p>of class <code>text-left h4</code>.</p></li>
+<li><p>We can use <a href="https://www.w3schools.com/css/css_selectors.asp">CSS selectors</a> to find the specific elements of these classes:</p></li>
+</ul>
+<pre class="r"><code>library(rvest)</code></pre>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre class="r"><code>url &lt;- &quot;https://en.parliran.ir/eng/en/10th%20Term&quot;
+
+read_html(url) %&gt;%
+  html_nodes(&quot;div .text-left.h4:not(.blue)&quot;)</code></pre>
+<pre><code>## {xml_nodeset (10)}
+##  [1] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Abasi, Asadollah&lt;/div&gt;
+##  [2] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Abedi, Heydar Ali&lt;/div&gt;
+##  [3] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Abramian, Jorjik&lt;/div&gt;
+##  [4] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Abtahi, seyed Mohammad ...
+##  [5] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Abutorabi, Abolfazl&lt;/div&gt;
+##  [6] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Adyani rad, Seyed Ali&lt; ...
+##  [7] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Afzali, Nazar&lt;/div&gt;
+##  [8] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Afzali, Seyed Hossein&lt; ...
+##  [9] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Aghapour Alishahi, Mas ...
+## [10] &lt;div class=&quot;text-left h4&quot;&gt;\n&lt;strong&gt;Name:&lt;/strong&gt;Ahmadi Lashki, Qasem&lt;/ ...</code></pre>
+<p>Here I am saying, select all nodes (separate chunks of html, be it <code>&lt;p&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;div&gt;</code> or something else), that are <code>&lt;div&gt;</code>, and have the classes <code>text-left</code>, <code>h4</code>, and don’t have <code>blue</code>. (The reason for no blue is that it would take some unnecessary information. Try it out yourself!)</p>
+<p>Now, we can extract the names with the help of the <code>html_text</code> command from the <code>rvest</code> package, which extract all text inside these particular html-elements:</p>
+<pre class="r"><code>read_html(url) %&gt;%
+  html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+  html_text()</code></pre>
+<pre><code>##  [1] &quot;Name:Abasi, Asadollah&quot;             &quot;Name:Abedi, Heydar Ali&quot;           
+##  [3] &quot;Name:Abramian, Jorjik&quot;             &quot;Name:Abtahi, seyed Mohammad Javad&quot;
+##  [5] &quot;Name:Abutorabi, Abolfazl&quot;          &quot;Name:Adyani rad, Seyed Ali&quot;       
+##  [7] &quot;Name:Afzali, Nazar&quot;                &quot;Name:Afzali, Seyed Hossein&quot;       
+##  [9] &quot;Name:Aghapour Alishahi, Masoumeh&quot;  &quot;Name:Ahmadi Lashki, Qasem&quot;</code></pre>
+<p>Don’t worry about the <code>Name:</code> parts for now. We’ll clean those later.</p>
+<p>The difficulty is: these are obviously not all members of Iran’s parliament. If you go to the <a href="https://en.parliran.ir/eng/en/10th%20Term">actual website</a>, you will notice that there are pages 1 up to 10, which you can click. But if you do so, the page’s URL does not change! That means we cannot readily scrape the names of all members by navigating to a new URL. Here, <code>RSelenium</code> comes into play.</p>
+</div>
+<div id="rselenium" class="section level2">
+<h2>RSelenium</h2>
+<ul>
+<li>What is Selenium?</li>
+</ul>
+<blockquote>
+<p>Selenium is a project focused on automating web browsers.</p>
+</blockquote>
+<p>from <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html">this vignette</a>. In layman’s terms, Selenium creates ‘robot browsers’ that you can control by giving commands.</p>
+<ul>
+<li>What is RSelenium?</li>
+</ul>
+<blockquote>
+<p>The goal of RSelenium is to make it easy to connect to a Selenium Server/Remote Selenium Server from within R. RSelenium provides R bindings for the Selenium Webdriver API.</p>
+</blockquote>
+<blockquote>
+<p>RSelenium allows you to carry out unit testing and regression testing on your webapps and webpages across a range of browser/OS combinations. This allows us to integrate from within R testing and manipulation of popular projects such as Shiny Apps.</p>
+</blockquote>
+<p>Originally, RSelenium was used primarily to test apps by creating virtual environments of different browsers, and see how they look/behave. We will be using it to create a virtual browser, give it some commands, and extract data in a <code>for</code> loop as we go. Specifically, we will use the virtual browser to navigate through each of the 10 pages, and scrape all the names as we go along!</p>
+</div>
+<div id="setting-up-a-virtual-browser" class="section level2">
+<h2>Setting up a Virtual Browser</h2>
+<p>To get <code>RSelenium</code> working, we need two things: <a href="https://www.docker.com/why-docker">Docker</a> to set up a server to run the virtual browser on, and the <code>RSelenium</code> package.</p>
+<p>In Ubuntu, the OS of my preference, Docker can be installed in the following way:</p>
+<pre><code>$ sudo apt-get install docker.io</code></pre>
+<p>.. and you start it, up and test whether it is working by executing the following query in the command bash:</p>
+<pre><code>$ sudo service docker start
+
+$ sudo docker run hello-world</code></pre>
+<p>Following which you should get the following output:</p>
+<pre><code>Unable to find image &#39;hello-world:latest&#39; locally
+latest: Pulling from library/hello-world
+0e03bdcc26d7: Pull complete 
+Digest: sha256:6a65f928fb91fcfbc963f7aa6d57c8eeb426ad9a20c7ee045538ef34847f44f1
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre>
+</div>
+<div id="installing-rselenium" class="section level2">
+<h2>Installing RSelenium</h2>
+<p>You can install and load RSelenium in the way you’re used to:</p>
+<pre class="r"><code>install.packages(&#39;RSelenium&#39;)</code></pre>
+<p>It seems that <code>devtools</code> is required to get Selenium working, so load it with:</p>
+<pre class="r"><code>library(devtools)
+library(RSelenium)</code></pre>
+<p>Now you can start up a Selenium-server (in command prompt) by entering:</p>
+<pre><code>$ sudo docker run -d -p 4445:4444 selenium/standalone-chrome</code></pre>
+<p>Check if it’s working by entering <code>docker ps</code> in command prompt, following which you should get a list containing the one server you just set up, and some additional information (CONTAINER ID, IMAGE, etc.)</p>
+<p>You can replace chrome by any other browser, and the version no. by a specific desired version number of your liking, by entering e.g. <code>$ sudo docker run -d -p 4445:4444 selenium/standalone-chrone:1.0.0</code> Now, back in R, we use <code>RSelenium</code> to connect to the server we’ve just created:</p>
+<pre class="r"><code>remDr &lt;- RSelenium::remoteDriver(remoteServerAddr = &quot;localhost&quot;,
+                                 port = 4445L,
+                                 browserName = &quot;chrome&quot;)</code></pre>
+<p>And we can start navigating, just like we would do in a real browser:</p>
+<pre class="r"><code>remDr$open()
+
+remDr$navigate(&quot;http://bas-m.netlify.app&quot;) </code></pre>
+<p>The only difference is that we know explicitly write down our activities (clicks, filling in forms, etc.) using a few simple commands. The basic commands used to navigate a browser can be found <a href="https://cran.r-project.org/web/packages/RSelenium/vignettes/basics.html">here</a>, for example.</p>
+</div>
+<div id="scraping-in-r-using-selenium" class="section level2">
+<h2>Scraping in R Using Selenium</h2>
+<p>Now, let’s get back to the job we started with: scraping the names of Iranian MP’s! We know how to navigate to the desired webpage in RSelenium, and we know we want the following:</p>
+<ol style="list-style-type: decimal">
+<li>We want to scrape all MP’s names on page 1.</li>
+<li>We want to go to page 2.</li>
+<li>We want to scrape all MP’s names on page 2.</li>
+<li>Etc. etc. until page 10</li>
+</ol>
+<p>Let us start with the sample case - we scrape all names from page 1, and then click on page 2, and scrape all names from that page:</p>
+<pre class="r"><code>#By default, we end up at page 1
+remDr$navigate(&quot;https://en.parliran.ir/eng/en/10th%20Term&quot;)
+
+remDr$getPageSource() %&gt;%
+  magrittr::extract2(1) %&gt;%
+  read_html() %&gt;%
+  html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+  html_text()</code></pre>
+<pre><code>##  [1] &quot;Name:Abasi, Asadollah&quot;             &quot;Name:Abedi, Heydar Ali&quot;           
+##  [3] &quot;Name:Abramian, Jorjik&quot;             &quot;Name:Abtahi, seyed Mohammad Javad&quot;
+##  [5] &quot;Name:Abutorabi, Abolfazl&quot;          &quot;Name:Adyani rad, Seyed Ali&quot;       
+##  [7] &quot;Name:Afzali, Nazar&quot;                &quot;Name:Afzali, Seyed Hossein&quot;       
+##  [9] &quot;Name:Aghapour Alishahi, Masoumeh&quot;  &quot;Name:Ahmadi Lashki, Qasem&quot;</code></pre>
+<p>Notice that we used the same CSS Selector as before to get the names. If all pages have a similar markup, then we can use the same CSS Selector on every page. We’ll soon find out whether that’s the case. Let us store the obtained names in a vector:</p>
+<pre class="r"><code>names &lt;- remDr$getPageSource() %&gt;%
+  magrittr::extract2(1) %&gt;%
+  read_html() %&gt;%
+  html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+  html_text()</code></pre>
+<p>.. and attempt to navigate to page two:</p>
+<pre class="r"><code>remDr$navigate(&quot;https://en.parliran.ir/eng/en/10th%20Term&quot;)
+
+remDr$findElement(using = &quot;css&quot;, &#39;input[value=&quot;2&quot;]&#39;) -&gt; elem
+elem$clickElement()</code></pre>
+<p>Now we have navigated to page 2! Let us now find the names on page 2:</p>
+<pre class="r"><code>remDr$getPageSource() %&gt;%
+  magrittr::extract2(1) %&gt;%
+  read_html() %&gt;%
+  html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+  html_text()</code></pre>
+<pre><code>##  [1] &quot;Name:Ahmadi, Fereydoun&quot;       &quot;Name:Akbari, Ali&quot;            
+##  [3] &quot;Name:Akbari, Ali(Shiraz)&quot;     &quot;Name:Akbariyan, Aziz&quot;        
+##  [5] &quot;Name:Alavi, Seyed Ahsan&quot;      &quot;Name:Alavi, Seyed Mohsen&quot;    
+##  [7] &quot;Name:Alijani Zamani, Mohsen&quot;  &quot;Name:Alireza beygi, Ahmad&quot;   
+##  [9] &quot;Name:Alizade, Reza&quot;           &quot;Name:Allah gholi zade, Gholi&quot;</code></pre>
+<p>And let’s also store them in <code>names</code>, the vector we’ve made before:</p>
+<pre class="r"><code>names &lt;- c(names, 
+           remDr$getPageSource() %&gt;%
+                magrittr::extract2(1) %&gt;%
+                read_html() %&gt;%
+                html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+                html_text()
+)
+
+names</code></pre>
+<pre><code>##  [1] &quot;Name:Abasi, Asadollah&quot;             &quot;Name:Abedi, Heydar Ali&quot;           
+##  [3] &quot;Name:Abramian, Jorjik&quot;             &quot;Name:Abtahi, seyed Mohammad Javad&quot;
+##  [5] &quot;Name:Abutorabi, Abolfazl&quot;          &quot;Name:Adyani rad, Seyed Ali&quot;       
+##  [7] &quot;Name:Afzali, Nazar&quot;                &quot;Name:Afzali, Seyed Hossein&quot;       
+##  [9] &quot;Name:Aghapour Alishahi, Masoumeh&quot;  &quot;Name:Ahmadi Lashki, Qasem&quot;        
+## [11] &quot;Name:Ahmadi, Fereydoun&quot;            &quot;Name:Akbari, Ali&quot;                 
+## [13] &quot;Name:Akbari, Ali(Shiraz)&quot;          &quot;Name:Akbariyan, Aziz&quot;             
+## [15] &quot;Name:Alavi, Seyed Ahsan&quot;           &quot;Name:Alavi, Seyed Mohsen&quot;         
+## [17] &quot;Name:Alijani Zamani, Mohsen&quot;       &quot;Name:Alireza beygi, Ahmad&quot;        
+## [19] &quot;Name:Alizade, Reza&quot;                &quot;Name:Allah gholi zade, Gholi&quot;</code></pre>
+</div>
+<div id="scraping-all-pages" class="section level2">
+<h2>Scraping all pages</h2>
+<p>Let us now proceed to scrape all pages at once, meaning, using one <code>for</code> loop! We can make clever use that the values of the CSS selectors for the buttons are numbers 1 to 10, so we can use that to generate code to go to the next page after storing the results of the current page. For clarity’s sake, we start from scratch, closing our current session:</p>
+<pre class="r"><code>remDr$close()</code></pre>
+<p>And assuming only that we’ve set up our Selenium server using Docker:</p>
+<pre class="r"><code>remDr &lt;- RSelenium::remoteDriver(remoteServerAddr = &quot;localhost&quot;,
+                                 port = 4445L,
+                                 browserName = &quot;chrome&quot;)
+
+remDr$open()
+
+remDr$navigate(&quot;https://en.parliran.ir/eng/en/10th%20Term&quot;)
+
+#Page 1
+names &lt;- remDr$getPageSource() %&gt;%
+  magrittr::extract2(1) %&gt;%
+  read_html() %&gt;%
+  html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+  html_text()
+
+#Page 2 to 10
+for(i in 2:10) {
+  #Get the correct CSS Selector for each page
+  element &lt;- paste(&#39;input[value=&quot;x&quot;]&#39;)
+  element &lt;- stringr::str_replace(element, &quot;x&quot;, as.character(i))
+  
+  #Click on page i button
+  remDr$findElement(using = &quot;css&quot;, element) -&gt; clickthis
+  clickthis$clickElement()
+  
+  #Scrape the names
+  names &lt;- c(names, 
+             remDr$getPageSource() %&gt;%
+               magrittr::extract2(1) %&gt;%
+               read_html() %&gt;%
+               html_nodes(&quot;div .text-left.h4:not(.blue)&quot;) %&gt;%
+               html_text()
+  )
+  
+  names
+  
+}</code></pre>
+<p>And here we have it! Exactly 100 names!</p>
+<pre class="r"><code>head(names)</code></pre>
+<pre><code>## [1] &quot;Name:Abasi, Asadollah&quot;             &quot;Name:Abedi, Heydar Ali&quot;           
+## [3] &quot;Name:Abramian, Jorjik&quot;             &quot;Name:Abtahi, seyed Mohammad Javad&quot;
+## [5] &quot;Name:Abutorabi, Abolfazl&quot;          &quot;Name:Adyani rad, Seyed Ali&quot;</code></pre>
+<p>Let’s clean them quickly, for completness’ sake:</p>
+<pre class="r"><code>names %&gt;%
+  stringr::str_replace(&quot;Name:&quot;, &quot;&quot;) %&gt;%
+  tail()</code></pre>
+<pre><code>## [1] &quot;Hashemi, Homayoun&quot;                  &quot;Hashemzaei, Abdolreza&quot;             
+## [3] &quot;Hassan Beygi, Abolfazl&quot;             &quot;Hassan nejad, Mohammad&quot;            
+## [5] &quot;Hassani Jouriyabi, Mohammad Sadegh&quot; &quot;Hassanpour Biglari, Shahbaz&quot;</code></pre>
+</div>
+<div id="final-showcase-capturing-names-and-biographical-information" class="section level2">
+<h2>Final Showcase: Capturing Names and Biographical Information</h2>
+So far the small tutorial, of which I hope it was easy enough for any readers to follow along. Now, I want to illustrate some more serious applications: some of you might have noticed that the names also contain links to personalized pages of the MP’s, which in turn contains
+<div>
+<p>’s with personal (biographical) information. I want to do this in 3 steps:</p>
+<ol style="list-style-type: decimal">
+<li>I gather all the links of the MP’s over the 10 pages.</li>
+<li>I go to each of those 100 links and extract the information</li>
+<li>I clean the data obtained in step 2.</li>
+</ol>
+</div>
+<div id="step-1-gather-all-links" class="section level2">
+<h2>Step 1: Gather all links</h2>
+<p>In this step, I use <code>RSelenium</code> to browse through each of the ten pages, and extract the hyperlink for each politician on a particular page (check out the CSS Selector that I use).</p>
+<pre class="r"><code>remDr$navigate(&quot;https://en.parliran.ir/eng/en/10th%20Term&quot;)
+links &lt;- NULL
+
+for(i in 1:10){
+  
+  #Get the correct CSS Selector for each page
+  element &lt;- paste(&#39;input[value=&quot;x&quot;]&#39;)
+  element &lt;- stringr::str_replace(element, &quot;x&quot;, as.character(i))
+  
+  #Click on page i button
+  remDr$findElement(using = &quot;css&quot;, element) -&gt; clickthis
+  clickthis$clickElement()
+  
+  
+  #Extract all the hyperlinks to politician&#39;s pages on page i
+  links &lt;- c(links, 
+             remDr$getPageSource() %&gt;%
+                magrittr::extract2(1) %&gt;%
+                read_html() %&gt;%
+                html_nodes(&#39;div.col-lg-10 a[target=&quot;_blank&quot;]&#39;) %&gt;%
+                html_attr(&quot;href&quot;)
+  )
+  
+  links
+  
+}</code></pre>
+<p>And there they are!</p>
+<pre class="r"><code>head(links)</code></pre>
+<pre><code>## [1] &quot;https://en.parliran.ir/eng/en/Content/_/Abasi-Asadollah17929&quot;            
+## [2] &quot;https://en.parliran.ir/eng/en/Content/_/Abedi-Heydar-Ali19627&quot;           
+## [3] &quot;https://en.parliran.ir/eng/en/Content/_/Abramian-Jorjik21155&quot;            
+## [4] &quot;https://en.parliran.ir/eng/en/Content/_/Abtahi-seyed-Mohammad-Javad22550&quot;
+## [5] &quot;https://en.parliran.ir/eng/en/Content/_/Abutorabi-Abolfazl23678&quot;         
+## [6] &quot;https://en.parliran.ir/eng/en/Content/_/Adyani-rad-Seyed-Ali25134&quot;</code></pre>
+</div>
+<div id="step-2-go-to-the-links-and-extract-information" class="section level2">
+<h2>Step 2: Go to the Links and Extract Information</h2>
+<p>In this step, I will go through each of the 100 obtained links, and extract the necessary information.</p>
+<pre class="r"><code>info &lt;- list()
+for(i in 1:length(links)){
+  info[[i]] &lt;- read_html(links[i]) %&gt;%
+    html_nodes(&quot;div.col-lg-7 p&quot;) %&gt;%
+    html_text() %&gt;%
+    stringr::str_trim(side = &quot;both&quot;) %&gt;%
+    .[. != &quot;&quot;] 
+}</code></pre>
+</div>
+<div id="step-3-cleaning-the-data" class="section level2">
+<h2>Step 3: Cleaning the Data</h2>
+<p>Finally, I can do some cleaning exercises, to make sure the data can be used easily by myself and others. You can download the obtained data <a href="/iranianmps.csv">here</a>!</p>
+<pre class="r"><code>iranianmps &lt;- lapply(info, data.frame) %&gt;%
+  lapply(setNames, &quot;var&quot;) %&gt;%
+  lapply(tidyr::separate, var, sep = &quot;:&quot;, into = c(&quot;var&quot;, &quot;val&quot;)) %&gt;%
+  lapply(tidyr::pivot_wider, names_from = &quot;var&quot;, values_from = &quot;val&quot;) %&gt;%
+  purrr::reduce(dplyr::bind_rows)</code></pre>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>In this blog post, I demonstrated how to install and use RSelenium in the context of scraping information about Iranian Members of Parliament. I hope it was useful to some of you aiming to learn RSelenium, and tears down some barriers to first usage. Anyway, after you’re done, you can close the connection with the Selenium server in R with:</p>
+<pre class="r"><code>remDr$close()</code></pre>
+<p>And if you want to shut down your Selenium server in Docker, go to command prompt:</p>
+<pre><code>$ docker kill [CONTAINER_ID]</code></pre>
+<p>where [CONTAINER_ID] is a string corresponding to the CONTAINDER_ID box of your server. Thank you for reading, and if you have any questions, you can always <a href="mailto:a.h.machielsen@uu.nl">contact me</a>.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
