@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Batch Downloading with RSelenium</title>
+      <link>/2020/05/29/batch-downloading-with-rselenium/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/29/batch-downloading-with-rselenium/</guid>
+      <description>Introduction In this blogpost, I briefly explain how to batch download files in RSelenium. This can be super useful if you want to download some pdf’s or other files, but you don’t want to click ‘download’ a 1000 times, and there is no other option available.
+ Step 1: Setting up a Docker Container In this case, we have to deviate from the standard case of setting up a Docker container.</description>
+    </item>
     
     <item>
       <title>Web Scraping with RSelenium</title>

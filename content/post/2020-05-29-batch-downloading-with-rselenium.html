@@ -1,0 +1,125 @@
+---
+title: Batch Downloading with RSelenium
+author: ~
+date: '2020-05-29'
+slug: batch-downloading-with-rselenium
+categories: []
+tags: []
+---
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this blogpost, I briefly explain how to batch download files in RSelenium. This can be super useful if you want to download some pdf’s or other files, but you don’t want to click ‘download’ a 1000 times, and there is no other option available.</p>
+</div>
+<div id="step-1-setting-up-a-docker-container" class="section level2">
+<h2>Step 1: Setting up a Docker Container</h2>
+<p>In this case, we have to deviate from the standard case of setting up a Docker container. We have to make sure that there is a mapping between the Docker folder where the downloads will end up, and the Download folder on our ‘real’ machine.</p>
+<pre><code>$ docker run -d -p 4445:4444 -p 5901:5900 -v /home/bas/Downloads:/home/seluser/Downloads selenium/standalone-firefox
+</code></pre>
+<p>As usual, we assign one set of ports to the Docker machine, and we assign another set of ports to serve as the ‘means of transport’ between the Docker container and our own directory. The syntax tells us that we have to first place our down directory <code>/home/bas/Downloads/</code> and then the directory where the downloads end up on the Selenium Image in the container <code>/home/seluser/Downloads</code>.</p>
+</div>
+<div id="step-2-specifying-firefox-preferences" class="section level2">
+<h2>Step 2: Specifying Firefox Preferences</h2>
+<p>We also have to specify our (virtual) browser’s preferences. In particular, we have to specify the download folder, and we have to specify that the browser shouldn’t open download windows before downloading something (because Selenium can’t handle that).</p>
+<pre class="r"><code>ePrefs &lt;- makeFirefoxProfile(
+  list(
+    &quot;browser.download.dir&quot; = &quot;/home/seluser/Downloads&quot;,
+    &quot;browser.download.folderList&quot; = 2L,
+    &quot;browser.download.manager.showWhenStarting&quot; = FALSE,
+    &quot;browser.helperApps.neverAsk.saveToDisk&quot; = &quot;multipart/x-zip,application/zip,application/x-zip-compressed,application/x-compressed,application/msword,application/csv,text/csv,image/png ,image/jpeg, application/pdf, text/html,text/plain,  application/excel, application/vnd.ms-excel, application/x-excel, application/x-msexcel, application/octet-stream&quot;))</code></pre>
+<p>Note that you should leave the download directory as ‘/home/seluser/Downloads’, because that it the standard directory the Selenium image creates, and also because you’ve specified a map from that directory to your own downloads folder when you set up the Docker container.</p>
+</div>
+<div id="step-3-downloading-a-file" class="section level2">
+<h2>Step 3: Downloading a file</h2>
+<p>Next, we can connect to the server we’ve just created, instructing the browser client to take into consideration the preferences (settings) we just created in the list <code>ePrefs</code>:</p>
+<pre class="r"><code>remDr &lt;- remoteDriver(browserName = &quot;firefox&quot;,
+                      port = 4445L,
+                      extraCapabilities = ePrefs)
+
+
+remDr$open()</code></pre>
+<p>Let’s now navigate to an example website (a blogpost on this website), and download a <code>.csv</code> file which I’ve hidden in there:</p>
+<pre class="r"><code>remDr$navigate(&quot;https://bas-m.netlify.app/2020/05/27/web-scraping-with-rselenium/&quot;)
+click &lt;- remDr$findElement(&quot;css&quot;, &quot;#step-3-cleaning-the-data &gt; p:nth-child(2) &gt; a:nth-child(1)&quot;)
+
+click$clickElement()</code></pre>
+<p>You can check whether you can see the file in your Downloads folder (or any other folder yo might have specified) now!</p>
+</div>
+<div id="step-4-example-download-batch-files" class="section level2">
+<h2>Step 4: Example: Download batch files</h2>
+<p>Let’s now proceed to a more interesting application: batch downloading pictures of archival data from <a href="https://www.historisch.cbs.nl/">CBS Historisch</a>. We will use the “Jaarcijfers voor Nederland 1943 (500 p.)” and we will start from page 1, and scrape until page 100! We will execute a for loop over several (tens, hundreds of) pages, and download a picture on every page!</p>
+<pre class="r"><code>#Navigate to page 1
+remDr$navigate(&quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092112&quot;)
+
+#accept the cookies
+clickhere &lt;- remDr$findElement(using = &quot;css&quot;, &quot;a.cb-enable&quot;)
+clickhere$clickElement()</code></pre>
+<p>This is the preliminary work. Now, we can start a for loop over 100 pages.</p>
+<pre class="r"><code>for(i in 1:5) {
+  print(i)
+  #First, save the URL where we are
+  currentpage &lt;- remDr$getCurrentUrl()
+  print(currentpage[[1]])
+  
+  #Switch to the correct frame
+  webElem &lt;- remDr$findElements(&quot;css&quot;, &quot;iframe&quot;)
+  remDr$switchToFrame(webElem[[1]])
+
+  #Find the two download subsequent buttons and download the file
+  remDr$findElement(using = &quot;css&quot;, &quot;a#downloadDirect&quot;) -&gt; download
+  download$clickElement()
+
+  remDr$findElement(&quot;css&quot;, &quot;a#downloadResLink&quot;) -&gt; download2
+  download2$clickElement()
+
+  #Now navigate to the next page:
+  #First, switch back to the original frame
+  remDr$navigate(currentpage[[1]])
+
+  #Then, find the button for page i:
+  #Find the relevant Xpath
+  
+  path &lt;- &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;y&#39;]&quot;
+  path &lt;- stringr::str_replace(path, &quot;y&quot;, as.character(i+1))
+  print(path)
+  
+  remDr$findElement(&quot;xpath&quot;, path) -&gt; click
+  click$isElementDisplayed()
+  click$isElementSelected()
+  click$clickElement()
+  
+  currentpage &lt;- remDr$getCurrentUrl()
+  remDr$navigate(currentpage[[1]])
+  print(currentpage[[1]])
+  #And then we can start again - make sure to add a sys.Sleep:
+  Sys.sleep(5)
+}</code></pre>
+<pre><code>## [1] 1
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092112&quot;
+## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;2&#39;]&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092112&quot;
+## [1] 2
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092112&quot;
+## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;3&#39;]&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092114&quot;
+## [1] 3
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092114&quot;
+## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;4&#39;]&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092115&quot;
+## [1] 4
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092115&quot;
+## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;5&#39;]&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092116&quot;
+## [1] 5
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092116&quot;
+## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;6&#39;]&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092117&quot;</code></pre>
+<p>Don’t forget to close your session afterwards:</p>
+<pre class="r"><code>remDr$close()</code></pre>
+</div>
+<div id="in-the-future.." class="section level2">
+<h2>In the future..</h2>
+<p>The next thing you might do with all these pictures is automatically OCR’ign them! The <code>tesseract</code> package allows OCRing in R, but the quality is still very low.. Perhaps it would be reaonsable to do so once the algorithm is good enough to distinguish between tables and all other text. Thanks for reading!</p>
+</div>
