@@ -42,7 +42,7 @@ read_html(url) %>%
 
 Don't worry about the `Name:` parts for now. We'll clean those later. 
 
-The difficulty is: these are obviously not all members of Iran's parliament. If you go to the [actual website](https://en.parliran.ir/eng/en/10th%20Term), you will notice that there are pages 1 up to 10, which you can click. But if you do so, the page's URL does not change! That means we cannot readily scrape the names of all members by navigating to a new URL. Here, `RSelenium` comes into play.
+The difficulty is: these are obviously not all members of Iran's parliament. If you go to the [actual website](https://en.parliran.ir/eng/en/10th%20Term), you will notice that there are pages 1 to 10 (and up to 29), which you can click. But if you do so, the page's URL does not change! That means we cannot readily scrape the names of all members by navigating to a new URL. Here, `RSelenium` comes into play.
 
 ## RSelenium
 
@@ -164,7 +164,7 @@ Now, let's get back to the job we started with: scraping the names of Iranian MP
 1. We want to scrape all MP's names on page 1. 
 2. We want to go to page 2.
 3. We want to scrape all MP's names on page 2.
-4. Etc. etc. until page 10
+4. Etc. etc. until page 29
 
 Let us start with the sample case - we scrape all names from page 1, and then click on page 2, and scrape all names from that page:
 
@@ -227,7 +227,7 @@ names
 
 ## Scraping all pages
 
-Let us now proceed to scrape all pages at once, meaning, using one `for` loop! We can make clever use that the values of the CSS selectors for the buttons are numbers 1 to 10, so we can use that to generate code to go to the next page after storing the results of the current page. For clarity's sake, we start from scratch, closing our current session:
+Let us now proceed to scrape all pages at once, meaning, using one `for` loop! We can make clever use that the values of the CSS selectors for the buttons are numbers 1 to 29, so we can use that to generate code to go to the next page after storing the results of the current page. For clarity's sake, we start from scratch, closing our current session:
 
 ```{r scrapingclose}
 remDr$close()
@@ -251,8 +251,8 @@ names <- remDr$getPageSource() %>%
   html_nodes("div .text-left.h4:not(.blue)") %>%
   html_text()
 
-#Page 2 to 10
-for(i in 2:10) {
+#Page 2 to 29
+for(i in 2:29) {
   #Get the correct CSS Selector for each page
   element <- paste('input[value="x"]')
   element <- stringr::str_replace(element, "x", as.character(i))
@@ -275,7 +275,7 @@ for(i in 2:10) {
 }
 ```
 
-And here we have it! Exactly 100 names! 
+And here we have it! 286 names! 
 
 ```{r}
 head(names)
@@ -294,7 +294,7 @@ names %>%
 So far the small tutorial, of which I hope it was easy enough for any readers to follow along. Now, I want to illustrate some more serious applications: some of you might have noticed that the names also contain links to personalized pages of the MP's, which in turn contains `<div>`'s with personal (biographical) information. I want to do this in 3 steps:
 
 1. I gather all the links of the MP's over the 10 pages.
-2. I go to each of those 100 links and extract the information
+2. I go to each of those 286 links and extract the information
 3. I clean the data obtained in step 2. 
 
 ## Step 1: Gather all links
@@ -305,7 +305,7 @@ In this step, I use `RSelenium` to browse through each of the ten pages, and ext
 remDr$navigate("https://en.parliran.ir/eng/en/10th%20Term")
 links <- NULL
 
-for(i in 1:10){
+for(i in 1:29){
   
   #Get the correct CSS Selector for each page
   element <- paste('input[value="x"]')
@@ -339,11 +339,12 @@ head(links)
 
 ## Step 2: Go to the Links and Extract Information
 
-In this step, I will go through each of the 100 obtained links, and extract the necessary information.
+In this step, I will go through each of the 286 obtained links, and extract the necessary information.
 
 ```{r, cache = TRUE}
 info <- list()
 for(i in 1:length(links)){
+  print(i)
   info[[i]] <- read_html(links[i]) %>%
     html_nodes("div.col-lg-7 p") %>%
     html_text() %>%

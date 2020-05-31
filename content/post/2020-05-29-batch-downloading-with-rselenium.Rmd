@@ -33,7 +33,7 @@ As usual, we assign one set of ports to the Docker machine, and we assign anothe
 We also have to specify our (virtual) browser's preferences. In particular, we have to specify the download folder, and we have to specify that the browser shouldn't open download windows before downloading something (because Selenium can't handle that). 
 
 ```{r}
-ePrefs <- makeFirefoxProfile(
+ePrefs <- RSelenium::makeFirefoxProfile(
   list(
     "browser.download.dir" = "/home/seluser/Downloads",
     "browser.download.folderList" = 2L,
@@ -64,7 +64,7 @@ Note that you should leave the download directory as '/home/seluser/Downloads', 
 Next, we can connect to the server we've just created, instructing the browser client to take into consideration the preferences (settings) we just created in the list `ePrefs`:
 
 ```{r results="hide"}
-remDr <- remoteDriver(browserName = "firefox",
+remDr <- RSelenium::remoteDriver(browserName = "firefox",
                       port = 4445L,
                       extraCapabilities = ePrefs)
 

@@ -96,7 +96,7 @@
 <div id="step-2-specifying-firefox-preferences" class="section level2">
 <h2>Step 2: Specifying Firefox Preferences</h2>
 <p>We also have to specify our (virtual) browser’s preferences. In particular, we have to specify the download folder, and we have to specify that the browser shouldn’t open download windows before downloading something (because Selenium can’t handle that).</p>
-<pre class="r"><code>ePrefs &lt;- makeFirefoxProfile(
+<pre class="r"><code>ePrefs &lt;- RSelenium::makeFirefoxProfile(
   list(
     &quot;browser.download.dir&quot; = &quot;/home/seluser/Downloads&quot;,
     &quot;browser.download.folderList&quot; = 2L,
@@ -107,7 +107,7 @@
 <div id="step-3-downloading-a-file" class="section level2">
 <h2>Step 3: Downloading a file</h2>
 <p>Next, we can connect to the server we’ve just created, instructing the browser client to take into consideration the preferences (settings) we just created in the list <code>ePrefs</code>:</p>
-<pre class="r"><code>remDr &lt;- remoteDriver(browserName = &quot;firefox&quot;,
+<pre class="r"><code>remDr &lt;- RSelenium::remoteDriver(browserName = &quot;firefox&quot;,
                       port = 4445L,
                       extraCapabilities = ePrefs)
 
@@ -184,11 +184,11 @@ clickhere$clickElement()</code></pre>
 ## [1] 4
 ## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092115&quot;
 ## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;5&#39;]&quot;
-## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092116&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092115&quot;
 ## [1] 5
-## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092116&quot;
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092115&quot;
 ## [1] &quot;//a[contains(@class, &#39;custom-navigation-page&#39;) and text()=&#39;6&#39;]&quot;
-## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092117&quot;</code></pre>
+## [1] &quot;https://www.historisch.cbs.nl/detail.php?nav_id=5-1&amp;id=102092115&quot;</code></pre>
 <p>Don’t forget to close your session afterwards:</p>
 <pre class="r"><code>remDr$close()</code></pre>
 </div>
