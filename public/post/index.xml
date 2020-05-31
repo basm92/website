@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Read a Table from the Indonesian Census Data</title>
+      <link>/2020/05/31/read-a-table-from-the-indonesian-census-data/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/05/31/read-a-table-from-the-indonesian-census-data/</guid>
+      <description>Introduction In this post, I will briefly explain how to read in a table easily from the Indonesian data sources that I have been planning to use (see here). First, I download the file, containing data about municipalities in every province and their GRDP:
+download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve=OTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2&amp;amp;xzmn=aHR0cHM6Ly93d3cuYnBzLmdvLmlkL3B1YmxpY2F0aW9uLzIwMTkvMTAvMDQvOTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2L3Byb2R1ay1kb21lc3Rpay1yZWdpb25hbC1icnV0by1rYWJ1cGF0ZW4ta290YS1kaS1pbmRvbmVzaWEtMjAxNC0yMDE4Lmh0bWw%3D&amp;amp;twoadfnoarfeauf=MjAyMC0wNS0zMSAyMzo0Njo1Ng%3D%3D&amp;quot;, destfile = &amp;quot;hello.pdf&amp;quot;)  Reading in the table There are different ways in which I can read the table. First, I use the tabulizer package, from which I can use the extract_tables function, with two arguments:</description>
+    </item>
     
     <item>
       <title>Batch Downloading with RSelenium</title>
