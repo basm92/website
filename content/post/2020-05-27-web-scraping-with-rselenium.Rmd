@@ -344,7 +344,6 @@ In this step, I will go through each of the 286 obtained links, and extract the 
 ```{r, cache = TRUE}
 info <- list()
 for(i in 1:length(links)){
-  print(i)
   info[[i]] <- read_html(links[i]) %>%
     html_nodes("div.col-lg-7 p") %>%
     html_text() %>%
