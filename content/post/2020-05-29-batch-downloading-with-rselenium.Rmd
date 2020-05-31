@@ -102,41 +102,31 @@ This is the preliminary work. Now, we can start a for loop over 100 pages.
 ```{r}
 
 for(i in 1:5) {
-  print(i)
-  #First, save the URL where we are
-  currentpage <- remDr$getCurrentUrl()
-  print(currentpage[[1]])
-  
+
   #Switch to the correct frame
   webElem <- remDr$findElements("css", "iframe")
   remDr$switchToFrame(webElem[[1]])
-
+  
   #Find the two download subsequent buttons and download the file
   remDr$findElement(using = "css", "a#downloadDirect") -> download
   download$clickElement()
-
+  
   remDr$findElement("css", "a#downloadResLink") -> download2
   download2$clickElement()
-
+  
   #Now navigate to the next page:
   #First, switch back to the original frame
-  remDr$navigate(currentpage[[1]])
-
+  remDr$switchToFrame(NULL)
+  
   #Then, find the button for page i:
   #Find the relevant Xpath
-  
   path <- "//a[contains(@class, 'custom-navigation-page') and text()='y']"
   path <- stringr::str_replace(path, "y", as.character(i+1))
-  print(path)
   
+  #And click to the next page
   remDr$findElement("xpath", path) -> click
-  click$isElementDisplayed()
-  click$isElementSelected()
   click$clickElement()
   
-  currentpage <- remDr$getCurrentUrl()
-  remDr$navigate(currentpage[[1]])
-  print(currentpage[[1]])
   #And then we can start again - make sure to add a sys.Sleep:
   Sys.sleep(5)
 }
