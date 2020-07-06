@@ -5,11 +5,9 @@ output:
     css: stylo.css
 ---
 
-# Introduction 
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div align="left" style="float:left; width: 250px; height: 420px;" class="img.with.text">
+<div align="left" style="float:left; width: 250px; min-height: 100%;" class="img.with.text">
  <img src="/basmachielsen.jpg" width = "200" height = "200">
  <p>
 <a href="#" class="fa fa-twitter"></a> Twitter  
@@ -20,6 +18,8 @@ output:
 <a href="#" class="fa fa-globe"></a>  University
  </p>
 </div> 
+
+# Introduction 
 
 I am a PhD Candidate in Economic History at Utrecht University, and a supervisor of MSc and BSc theses at Erasmus University (the Netherlands). My PhD research attempts to combine archival research, econometric methods, historical insights and economic theory to investigate the drivers of democratization of the Netherlands in the late 19th and early 20th century, and focuses on the incentives of Dutch political elites. I also work on political rent-seeking in the context of both active and passive suffrage expansion in late 19th-century the Netherlands, and I am investigating the effect of political connections, their causes, and their consequences in colonial Indonesia.  
 
