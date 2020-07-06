@@ -2,15 +2,16 @@
   border-radius: .5rem;
 }
 
-.img-with-text {
+.img-with-text {    
     text-align: justify;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 100vh;
 }
 
 .img-with-text img {
     display: block;
     margin: 0 auto;
+    border-radius: 50%;
 }
 
 .fa {
