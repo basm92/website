@@ -7,7 +7,7 @@ output:
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div align="left" style="float:left; width: 250px; min-height: 100%;" class="img.with.text">
+<div align="left" style="float:left; width: 250px; height: 100%;" class="img.with.text">
  <img src="/basmachielsen.jpg" width = "200" height = "200">
  <p>
 <a href="#" class="fa fa-twitter"></a> Twitter  
