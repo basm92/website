@@ -4,11 +4,12 @@ date: ''
 output:
     css: stylo.css
 ---
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div align="left" style="float:left; width: 250px; min-height:100%;" class="img.with.text">
- <img src="/basmachielsen.jpg" width = "200" height = "200">
+<div align="left" style="float:left; width: 250px; height:100vh;" class="img.with.text">
+
+<img src="/basmachielsen.jpg" width = "200" height = "200">
+ 
  <p>
 <a href="#" class="fa fa-twitter"></a> Twitter  
 <a href="#" class="fa fa-google"></a> Google Scholar  
@@ -17,7 +18,11 @@ output:
 <a href="#" class="fa fa-envelope"></a>  Mail  
 <a href="#" class="fa fa-globe"></a>  University
  </p>
+ 
+ 
 </div> 
+
+<div align = "left">
 
 # Introduction 
 
@@ -31,3 +36,4 @@ My research interests encompass economic history, political economy, political h
 # This website
 
 This website shows some of my present work, and serves as a pathway to several data repositories and guides that I have written. It will also serve as an access point to [**Course Material**](/classes). Furthermore, I will write a blog post every once in a while, about things that interest me. 
+<div>
