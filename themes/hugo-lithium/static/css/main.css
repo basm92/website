@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+  background-color: rgba(191, 42, 29, 0.21);
 }
 
 body {
@@ -26,7 +27,7 @@ a {
 }
 
 code {
-  background-color: rgba(98, 1, 147, 0.2)
+  background-color: rgba(0, 0, 0, 0.02)
 }
 
 .wrapper {
