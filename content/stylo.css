@@ -5,7 +5,7 @@
 .img-with-text {    
     text-align: justify;
     width: 250px;
-    height: 100vh;
+    height: 100%;
 }
 
 .img-with-text img {

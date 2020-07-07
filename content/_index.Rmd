@@ -7,20 +7,19 @@ output:
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div align="left" style="float:left; width: 250px; height:100vh; overflow:auto; position:relative;" class="img.with.text">
+<div align="left" style="float:left; width: 250px; height:460px; overflow:auto; position:relative;">
 <img src="/basmachielsen.png" width = "200" height = "200">
  <p>
-<a href="#" class="fa fa-twitter"></a> Twitter  
+<a href="http://www.twitter.com/basss92" class="fa fa-twitter"></a> Twitter  
 <a href="#" class="fa fa-google"></a> Google Scholar  
 <a href="#" class="fa fa-linkedin"></a>  LinkedIn  
-<a href="#" class="fa fa-github"></a>  Github  
-<a href="#" class="fa fa-envelope"></a>  Mail  
-<a href="#" class="fa fa-globe"></a>  University
+<a href="http://www.github.com/basm92" class="fa fa-github"></a>  Github  
+<a href="mailto:a.h.machielsen@uu.nl" class="fa fa-envelope"></a>  Mail  
+<a href="https://www.uu.nl/staff/AHMachielsen/Profile" class="fa fa-globe"></a>  University
  </p>
- 
 </div> 
 
-<div align = "left" style="height:100%;">
+<div style="height:100%;">
 
 # Introduction
 
@@ -33,8 +32,6 @@ My research interests encompass economic history, political economy, political h
 
 # This website
 
-This website shows some of my present work, and serves as a pathway to several data repositories and guides that I have written. It will also serve as an access point to [**Course Material**](/classes). Furthermore, I will write a blog post every once in a while, about things that interest me. 
+This website shows some of my present work, and serves as a pathway to several data repositories and guides that I have written. It will also serve as an access point to [**Course Material**](/classes). Furthermore, I will write a blog post every once in a while, about things that interest me. These are mostly data-related, but feel free to browse around for anything. 
 </div>
-
-
 
