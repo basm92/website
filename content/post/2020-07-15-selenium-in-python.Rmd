@@ -131,7 +131,7 @@ And secondly, let's extract the rating for all of those restaurants by using a `
 We find the name of the restaurant on this page, click it, wait for a second, and click on 'Beoordelingen' (Ratings). 
 
 ```{python}
-elem = browser.find_element_by_link_text('DE BERT') #Example restaurant
+elem = browser.find_element_by_link_text(names[0]) #Example restaurant
 elem.send_keys(Keys.RETURN)
 
 time.sleep(3)

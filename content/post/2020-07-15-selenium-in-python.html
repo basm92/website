@@ -83,7 +83,7 @@ print(names[:10])</code></pre>
 <pre class="python"><code>restos = set(names)</code></pre>
 <p>And secondly, let’s extract the rating for all of those restaurants by using a <code>for</code> loop around all restaurants. This consists of a couple of parts:</p>
 <p>We find the name of the restaurant on this page, click it, wait for a second, and click on ‘Beoordelingen’ (Ratings).</p>
-<pre class="python"><code>elem = browser.find_element_by_link_text(&#39;DE BERT&#39;) #Example restaurant
+<pre class="python"><code>elem = browser.find_element_by_link_text(names[0]) #Example restaurant
 elem.send_keys(Keys.RETURN)
 
 time.sleep(3)
@@ -103,7 +103,7 @@ restaurating = list()
 
 restaurating.append((names[0], rating))</code></pre>
 <pre class="python"><code>print(restaurating)</code></pre>
-<pre><code>## [(&#39;Roti All-inn&#39;, &#39;4.5&#39;)]</code></pre>
+<pre><code>## [(&#39;Roti All-inn&#39;, &#39;3.0&#39;)]</code></pre>
 <p>Finally, we go back to the main page:</p>
 <pre class="python"><code>browser.back()</code></pre>
 </div>
