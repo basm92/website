@@ -1,0 +1,153 @@
+---
+title: Selenium in Python
+author: ~
+date: '2020-07-15'
+slug: selenium-in-python
+categories: []
+tags: []
+---
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This is a small user guide to getting Selenium to work in Python (on a MacOS). In my experience, the Python-Selenium combo works a little bit more smoothly than the R variant. Python seems to be a little bit faster, but the real advantage comes from not having to use Docker: your system will just load a browser (which you can see), and then program, using a <code>for</code> loop, for instance.</p>
+<p>Throughout this guide, I also make use of <code>reticulate</code>, a package to enable Python in R (as I’m writing this in RMarkdown). First, we start with a small setup.</p>
+</div>
+<div id="setup-in-r" class="section level2">
+<h2>Setup in R</h2>
+<p>Getting Python to work in an RStudio environment is very easy. You need the package <code>reticulate</code>, and depending on your OS, and your version of Python, you can ‘load in’ Pyton by executing either:</p>
+<pre class="r"><code>library(reticulate)
+use_python(&quot;path/to/pythoninstallation&quot;)</code></pre>
+<p>which comes down to the following in my case (I use the Anaconda Python distribution):</p>
+<pre class="r"><code>library(reticulate)
+use_python(&quot;/opt/anaconda3/bin/python3&quot;)</code></pre>
+<p>You can check whether a Python distribution is available on your system by executing (Macs have a version of Python installed by default, or so I understand):</p>
+<pre class="r"><code>py_available()</code></pre>
+<p>The cool thing about this is that you can access Python-objects in R, and R objects in Python, as demonstrated <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html">here</a> for example.</p>
+</div>
+<div id="setup-of-selenium-in-python" class="section level2">
+<h2>Setup of Selenium in Python</h2>
+<p>Now, let’s get back to business. I’ve done another guide of Selenium in R, and the <code>RSelenium</code> package, R’s Selenium client, insists (kind of) that we use Docker. This is nice, but not for the uniniated. Selenium in Python can be used without it, and I prefer that, as I can keep an eye on what happens and do some debugging on the spot.</p>
+<p>First, we need a couple of libraries: the <code>webdriver</code> part is the equivalent to R’s <code>RSelenium</code>, and gives us a few commands (which differ sharply from R’s Selenium interface!) to instruct the driver what to do. I also need <code>time</code>, to give the browser some time to load, after performing various steps. Finally, I need <code>BeautifulSoup</code> and <code>pandas</code> for webscraping and data-tidying, respectively.</p>
+<pre class="python"><code>from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+import time
+import os 
+
+from bs4 import BeautifulSoup
+import pandas as pd</code></pre>
+<p>I also need a selenium driver for the browser I want to use. I have opted for Firefox, which uses a driver called geckodriver, but you can any browser that provides a selenium-driver. A short overview can be found in the table on <a href="https://www.selenium.dev/documentation/en/webdriver/driver_requirements/">this page</a>.</p>
+<pre class="python"><code>os.chdir(&quot;/Users/basmachielsen/&quot;)
+
+browser = webdriver.Firefox(executable_path=&#39;./Downloads/geckodriver&#39;)</code></pre>
+<p>At this point, a browser window opens! We can ‘control’ this browser window the way we are used to, but of course, the point of selenium is to write a program that controls this systematically for you. Let’s demonstrate this briefly using the website <a href="www.thuisbezorgd.nl">Thuisbezorgd</a>, the largest Dutch food delivery website.</p>
+</div>
+<div id="short-demonstration" class="section level2">
+<h2>Short Demonstration</h2>
+<p>First, I navigate to the website, and search for a location, e.g. Utrecht Centraal station. Note that I use <code>time.sleep</code> to give the browser enough time to load. It is very easy to find elements and click them, as demonstrated by:
+- finding them by CSS selector,
+- entering something (or not)
+- and then clicking them.</p>
+<pre class="python"><code>browser.delete_all_cookies()
+
+browser.get(&quot;http://www.thuisbezorgd.nl&quot;)
+
+try: 
+    elem = browser.find_element_by_css_selector(&quot;.cc-banner__btn-ok&quot;)
+    elem.send_keys(Keys.RETURN)
+except:
+    print(&quot;Geen cookies meer&quot;)
+
+elem = browser.find_element_by_css_selector(&quot;#imysearchstring&quot;)
+elem.clear()
+elem.send_keys(&quot;Utrecht Centraal&quot;)
+
+time.sleep(3)
+elem.send_keys(Keys.RETURN)
+time.sleep(2)</code></pre>
+<p>I end up on a page with all available restaurants in the neighbourhood. I save the html-code for this page:</p>
+<pre class="python"><code>content = browser.page_source</code></pre>
+<p>Next, I want to extract the names of these restaurants. I can do that by making a list, and then using beautifulSoup’s <code>findAll</code> method to find all elements that meet certain criteria:</p>
+<pre class="python"><code>soup = BeautifulSoup(content)
+
+names = list()
+for a in soup.findAll(&#39;a&#39;, href=True, attrs={&#39;class&#39;:&#39;restaurantname notranslate&#39;}):
+    names.append(a.text.strip())
+
+# Print the names
+print(names[:10])</code></pre>
+<pre><code>## [&#39;Roti All-inn&#39;, &#39;Catering Broodje Gesmeerd&#39;, &#39;Chinees Catering&#39;, &#39;New York Pizza&#39;, &#39;Spare Rib Express&#39;, &quot;Domino&#39;s Pizza&quot;, &#39;Namaskar&#39;, &#39;Daheb&#39;, &quot;Mediterrané&#39;s Corner&quot;, &#39;Irini&#39;]</code></pre>
+<p>Now I have a list with names of restaurants. Now, let’s do two more things: first, some restaurants have been extracted twice (because, for some reason, they feature on the page twice), so let’s correct that.</p>
+<pre class="python"><code>restos = set(names)</code></pre>
+<p>And secondly, let’s extract the rating for all of those restaurants by using a <code>for</code> loop around all restaurants. This consists of a couple of parts:</p>
+<p>We find the name of the restaurant on this page, click it, wait for a second, and click on ‘Beoordelingen’ (Ratings).</p>
+<pre class="python"><code>elem = browser.find_element_by_link_text(&#39;DE BERT&#39;) #Example restaurant
+elem.send_keys(Keys.RETURN)
+
+time.sleep(3)
+
+elem = browser.find_element_by_partial_link_text(&#39;Beoordelingen&#39;)
+elem.click()</code></pre>
+<p>We put the page in html, and find the <code>&lt;div&gt;</code> in which the rating is located:</p>
+<pre class="python"><code>content = browser.page_source
+soup = BeautifulSoup(content)
+
+thediv = soup.findAll(&#39;div&#39;, attrs={&quot;class&quot;:&quot;rating-number-container&quot;})</code></pre>
+<p>We find the <code>&lt;span&gt;</code> inside the div in which the rating is stored, and store the object together with the name of the restaurant in a list, which we append in each iteration.</p>
+<pre class="python"><code>for x in thediv[:1]:
+    rating = x.find(&#39;span&#39;).text
+ 
+restaurating = list()
+
+restaurating.append((names[0], rating))</code></pre>
+<pre class="python"><code>print(restaurating)</code></pre>
+<pre><code>## [(&#39;Roti All-inn&#39;, &#39;4.5&#39;)]</code></pre>
+<p>Finally, we go back to the main page:</p>
+<pre class="python"><code>browser.back()</code></pre>
+</div>
+<div id="everything-together" class="section level2">
+<h2>Everything together</h2>
+<p>Let’s do the same thing in a <code>for</code> loop, adding a few tweaks that improve the robustness of the code in case of failures, and allowing for a few sleeps to prevent request overload:</p>
+<pre class="python"><code>restaurating = list()
+home = &quot;https://www.thuisbezorgd.nl/eten-bestellen-binnenstad-3511&quot;
+
+for i in restos: #Remember, in names all names of restaurants are stored
+    #Get to the restaurant page
+    time.sleep(3)
+    try:
+        elem = browser.find_element_by_link_text(i)
+        elem.send_keys(Keys.RETURN)
+        time.sleep(3)
+        elem = browser.find_element_by_partial_link_text(&#39;Beoordelingen&#39;)
+        elem.click()
+    
+    except:
+        browser.get(home)
+    
+    time.sleep(3)
+    
+    #Save the html of this page
+    content = browser.page_source
+    soup = BeautifulSoup(content)
+    
+    #Find the location of the element on the web page
+    thediv = soup.findAll(&#39;div&#39;, attrs={&quot;class&quot;:&quot;rating-number-container&quot;})
+    
+    for x in thediv[:1]:
+        rating = x.find(&#39;span&#39;).text
+    #Put the name and the retrieved rating in a tuple in a list
+    restaurating.append((i, rating))
+    
+    time.sleep(3)
+    browser.get(home)</code></pre>
+<p>This is what happens on your screen while the code is executing: your browser is <em>actually</em> visiting all those pages, extracts the HTML code, and finds the appropriate number to extract!</p>
+<p><img src="/Jul-15-2020%2020-04-13.gif" /></p>
+<p>Finally, after all this is done, we close the browser. (You can verify this by observing that the browser actually closes on your screen :) )</p>
+<pre class="python"><code>browser.close()</code></pre>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>In this post, I have attempted to explain how to use Selenium in Python, and en passant, how to use Python in RStudio. I hope you enjoyed reading this, and please <a href="mailto:a.h.machielsen@uu.nl">feel free to get in touch</a> if you have any questions or remarks.</p>
+</div>

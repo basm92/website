@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Selenium in Python</title>
+      <link>/2020/07/15/selenium-in-python/</link>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/07/15/selenium-in-python/</guid>
+      <description>Introduction This is a small user guide to getting Selenium to work in Python (on a MacOS). In my experience, the Python-Selenium combo works a little bit more smoothly than the R variant. Python seems to be a little bit faster, but the real advantage comes from not having to use Docker: your system will just load a browser (which you can see), and then program, using a for loop, for instance.</description>
+    </item>
     
     <item>
       <title>Read a Table from the Indonesian Census Data</title>
