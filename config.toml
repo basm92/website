@@ -4,6 +4,8 @@ title = "Bas Machielsen"
 theme = "hugo-lithium"
 googleAnalytics = ""
 disqusShortname = "http-bas-m-netlify-app"
+enableRobotsTXT = true
+canonifyURLs = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [permalinks]
