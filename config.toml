@@ -8,6 +8,11 @@ enableRobotsTXT = true
 canonifyURLs = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
 [permalinks]
     post = "/:year/:month/:day/:slug/"
     
