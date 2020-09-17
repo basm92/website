@@ -1,4 +1,4 @@
-baseurl = "http://bas-m.netlify.app"
+baseurl = "https://bas-m.netlify.app"
 languageCode = "en-us"
 title = "Bas Machielsen"
 theme = "hugo-lithium"
