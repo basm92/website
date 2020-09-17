@@ -1,1 +1,2 @@
 User-agent: *
+Sitemap: https://bas-m.netlify.app/sitemap.xml
