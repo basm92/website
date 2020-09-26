@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Working with Git from R using usethis</title>
+      <link>/2020/09/26/working-with-git-from-r-using-usethis/</link>
+      <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/09/26/working-with-git-from-r-using-usethis/</guid>
+      <description>Introduction This post serves as a reminder and introduction into the usethis package, which provides an interface (and sometimes, a guide) to efficiently working with git from within R. We suppose that git (a version control system) is already installed on your system. The workflow should not vary between operating systems.
+Packages like blogdown or hugodown often allow the user to create a folder, with lots of auxilary and supplementary files and an appropriate structure to ensure things work as they’re supposed to.</description>
+    </item>
     
     <item>
       <title>Selenium in Python</title>
