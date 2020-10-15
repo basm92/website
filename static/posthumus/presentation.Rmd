@@ -264,12 +264,12 @@ class: center, middle, inverse
 # Analysis
 
 .center[
-![](/figs/suffrage_1.png)
+![](/posthumus/figs/suffrage_1.png)
 ]
 
 ---
 
-background-image: url(/figs/suffrage_2.png)
+background-image: url(/posthumus/figs/suffrage_2.png)
 background-size: 40%
 
 # Analysis
@@ -281,12 +281,12 @@ background-size: 40%
 # Analysis
 
 .center[
-![](/figs/socred_1.png)
+![](/posthumus/figs/socred_1.png)
 ]
 
 ---
 
-background-image: url(/figs/socred_2.png)
+background-image: url(/posthumus/figs/socred_2.png)
 background-size: 30%
 
 # Analysis
@@ -296,12 +296,12 @@ background-size: 30%
 # Analysis
 
 .center[
-![](/figs/taxes_1.png)
+![](/posthumus/figs/taxes_1.png)
 ]
 
 ---
 
-background-image: url(/figs/taxes_2.png)
+background-image: url(/posthumus/figs/taxes_2.png)
 background-size: 40%
 
 # Analysis
