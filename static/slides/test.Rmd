@@ -68,11 +68,11 @@ class: center, middle, inverse
 
     - **Increasing government intervention**:
     
-    In many countries, governments sowed the seeds of the welfare state. Public spending increased, education was being publicly funded, the first pensions came into existence, as did public insurances (Lindert, 2002). Of course, simultaneously, increases in the government budget and the tax burden occurred. 
+    In many countries, governments sowed the seeds of the welfare state. Public spending increased, education was being publicly funded, the first pensions came into existence, as did public insurances (Lindert, 2004). Of course, simultaneously, increases in the government budget and the tax burden occurred. 
     
     - **Suffrage extension and democratization**:
     
-    Governments repeatedly decided to extend the suffrage (Przeworski, 2002). In many cases, democratization did not happen overnight, but gradually. Almost all Western European countries established universal suffrage between roughly 1900 and 1930. 
+    Governments repeatedly decided to extend the suffrage (Przeworski, 2009). In many cases, democratization did not happen overnight, but gradually. Almost all Western European countries established universal suffrage between roughly 1900 and 1930. 
     
 ---
 
@@ -98,7 +98,7 @@ class: center, middle, inverse
     - In this respect, it is much like (e.g.) Germany, Denmark, the United Kingdom, Sweden, or Austria. 
 
 - In other aspects, the Netherlands is less like aforementioned countries.
-    - The late 19th century saw an increase in religious tensions and lead to a situation called **pillarization**, which has been argued to be a Dutch particularity (Lijphart, 2008; De Rooy, 2001) 
+    - The late 19th century saw an increase in religious tensions and lead to a situation called **pillarization**, which has been argued to be a Dutch particularity (Lijphart, 1975; De Rooy, 2014) 
 
 ---
 
@@ -114,9 +114,9 @@ class: center, middle, inverse
 
 - The **Dutch politico-historical literature** stresses aspects such as:
     - **Ideology**: De Haan (2003) - Confessionals and liberals found themselves united in opposition against an expanding state. An ideological turn among liberals caused them to make a U-turn and attempt collaboration with socialists.
-    - **Pacification**: Lijphardt (2008) stresses the role of political **leadership** and the reputation of leaders among their electoral base. 
+    - **Pacification**: Lijphardt (1975) stresses the role of political **leadership** and the reputation of leaders among their electoral base. 
     - **Balance of power**: Van Zanden and Van Riel (2004) argue that the **constitution** established the fundamentals for inclusive economic growth. 
-    - But also: **personal interests**. Van den Berg (1983), Secker (1991) explicitly claim that personal interests (such as wealth) and other demographic characteristics influence politicians' decisions. 
+    - But also: **personal interests**. Van den Braak (1999), Secker (1991) explicitly claim that personal interests (such as wealth) and other demographic characteristics influence politicians' decisions. 
 
 ---
 
@@ -149,10 +149,10 @@ class: center, middle, inverse
 
 - The empirical literature suffers from **availability bias**
     - The influence of **personal interests** is readily implied by theory, but very difficult to measure
-    - There is evidence that personal wealth influences decision-making in a contemporary context (Tahoun and Van Lent, 2018)
+    - There is evidence that personal wealth influences decision-making in a contemporary context (Tahoun and Van Lent, 2019)
 
 - The extension of the franchise is considered to be **exogenous** in many studies, but this is **inconsistent**
-    - Implied by theory on franchise extension (Lizzeri and Persico, 2004) and political selection (Besley, 2008) that this is not the case. 
+    - Implied by theory on franchise extension (Lizzeri and Persico, 2004) and political selection (Besley, 2005) that this is not the case. 
     - No explanation as to why politicians would extend the franchise if they knew this would harm their own interests. 
     - Any analysis should tackle these interrelated questions (**franchise extensions, taxes and government intervention**) at once, and explain why and how the findings are consistent. 
 
@@ -219,14 +219,13 @@ $$V_{i,k} = f(\alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{L
     - Since I know **wealth at death**, and the **portfolio composition**, calculate the (average) real returns on asset class $j$ and estimate the wealth at the time of voting.
     - **Historical returns** provided by Jorda et al. (2019)
     
-- Condition the analysis on politicians that died relatively **recently after voting**
+- Condition the sample on politicians that died relatively **recently after voting**
 
-    - Mitigates the endogeneity of wealth and voting behavior (Fisman et al., 2004)
+    - Mitigates the endogeneity of wealth and voting behavior (Fisman et al., 2014)
     
 - Instrumental variable estimation
 
 ---
-
 
 # Data
 
@@ -264,13 +263,49 @@ class: center, middle, inverse
 
 # Analysis
 
+.center[
+![](/figs/suffrage_1.png)
+]
+
 ---
+
+background-image: url(/figs/suffrage_2.png)
+background-size: 40%
+
+# Analysis
+
+
+
+---
+
+# Analysis
+
+.center[
+![](/figs/socred_1.png)
+]
+
+---
+
+background-image: url(/figs/socred_2.png)
+background-size: 30%
 
 # Analysis
 
 ---
 
 # Analysis
+
+.center[
+![](/figs/taxes_1.png)
+]
+
+---
+
+background-image: url(/figs/taxes_2.png)
+background-size: 40%
+
+# Analysis
+
 
 ---
 
@@ -290,7 +325,7 @@ class: center, middle, inverse
    - Apart from ideology, it is hard to see what caused them to extend the suffrage.
    - The findings **contradict** some findings from other countries (e.g. Aidt and Franck, 2019), which imply electoral incentives play a large role in reforming political institutions. 
    - Findings could be **specific to the Netherlands** (i.e. _pillarization_ could have played a large role beyond demographic factors).
-   - Further research is necessary to find out what were the primary drivers of suffrage extension are.
+   - Further research is necessary to find out what the primary drivers of suffrage extension are.
    
 ---
 
@@ -299,11 +334,52 @@ class: center, middle, inverse
 - I found that politicians' **personal interests** are **moderately negatively correlated** with the tendency to vote in favor of **increased government intervention**. 
 
     - For some laws, the effect is very strong, and the point estimate **highly significant**, but in others, it is not.
-    - 
+    - The Anti-Striking Laws in 1893 were effectuated by **wealthier politicians**, and also for the Invaliditeitswet (1913), **wealthier politicians** were less inclined to vote in favor. 
     - **Almost always**, the point estimate is in the **hypothesized direction**. 
-    - Qualitative research can shed light on the precise contents of each laws. 
-    - Possibly, amendments to the laws might radically change their spirit, and hence influence the decision to vote against the final project. 
+    - The estimated effects of a 1% wealth change are almost always about $\frac{1}{10}$ of the effect of political ideology. 
+    - Possibly, amendments to the laws might **radically change their spirit**, and hence influence the decision to vote against the final project. 
+    - Another possible problem: logrolling behavior (Peltzman, 1984)
 
+---
+
+# Conclusion
+
+- I found that politicians' **personal interests** play a large role in the tendency to vote in favor of **increased taxation**: the wealthier a politician, the **less likely** they are to vote in favor of **fiscal legislation**. 
+
+    - Whereas wealthier politicians seemed no more or less eager to vote in favor of increased government intervention, when it came to the **financing** of these laws, **personal interests started to play a role**. 
+    - In contrast to the other two categories, the **pooled effect** is **significant** and **large in magnitude**. Political party/affiliation still plays a role, but the pooled effect of **personal wealth** ranges from about $\frac{1}{20}$ to $\frac{1}{10}$ in magnitude. 
+    - What does this mean? 
+        - If you would make a politician roughly 20% wealthier, it would be enough for their **personal interests** to dominate the effect of their **political affiliation**. 
+    
+---
+
+# Conclusion
+
+- In sum:
+
+    - Politicians **did not** care about their personal interests when expanding the suffrage. 
+    - This can have a multitude of reasons. 
+        - They fail to anticipate the impact of expanding the suffrage on the composition of the political elite, and consequently, on decision-making. 
+        - They anticipate, but think the **price** is worth it: they **prioritize** ideological or religious solidarity over their own financial interests. 
+        - According to the counterfactual, a richer political elite **would not** have been slower in democratizing the system. 
+    - When it came to **taxation** and **social reform**, politicians' **self-interest** played a **limited to large role**. 
+         - In many cases, a 10% to 20% increase in wealth would have caused their personal interests to dominate their **political affiliation**. 
+
+---
+
+# Conclusion
+
+- Some limitations: 
+
+    - Some project laws have been **changed** over the course of the debate, leading to consensual acceptance of the law. 
+    - However, this is **by no means** true in the majority of cases: many laws were subject to heavy discord. 
+    - No distinction between political allegiance (ideology) and party discipline
+        - In the future: perhaps exploit the variation around the **existence** of political parties. 
+        - Difficulty: decision to join political party is **endogenous**. 
+    - But: inference is conditional on political party/allegiance. 
+    - Even conservatively, all analysis answer:
+    > Given the same political affiliation, are wealthier politicians less likely to vote in favor of progressive legislation that less wealthy politicians?
+    
 ---
 
 class: center, middle, inverse
@@ -318,9 +394,62 @@ Slides created via the R package [**<span style="color:#1F4257">xaringan</span>*
 
 # References
 
-```{r refs, echo=FALSE, results="asis", warning = FALSE}
-PrintBibliography(mybib, start = 1, end = 7)
-```
+Acemoglu, D., Naidu, S., Restrepo, P., & Robinson, J. A. (2015). Democracy, redistribution, and inequality. In Handbook of income distribution (Vol. 2, pp. 1885-1966). Elsevier.
+
+Aidt, T. S., & Dallal, B. (2008). Female voting power: the contribution of women’s suffrage to the growth of social spending in Western Europe (1869–1960). Public Choice, 134(3-4), 391-417.
+
+Aidt, T. S., & Jensen, P. S. (2009). Tax structure, size of government, and the extension of the voting franchise in Western Europe, 1860–1938. International Tax and Public Finance, 16(3), 362-394.
+
+Aidt, T. S., & Franck, R. (2019). What motivates an oligarchic elite to democratize? evidence from the roll call vote on the great reform act of 1832. The Journal of Economic History, 79(3), 773-825.
+
+Besley, T. (2005). Political selection. Journal of Economic Perspectives, 19(3), 43-60.
+
+van den Braak (Bert H.). (1999). De Eerste Kamer: geschiedenis, samenstelling en betekenis 1815-1995. Rijksuniversiteit Leiden.
+
+---
+
+# References
+
+Corvalan, A., Querubín, P., & Vicente, S. (2020). The political class and redistributive policies. Journal of the European Economic Association, 18(1), 1-48.
+
+Engerman, S. L., & Sokoloff, K. L. (2005). The evolution of suffrage institutions in the new world. The Journal of Economic History, 65(4), 891-921.
+
+Fisman, R., Schulz, F., & Vig, V. (2014). The private returns to public office. Journal of Political Economy, 122(4), 806-862.
+
+de Haan, I. (2003). Het beginsel van leven en wasdom: de constitutie van de Nederlandse politiek in de negentiende eeuw. Amsterdam, the Netherlands: Wereldbibliotheek.
+
+Jordà, Ò., Knoll, K., Kuvshinov, D., Schularick, M., & Taylor, A. M. (2019). The rate of return on everything, 1870–2015. The Quarterly Journal of Economics, 134(3), 1225-1298.
+
+
+---
+
+# References
+
+Lacroix, J., Méon, P. G., & Oosterlinck, K. (2019). A Positive Effect of Political Dynasties: the Case of France's 1940 Enabling Act.
+
+Lizzeri, A., & Persico, N. (2004). Why did the elites extend the suffrage? Democracy and the scope of government, with an application to Britain's “Age of Reform”. The Quarterly Journal of Economics, 119(2), 707-765.
+
+Lijphart, A. (1975). The politics of accommodation: Pluralism and democracy in the Netherlands (Vol. 142). Univ of California Press.
+
+Lindert, P. H. (2004). Growing public: Volume 1, the story: Social spending and economic growth since the eighteenth century (Vol. 1). Cambridge University Press.
+
+Mares, I., & Queralt, D. (2020). Fiscal Innovation in Nondemocratic Regimes: Elites and the adoption of the Prussian Income Taxes of the 1890s. Explorations in Economic History, 101340.
+
+---
+
+# References
+
+Przeworski, A. (2009). Conquered or granted? A history of suffrage extensions. British Journal of Political Science, 39(2), 291-321.
+
+Peltzman, S. (1984). Constituent interest and congressional voting. The Journal of Law and Economics, 27(1), 181-210.
+
+Rooy, P. (2014). Ons stipje op de waereldkaart: de politieke cultuur van Nederland in de negentiende en twintigste eeuw. Wereldbibliotheek.
+
+Secker, W. P. (1991). Ministers in beeld: de sociale en functionele herkomst van de Nederlandse ministers (1848-1990). Rijksuniversiteit Leiden.
+
+Tahoun, A., & Van Lent, L. (2019). The personal wealth interests of politicians and government intervention in the economy. Review of Finance, 23(1), 37-74.
+
+Van Zanden, J. L., & Van Riel, A. (2004). The strictures of inheritance: The Dutch economy in the nineteenth century (Vol. 14). Princeton university press.
 
 ---
 
@@ -356,39 +485,114 @@ knitr::kable(listoflaws_suffrage) %>%
 
 ---
 
-# remark.js vs xaringan
-
-Some differences between using remark.js (left) and using **xaringan** (right):
+# List of Laws
 
 .pull-left[
-1. Start with a boilerplate HTML file;
+```{r listoflaws2, echo = FALSE}
+listoflaws_govtint <- data.frame(
+    Name = c(
+        "Armenwet",
+        "Kinderwetje",
+        "Arbeidswet ",
+        "Leerplichtwet",
+        "Ongevallenwet",
+        "Woningwet",
+        "Anti-striking Laws"
+    ),
+    Year = c("1850", "1874", "1889", "1900", "1901", "1901", "1903"),
+    Status = rep("Accepted", 7)
+)
 
-1. Plain Markdown;
+knitr::kable(listoflaws_govtint) %>%
+    column_spec(column = c(1,2,3), color = "black") %>%
+    row_spec(row = 0, color = "black") %>%
+    kable_styling(full_width = FALSE, bootstrap_options = "hover")
 
-1. Write JavaScript to autoplay slides;
+```
 
-1. Manually configure MathJax;
-
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
 ]
 
 .pull-right[
-1. Start with an R Markdown document;
 
-1. R Markdown (can embed R/other code chunks);
+```{r listoflaws3, echo = FALSE}
 
-1. Provide an option `autoplay`;
+listoflaws_govtint2 <- data.frame(
+    Name = c(
+        "Hoger Onderwijswet",
+        "Wet AOK",
+        "Beperking VKA",
+        "Ziektewet",
+        "OIW",
+        "Staatspensioen1917",
+        "Arbeidswet"
+    ),
+    Year = c("1904", "1906", "1911", "1913", "1913", "1917", "1919"),
+    Status = c(rep("Accepted", 6), "Rejected")
+)
 
-1. MathJax just works;<sup>*</sup>
+knitr::kable(listoflaws_govtint2) %>%
+    column_spec(column = c(1,2,3), color = "black") %>%
+    row_spec(row = 0, color = "black") %>%
+    kable_styling(full_width = FALSE, bootstrap_options = "hover")
 
-1. Highlight code with `{{}}`;
 
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
+```
 ]
 
-.footnote[[*] Not really. See next page.]
 
+.footnote[
+[1] [Go back](#methodologyslide)
+[2] Wet AOK: Wet Arbeidsovereenkomst, OIW: Ouderdom- en Invaliditeitswet, Beperking VKA: Beperking vrouw- en kinderarbeid
+]
 
 ---
+
+# List of Laws
+
+- Fiscal legislation:
+
+.pull-left[
+```{r listoflaws4, echo = FALSE}
+library(htmlTable)
+
+listoflaws_taxes <- data.frame(
+    Name = c(
+        "Successiebelasting", 
+        "Inkomstenbelasting",
+        "Successiebelasting", 
+        "Inkomstenbelasting", 
+        "Staatsschuldwet",
+        "Oorlogswinstbelasting",
+        "Successiebelasting",
+        "Wet DT-belasting",
+        "Successiebelasting"
+    ), 
+    Year = c("1878", "1893", "1911", "1914", "1914", "1916", "1916", "1918", "1921"), 
+    Status = c(rep("Accepted", 6), "Rejected", "Accepted", "Accepted")
+)
+
+knitr::kable(listoflaws_taxes[1:5,]) %>%
+    column_spec(column = c(1,2,3), color = "black") %>%
+    row_spec(row = 0, color = "black") %>%
+    kable_styling(full_width = FALSE, bootstrap_options = "hover")
+
+```
+]
+
+.pull-right[
+
+```{r listoflaws5, echo = FALSE}
+
+knitr::kable(listoflaws_taxes[6:9,], row.names = F) %>%
+    column_spec(column = c(1,2,3), color = "black") %>%
+    row_spec(row = 0, color = "black") %>%
+    kable_styling(full_width = FALSE, bootstrap_options = "hover")
+
+```
+
+]
+.footnote[
+[1] [Go back](#methodologyslide)
+[2] DT-belasting: Dividend- en tantièmebelasting
+]
+
