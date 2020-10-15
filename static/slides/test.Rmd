@@ -1,8 +1,7 @@
 ---
 title: "The Political Elite & The Welfare State"
-#subtitle: "Dit is een Xaringan-test"
 author: "Bas Machielsen"
-institute: "Utrecht University <br> <br>a.h.machielsen@uu.nl"
+institute: "Utrecht University <br> <br>a.h.machielsen@uu.nl &nbsp; <a href='http://github.com/basm92'> github.com/basm92 </a>"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -26,6 +25,18 @@ style_duo(
     text_font_size = "1.2em"
     )
 
+```
+
+```{r, load_refs, include=FALSE, cache=FALSE}
+library(RefManageR)
+
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = FALSE,
+           dashed = FALSE)
+mybib <- ReadBib("./mybib.bib", check = FALSE)
 ```
 
 ```{r setup, include=FALSE}
@@ -57,7 +68,7 @@ class: center, middle, inverse
 
     - **Increasing government intervention**:
     
-    In many countries, governments laid the seeds of the welfare state. Public spending increased, education was being publicly funded, the first pensions came into existence, as did public insurances (Lindert, 2002). Of course, simultaneously, increases in the government budget and the tax burden occurred. 
+    In many countries, governments sowed the seeds of the welfare state. Public spending increased, education was being publicly funded, the first pensions came into existence, as did public insurances (Lindert, 2002). Of course, simultaneously, increases in the government budget and the tax burden occurred. 
     
     - **Suffrage extension and democratization**:
     
@@ -101,30 +112,49 @@ class: center, middle, inverse
 
 - In the literature, different disciplines have tried to explain trends towards **democratization** and towards the **welfare state** or **increased government spending**. 
 
-
-
+- The **Dutch politico-historical literature** stresses aspects such as:
+    - **Ideology**: De Haan (2003) - Confessionals and liberals found themselves united in opposition against an expanding state. An ideological turn among liberals caused them to make a U-turn and attempt collaboration with socialists.
+    - **Pacification**: Lijphardt (2008) stresses the role of political **leadership** and the reputation of leaders among their electoral base. 
+    - **Balance of power**: Van Zanden and Van Riel (2004) argue that the **constitution** established the fundamentals for inclusive economic growth. 
+    - But also: **personal interests**. Van den Berg (1983), Secker (1991) explicitly claim that personal interests (such as wealth) and other demographic characteristics influence politicians' decisions. 
 
 ---
 
 # Literature
 
-
-
+- The **political science & economics** literature:
+    - Demographic and environmental factors:
+        - Aidt and Dallal (2008): **Women's suffrage** has a positive influence on government spending.
+        - Lacroix et al. (2019): **Political dynasties** influence the propensity to vote against subversion of democracy (France, 1940).
+            
+    - Electoral pressure: 
+        - Aidt and Jensen (2009) on **adoption of income taxes**
+        - Aidt and Franck (2019) on the role of **peaceful and violent unrest** on the 1832 reform bill in the UK. 
+            
 ---
 
-# Hoi
+# Literature
 
-Mid 19th century, the political system Netherlands<sup>1</sup> can be characterized as oligarchical. Both houses were dominated by royalists, aristocrats and the 
+- But also in this literature: personal interests. 
+    - Mares and Queralt (2020): **Intra-elite competition** for power
+    - Acemoglu et al. (2015): **Captured democracy** by political elites
+    - Corvalan et al. (2018): Removal of **eligibility requirements**, on the other hand, leads to the election of less wealthy politicians and the enactment of more redistributive policies.
 
-I focus on personal wealth interests of politicians. Personal wealth interests have been shown to play a role in contemporary politics in many ways, but there are few studies 
-
-
-.footnote[[1] And most other Western European countries]
-
-
+- Engerman and Sokoloff (2005) argue that the differences trajectories that lead to prosperity and democratization are mainly due to:
+    > systematic differences in the ability and inclination of elites to shape legal frameworks to advantage themselves
+        
 ---
 
+# Gaps
 
+- The empirical literature suffers from **availability bias**
+    - The influence of **personal interests** is readily implied by theory, but very difficult to measure
+    - There is evidence that personal wealth influences decision-making in a contemporary context (Tahoun and Van Lent, 2018)
+
+- The extension of the franchise is considered to be **exogenous** in many studies, but this is **inconsistent**
+    - Implied by theory on franchise extension (Lizzeri and Persico, 2004) and political selection (Besley, 2008) that this is not the case. 
+    - No explanation as to why politicians would extend the franchise if they knew this would harm their own interests. 
+    - Any analysis should tackle these interrelated questions (**franchise extensions, taxes and government intervention**) at once, and explain why and how the findings are consistent. 
 
 ---
 
@@ -137,7 +167,7 @@ class: center, middle, inverse
 # Methodology
 
 - My principal research question is about the influence of politicians' self-interest on their voting behavior in **various important votes** that lead to the **acceptance** or **rejection** of various far-reaching laws throughout the period **1870-1920**. 
-    - Votes in both the upper house (_Eerste Kamer_) and the lower house (_Tweede kamer_)
+    - Votes in both the upper house (_Eerste Kamer_) and the lower house (_Tweede Kamer_)
 
 - More precisely, I attempt to identify the influence of politicians' **personal wealth** on their voting behavior. 
 
@@ -151,13 +181,13 @@ class: center, middle, inverse
 
 - What do I do specifically?
 
-    - I collect data on votes on a number of important laws [[here]](here) identified as such by expert historians. 
-        - Laws on **increased government intervention**
+    - I collect data on votes on a number of important laws and law projects [[here]](here) identified as such by expert historians. 
+        - Laws instigating **increased government intervention**
         - Its **financing by taxes**
         - And **suffrage extension**
     - I also collect data on the **wealth at death** of politicians from the _Memories van Successie_. 
     - I attempt to estimate in *various ways* the wealth of politicians at the **time of voting** on a **particular law**. 
-    - From a wide array of sources, I collcet data on various **control variables** to measure factors suggested by the **literature**. 
+    - From a wide array of sources, I collect data on various **control variables** to measure factors suggested by the **literature**. 
 
 
 ---
@@ -166,7 +196,7 @@ class: center, middle, inverse
 
 - The baseline empirical models that I try to estimate is, for each category $j \in \{\text{Taxes, Government Intervention, Suffrage Extension\}}$:
 
-$$V_{i,k,j} = f(\alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{LawDum}_{k} \cdot \text{Wealth}_{i,k} + \beta_3 \cdot \text{Controls}_{i,k} + \epsilon_{i,k})$$
+$$V_{i,k} = f(\alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text{LawDum}_{k} \cdot \text{Wealth}_{i,k} + \beta_3 \cdot \text{Controls}_{i,k} + \epsilon_{i,k})$$
 - where the subscript $i$ denotes observations by a particular politician on a law $k$ within category $j$, and $f$ is the logistic function. 
 
     - In other words, I **pool** laws per category and perform logit regressions.
@@ -179,34 +209,65 @@ $$V_{i,k,j} = f(\alpha + \beta_1 \cdot \text{Wealth}_{i,k} + \beta_2 \cdot \text
 
 # Methodology
 
-- What do I do to __mitigate__ that problem?
+- What do I do to __mitigate__ this problem?
 
-    - Three strategies:
+- Calculate wealth at the time of voting from wealth at death:
+
+    - $\text{Wealth}_{i,t+1}= \sum_{J} \text{AssetShare}_{i,j,t} \cdot \text{AssetReturn}_{i,j, [t, t+1]}$
+    - Since I know **wealth at death**, and the **portfolio composition**, calculate the (average) real returns on asset class $j$ and estimate the wealth at the time of voting.
+    - **Historical returns** provided by Jorda et al. (2019)
+    
+- Condition the analysis on politicians that died relatively **recently after voting**
+
+    - Mitigates the endogeneity of wealth and voting behavior (Fisman et al., 2004)
+    
+- Instrumental variable estimation
 
 ---
 
 
 # Data
 
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+- I combine various sources:
+
+- Voting results: [Staten-Generaal Digitaal](http://www.statengeneraaldigitaal.nl) is the official database of the Dutch Estates-General, on which all minutes (_Handelingen_) of lower house and upper house sessions are available.
+    - From these, I find the voting results of all laws under investigation. 
+    
+- Personal wealth: _Memories van Successie_: **probate inventories** administered by the Dutch agency, contains an appraisal of an individual's assets and liabilities with the purpose of levying **inheritance taxes**. 
+    - Wealth returns: from the [Jorda-Schularick-Taylor Database](http://www.macrohistory.net/data/)
 
 ---
 
 # Data
 
-hoi
+- Controls:
+
+    - Data regarding politicians' careers, district representation, ideological and party affiliation, and social origin from the [Politiek Documentatie Centrum](http://www.pdc.nl)
+    - Data on electoral controls: turnout, nearest competitor, newspaper recommendation, etc.  (for lower house members) from [this repository by Ron De Jong](http://resources.huygens.knaw.nl/verkiezingentweedekamer)
+    - Data on the frequency and location of strikes from the [IISG Labour Conflicts database](https://collab.iisg.nl/web/labourconflicts/datafiles)
+    - Data on demographic and economic characteristics of districts from a [database administered by Onno Boonstra](https://datasets.iisg.amsterdam/dataverse/HDNG?q=&types=files&sort=dateSort&order=desc&page=1) <sup>1</sup>
+        - This database contains information on the municipality-level, which I aggregate to the district level (if applicable)
+    
+.footnote[
+[1] I created an R package to combine the data and make it useable [here](https://github.com/basm92/hdng/)
+]
+    
+---
+
+class: center, middle, inverse 
+
+# Analysis
 
 ---
 
-# Data
-
-hoi
 
 ---
 
-# Data
+# References
 
-hoi
+```{r refs, echo=FALSE, results="asis", warning = FALSE}
+PrintBibliography(mybib, start = 1, end = 7)
+```
 
 ---
 class: center, middle
