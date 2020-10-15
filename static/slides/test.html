@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="author" content="Bas Machielsen" />
     <meta name="date" content="2020-10-15" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <script src="libs/htmlwidgets/htmlwidgets.js"></script>
     <script src="libs/jquery/jquery.min.js"></script>
     <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
@@ -175,11 +177,13 @@ class: center, middle, inverse
 
 ---
 
+name: methodologyslide
+
 # Methodology
 
 - What do I do specifically?
 
-    - I collect data on votes on a number of important laws and law projects [[here]](here) identified as such by expert historians. 
+    - I collect data on votes on a number of important laws and law projects [[here]](#listoflaws) identified as such by expert historians. 
         - Laws instigating **increased government intervention**
         - Its **financing by taxes**
         - And **suffrage extension**
@@ -271,6 +275,63 @@ class: center, middle, inverse
 NULL
 
 ---
+
+name: listoflaws
+
+# List of Laws 
+
+- Suffrage Extensions
+
+&lt;table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;color: black !important;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;color: black !important;"&gt; Year &lt;/th&gt;
+   &lt;th style="text-align:left;color: black !important;"&gt; Status &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Reforms of 1872 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; 1872 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Rejected &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Reforms of 1887 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; 1887 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Accepted &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Reforms of 1892 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; 1892 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Rejected &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Reforms of 1896 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; 1896 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Accepted &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Universal male suffrage &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; 1917 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Accepted &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Universal suffrage &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; 1919 &lt;/td&gt;
+   &lt;td style="text-align:left;color: black !important;"&gt; Accepted &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+.footnote[
+[1] [Go back](#methodologyslide)
+]
+
+---
+
+
 class: center, middle
 
 # xaringan
@@ -544,8 +605,8 @@ library(leaflet)
 leaflet() %&gt;% addTiles() %&gt;% setView(-93.65, 42.0285, zoom = 17)
 ```
 
-<div id="htmlwidget-1c0fd2b0528db40a48b9" style="width:100%;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1c0fd2b0528db40a48b9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[42.0285,-93.65],17,[]]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-aff4694d253fe2cc0ec2" style="width:100%;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aff4694d253fe2cc0ec2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[42.0285,-93.65],17,[]]},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -557,8 +618,8 @@ DT::datatable(
 )
 ```
 
-<div id="htmlwidget-108c2786d9f25045568e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-108c2786d9f25045568e">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-289bda5c27f70578f768" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-289bda5c27f70578f768">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 

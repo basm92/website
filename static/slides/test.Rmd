@@ -177,11 +177,13 @@ class: center, middle, inverse
 
 ---
 
+name: methodologyslide
+
 # Methodology
 
 - What do I do specifically?
 
-    - I collect data on votes on a number of important laws and law projects [[here]](here) identified as such by expert historians. 
+    - I collect data on votes on a number of important laws and law projects [[here]](#listoflaws) identified as such by expert historians. 
         - Laws instigating **increased government intervention**
         - Its **financing by taxes**
         - And **suffrage extension**
@@ -270,6 +272,40 @@ PrintBibliography(mybib, start = 1, end = 7)
 ```
 
 ---
+
+name: listoflaws
+
+# List of Laws 
+
+- Suffrage Extensions
+
+```{r listoflaws, echo=FALSE}
+library(knitr); library(kableExtra)
+
+listoflaws_suffrage <- data.frame(Name = c(
+        "Reforms of 1872",
+        "Reforms of 1887",
+        "Reforms of 1892",
+        "Reforms of 1896",
+        "Universal male suffrage", 
+        "Universal suffrage"),
+        Year = c("1872", "1887", "1892", "1896", "1917", "1919"),
+        Status = c("Rejected", "Accepted", "Rejected", "Accepted", "Accepted", "Accepted"))
+
+knitr::kable(listoflaws_suffrage) %>%
+    column_spec(column = c(1,2,3), color = "black") %>%
+    row_spec(row = 0, color = "black") %>%
+    kable_styling(full_width = FALSE, bootstrap_options = "hover")
+```
+
+
+.footnote[
+[1] [Go back](#methodologyslide)
+]
+
+---
+
+
 class: center, middle
 
 # xaringan
