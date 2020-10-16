@@ -12,6 +12,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      countdown: 60000
 ---
 
 ```{r xaringan-themer, include = FALSE, warning = FALSE}
