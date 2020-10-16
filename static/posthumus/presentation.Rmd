@@ -524,7 +524,7 @@ listoflaws_govtint2 <- data.frame(
         "Beperking VKA",
         "Ziektewet",
         "OIW",
-        "Staatspensioen1917",
+        "Staatspensioen",
         "Arbeidswet"
     ),
     Year = c("1904", "1906", "1911", "1913", "1913", "1917", "1919"),
