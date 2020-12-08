@@ -1,0 +1,686 @@
+---
+title: "Pubquiz: Holidays Edition"
+author: "PhD Council Humanities" 
+date: "10 Dec 2020"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#43418A",
+  header_font_google = google_font("Lato"),
+  text_font_google   = google_font("Nunito"),
+  base_font_size = "20px",
+  text_font_size = "25px"
+)
+```
+
+class: inverse, middle, center
+
+background-image: url(https://i.pinimg.com/originals/3d/49/cb/3d49cbe5d763458a6d592a4580d944fb.jpg)
+background-size: 15%
+
+# Pubquiz: Holidays Edition
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## PhD Council Humanities
+
+### 10 Dec 2020
+
+---
+
+class: inverse
+
+# The Rules
+
+  - Teams have a maximum of 4 members
+    - use a separate Teams chat to communicate rather than this channel 
+  - No shouting out the correct answers
+    - but you can definitely keep on your microphone and make fun of us
+  - No life lines: we’re not Who Wants to Be a Millionaire
+    - and we could not afford their prize money
+  - The quizmaster is always right
+    - we’re in the Humanities so there’s no such thing as a ground truth anyways
+
+---
+
+class: inverse
+
+# The Rules
+
+  - Five rounds, one answer form per round
+    - Links provided per round
+    - Each round features a different theme
+
+  - One team member per team filling out the answer forms
+
+  - Please use the same e-mail address each round!
+  
+  - If there are multiple "good" (or commonly accepted) answers to a question, we will accept them! :) 
+
+---
+
+class: inverse, center, middle
+
+# Round 1: Quotes
+
+---
+
+# Quotes: Question 1
+
+Who is the author of the following quote?
+
+.center[
+
+  > Everybody is a genius. But if you judge a fish by its ability to climb a tree it will live its whole life believing that it’s stupid.
+
+]
+
+---
+
+# Quotes: Question 2
+
+
+
+Who is the author of the following quote?
+
+.center[
+
+  > I think, therefore, I am
+  
+]
+
+---
+
+# Quotes: Question 3
+
+Who is the author of the following quote?
+
+.center[
+
+  > I’ll be back 
+
+]
+
+---
+
+# Quotes: Question 4
+
+Who is the author of the following quote?
+
+.center[
+
+  > Veni, vidi, vici
+
+]
+
+---
+
+# Quotes: Question 5
+
+Who is the author of the following quote?
+
+.center[
+
+  > There is geometry in the humming of the strings, there is music in the spacing of the spheres. 
+
+]
+
+---
+
+# Quotes: Question 6
+
+Who is the author of the following quote?
+
+.center[
+
+  > What does not kill us makes us stronger
+
+]  
+---
+
+# Quotes: Question 7
+
+Who is the author of the following quote?
+
+.center[
+
+  > To be or not to be, that's the question!
+ 
+]
+
+---
+
+# Quotes: Question 8
+
+Who is the author of the following quote?
+
+.center[
+
+  > We are all in the gutter, but some of us are looking at the stars.
+
+]
+
+---
+
+# Quotes: Question 9
+
+
+Who is the author of the following quote?
+
+.center[
+
+  > You have no control. Who lives, who dies, who tells your story?
+
+]
+
+---
+
+# Quotes: Question 10
+
+Who is the author of the following quote?
+
+.center[
+
+  > It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.
+
+]
+
+---
+
+class: center, middle, inverse
+
+# Round 2: Happy Holidays Trivia
+
+---
+
+# Happy Holidays: Question 1
+
+.pull-left[
+
+- Who is the patron saint of Utrecht?
+
+]
+
+.pull-right[
+
+![](https://upload.wikimedia.org/wikipedia/commons/c/c3/Van_Dyck%2C_Anthony_-_St_Martin_Dividing_his_Cloak_-_c._1618.jpg)
+
+]
+
+---
+
+# Happy Holidays: Question 2
+
+.pull-left[
+
+- When (what day) is his **Feast**?
+
+]
+
+.pull-right[
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/El_Greco_-_San_Mart%C3%ADn_y_el_mendigo.jpg" height="400" width="250"/>
+]
+
+---
+
+# Happy Holidays: Question 3
+
+.pull-left[
+
+- On which day is **Chinese New Year** celebrated?
+
+]
+
+.pull-right[
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/5a/Ke_Lok_Si_Illuminations_01.JPG)
+
+]
+---
+
+<style>
+
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+</style>
+
+# Happy Holidays: Question 4
+
+.center[
+- At **what day** do they celebrate **Sinterklaas** in Belgium?
+
+<img src="https://www.rtlnieuws.nl/sites/default/files/styles/liggend/public/content/images/2019/11/15/ANP-365870834.jpg?itok=AosdjnbF" height="300" width="500" />
+]
+
+
+---
+
+# Happy Holidays: Question 5
+
+.center[
+- What is the **name** of **Sinterklaas's horse?**
+
+<img src="https://static.limburger.nl/Assets/Images_Upload/2019/11/27/f1e9a112-1150-11ea-b55c-4bed7162e127_web_scale_0.5612245_0.5612245__.jpg?maxheight=460&maxwidth=629&scale=both" height="300" width="500" />
+]
+
+---
+
+# Happy Holidays: Question 6
+
+- What is the **maximum number of persons** allowed to be together for a Christmas dinner?
+
+.center[
+<img src="https://www.francescakookt.nl/wp-content/uploads/2019/12/zo-plan-je-een-kerstdiner-al-mijn-tips-1.jpg" width="70%" height="auto"/>
+]
+
+---
+
+# Happy Holidays: Question 7
+
+- What does **this** mean?
+
+<br>
+<br>
+<br>
+
+.center[
+
+![](https://upload.wikimedia.org/wikipedia/commons/f/f2/Sternsinger_Segensbitte_Regen.jpg)
+]
+
+---
+# Happy Holidays: Question 8
+
+.pull-left[
+
+- Name 3 ingredients of **Oliebollen**
+
+]
+
+.pull-right[
+
+![]()
+]
+---
+
+# Happy Holidays: Question 9
+
+.pull-left[
+- What is the "country" of origin of **Santa Claus**?
+]
+
+.pull-right[
+
+<img src="https://www.123dentist.com/wp-content/uploads/2018/12/santa-claus-825x550.jpg" width="100%" />
+]
+---
+
+# Happy Holidays: Question 10
+
+.pull-left[
+- How many **reindeer** does **Santa Claus** have?
+]
+
+.pull-right[
+
+<img src="https://www.123dentist.com/wp-content/uploads/2018/12/santa-claus-825x550.jpg" width="100%" />
+]
+
+---
+
+class: middle, inverse, center
+
+# Round 3: Guess the country!
+
+Guess the country and the city from the (Google Earth) picture! 
+
+---
+
+# Country/City: Question 1
+
+![](./figures/ulaanbaatar.png)
+
+---
+
+# Country/City: Question 2
+
+<img src="./figures/new_delhi.png" width="80%" />
+
+---
+
+# Country/City: Question 3
+
+![](./figures/sydney.png)
+
+---
+
+# Country/City: Question 4
+
+![](./figures/singapore.png)
+---
+
+# Country/City: Question 5
+
+<img src="./figures/machu picchu.png" width="80%" />
+---
+
+# Country/City: Question 6
+
+<img src="./figures/montreal.png" width="90%" />
+
+---
+
+# Country/City: Question 7
+
+![](./figures/granada.png)
+
+---
+
+# Country/City: Question 8
+
+<img src="./figures/talinn.png" width="90%" />
+
+---
+
+# Country/City: Question 9
+
+![](./figures/istanbul.png)
+---
+
+# Country/City: Question 10
+
+<img src="./figures/dakar.png", width="60%" />
+
+---
+
+# Bonus Country/City: Question 11
+
+![](./figures/utrecht.png)
+
+---
+
+class: middle, center, inverse
+
+# Round 4: Music!
+
+Name the title and artist (if applicable)
+
+---
+
+# Music: Question 1
+
+- Name the title! :)
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/bobby_helms_jingle_bell_rock.mov" />
+</audio>
+]
+
+---
+
+# Music: Question 2
+
+- Name the title! :)
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/frozen_let_it_go.mov" />
+</audio>
+]
+
+---
+
+
+# Music: Question 3
+
+- Name the title! :)
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/hijkomt_hijkomt_delievegoedesint.mov" />
+</audio>
+]
+
+---
+
+
+# Music: Question 4
+
+- Name the title and most well-known artist!
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/mariah_carey_all_i_want.mov" />
+</audio>
+]
+
+---
+
+
+# Music: Question 5
+
+- Name the title and artist!
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/nat_king_cole_o_tannenbaum.mov" />
+</audio>
+]
+
+---
+
+
+# Music: Question 6
+
+- Name the title and artist!
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/pavarotti_adeste_fidelis.mov" />
+</audio>
+]
+
+---
+
+
+# Music: Question 7
+
+- Name the title! :)
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/rudolf_red_nosed_reindeer.mov" />
+</audio>
+]
+
+---
+
+# Music: Question 8
+
+- Name the title and composer
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/vivaldi_winter_1stmov.mov" />
+</audio>
+]
+
+---
+
+# Music: Question 9
+
+- Name the title and artist
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/wham_last_christmas.mov" />
+</audio>
+]
+
+---
+
+# Music: Question 10
+
+- Name the title!
+
+<br>
+<br>
+<br>
+
+.center[
+<audio controls>
+  <source src="./music/wilhelmus.mov" />
+</audio>
+]
+
+---
+
+class: inverse, middle, center
+
+# Round 5: Movies and languages
+
+Guess the movie and the language in which it is synchronized!
+
+---
+
+# Movies: Question 1
+
+.center[
+ <video width="320" height="240" controls>
+  <source src="./films/elf_espanol.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+]
+
+---
+
+# Movies: Question 2
+
+.center[
+
+ <video width="320" height="240" controls>
+  <source src="./films/harrypotter_steinderweisen_deutsch.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+
+]
+
+---
+
+# Movies: Question 3
+
+.center[
+
+ <video width="320" height="240" controls>
+  <source src="./films/lotr_hindi_good.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+]
+
+
+---
+
+# Movies: Question 4
+
+.center[
+
+ <video width="320" height="240" controls>
+  <source src="./films/lion_king_good.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+]
+
+---
+
+# Movies: Question 5
+
+.center[
+
+ <video width="320" height="240" controls>
+  <source src="./films/home_alone_francais.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+]
+
+---
+
+# Movies: Question 6
+
+.center[
+
+ <video width="320" height="240" controls>
+  <source src="./films/the_grinch_turkce.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video> 
+]
+
+---
+class: middle, center
+
+# Thank you for joining!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
