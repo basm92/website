@@ -78,7 +78,7 @@ class: inverse
 
 ---
 
-class: inverse, center, middle
+class: center, middle
 
 # Round 1: Quotes
 
@@ -208,7 +208,7 @@ Who is the author of the following quote?
 
 ---
 
-class: center, middle, inverse
+class: center, middle
 
 # Round 2: Happy Holidays Trivia
 
@@ -359,7 +359,7 @@ https://forms.gle/qjLVsbiher7rhVh4A
 
 ---
 
-class: middle, inverse, center
+class: middle, center
 
 # Round 3: Guess the country!
 
@@ -432,7 +432,7 @@ https://forms.gle/RxtwzkLXe2sgNVxE6
 
 ---
 
-class: middle, center, inverse
+class: middle, center
 
 # Round 4: Music!
 
@@ -607,7 +607,7 @@ https://forms.gle/7bsXEFWeoFZkdDKP6
 
 ---
 
-class: inverse, middle, center
+class: middle, center
 
 # Round 5: Movies and languages
 
