@@ -45,8 +45,8 @@ By looking closely at the payoffs, however, we can immediately rule out 4 of the
 - In order for the state to mix, however, it must also be indifferent between $R$ and $I$. What must be the **beliefs ($\mu$)** by the state in order to realize this indifference?
   - $U_2 (R) = U_2(I)$: $\mu \cdot -3 + (1-\mu) \cdot 2 = \mu \cdot -1 + (1-\mu) \cdot -1$. Hence, $\mu = \frac{3}{5}$. 
 - The last requirement that we have involve that the beliefs be updated via Bayes' rule: from this, we can deduce what specific mix between the two strategies $A$ and $NA$ about which the vulnerable type is indifferent: we focus on the node with probability $1-\mu$, which we have just calculated and must be $\frac{2}{5}$. We now require that the beliefs be updated by Bayes' rule under which we parametrize the mixed strategy by the vulnerable type:
-- $ 1 - \mu = \frac{2}{5} = \frac{\text{Pr}(\text{A } \and \text{ Vulnerable})}{\text{Pr}(A)} = \frac{0.6 \cdot \sigma_V}{0.6 \cdot \sigma_V + 0.4}$, from which we can solve for $\sigma_V = \frac{4}{9}$. 
+- Hence, $1- \mu = \frac{2}{5} = \frac{\text{Pr(A and Vulnerable)}}{\text{Pr(A)}} = \frac{0.6 \cdot \sigma_V}{0.6 \cdot \sigma_V + 0.4}$, from which we can solve for $\sigma_V = \frac{4}{9}$. 
 
 ## Conclusion
 
-Hence, to summarize, we have found one Perfect Bayesian Equilibrium involving the Robust terrorist group always attacking, and the Vulnerable group mixing between attacking and not attacking (attacking with probability $\frac{4}{9}$. The state then thinks that the group is Robust with probability $\frac{3}{5}$ and plays Resist with probability $\sigma_S = \frac{1}{3}$. 
+Hence, to summarize, we have found one Perfect Bayesian Equilibrium involving the Robust terrorist group always attacking, and the Vulnerable group mixing between attacking and not attacking (attacking with probability $\frac{4}{9}$). The state then thinks that the group is Robust with probability $\frac{3}{5}$ and plays Resist with probability $\sigma_S = \frac{1}{3}$. 
