@@ -1,0 +1,59 @@
+---
+title: 'Solving for Bayesian Perfect Equilibrium: A simple example'
+author: ~
+date: '2020-12-30'
+slug: solving-for-bayesian-perfect-equilibrium-a-simple-example
+categories: []
+tags: []
+---
+
+<script src="index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>I just want to set up a reminder on how to solve for Perfect Bayesian Equilibria (PBE) in the case there might be no pooling or separating equilibria, or in the case there might be additional equilibria next to pooling or separating equilibria. I will do this on the basis of a short game, which is depicted in the figure below, taken from <a href="https://www.youtube.com/watch?v=lPhQFHrjV8g">this video</a>. The game is about a “terrorist group” and a “state”, whose interests are, respectively, committing terrorist attacks and preventing/resisting them.</p>
+<p>The terrorist group, which can choose to either attack, <span class="math inline">\(\{ A \}\)</span>, or not attack <span class="math inline">\(\{ NA \}\)</span>, and is drawn by nature as either “robust” or as “vulnerable”, with the robust group receiving higher payoffs if they execute terrorist attacks, even in face of resistance of the state. The payoffs are such that the equilibrium that I will describe involve the robust terrorist group playing a pure strategy, whereas the vulnerable terrorist group will chose to mix. In a more general case, both players, the terrorist group and the state, could involve mixing, but to simplify exhibition of the idea on the logic, we’ll focus on a particular, simplified version.</p>
+<p><img src="/img/game_pbe.png" /></p>
+</div>
+<div id="pooling-equilibria" class="section level2">
+<h2>Pooling Equilibria</h2>
+<p>Pooling equilibria involve both incarnations of the terrorist group playing the same strategy. Hence, there could be two possible pooling equilibria: <span class="math inline">\(\{ NA, NA \}\)</span>, and <span class="math inline">\(\{A, A\}\)</span>. It is easy to analyze pooling equilibria for the following reason: the posterior beliefs of the second player do not change, because both players pursue the same (identical) action in equilibrium.</p>
+<ul>
+<li>Let us focus on the <span class="math inline">\(\{ NA, NA \}\)</span> equilibrium first: If both players play <span class="math inline">\(\{ NA, NA \}\)</span>, the robust incarnation has an incentive to deviate. The payoffs for pursuing <span class="math inline">\(\{A\}\)</span> are greater than for <span class="math inline">\(\{ NA \}\)</span> when player 2 pursues either <span class="math inline">\(\{ R\}\)</span> or <span class="math inline">\(\{I\}\)</span>: <span class="math inline">\(3 &gt; 0\)</span> and <span class="math inline">\(1 &gt; 0\)</span>.</li>
+<li>Now, let’s treat the case of a potential <span class="math inline">\(\{A , A\}\)</span> equilibrium: if both players pursue this strategy, then the posterior beliefs are equal to the prior beliefs. Consequently, <span class="math inline">\(U_2 (R) = 0.4 \cdot -3 + 0.6 \cdot 2 = 0\)</span>, and <span class="math inline">\(U_2(L) = 0.6 \cdot -1 + 0.4 \cdot -1 = -1\)</span>. Hence, player 2 will decide to play <span class="math inline">\(R\)</span>. If player 2 plays R, the vulnerable type has an incentive to deviate: in this (potential) equilibrium, the vulnerable type receive a payoff of <span class="math inline">\(-2\)</span>, whereas it can obtain a payoff of <span class="math inline">\(0\)</span> by deviating to <span class="math inline">\(\{ NA \}\)</span>. Hence, this is also no equilibrium.</li>
+</ul>
+</div>
+<div id="separating-equilibria" class="section level2">
+<h2>Separating Equilibria</h2>
+<p>Separating equilibria are also easy to analyze, because the involve “corner cases” on the posterior beliefs of player 2, as we will see shortly. In separating equilibria, the players pursue two different pure strategies. Hence, there can be two possible separating equilibria: one involving <span class="math inline">\(\{A, NA \}\)</span> and one involving <span class="math inline">\(\{NA, A \}\)</span>.</p>
+<ul>
+<li>Let us focus on <span class="math inline">\(\{A, NA \}\)</span> firstly: if this is the case, only the robust group attacks, <span class="math inline">\(\mu = 1\)</span> and player 2 will play <span class="math inline">\(I\)</span>. If player 2 plays <span class="math inline">\(I\)</span>, the vulnerable type wants to deviate, because it will receive a payoff of <span class="math inline">\(1\)</span> rather than <span class="math inline">\(0\)</span>. Hence, this is not a separating equilibrium.</li>
+<li>Let us now focus on <span class="math inline">\(\{NA, A \}\)</span>: In this case, <span class="math inline">\(\mu = 0\)</span>, and player 2 will play <span class="math inline">\(R\)</span>, which means the Robust type of player 1 has an incentive to deviate, because <span class="math inline">\(3\)</span> (the payoff under <span class="math inline">\(\{A, R \}\)</span>) is larger than <span class="math inline">\(0\)</span>. Hence, this is also not a separating equilibrium.</li>
+</ul>
+</div>
+<div id="partially-separating-equilibria" class="section level2">
+<h2>Partially-separating equilibria</h2>
+<p>Finally, let’s look at a partially-separating equilibria. In theory, there can be five possible partially-separating equilibria:</p>
+<ul>
+<li><span class="math inline">\(\{\{ NA, A\}, \{NA, A\}\}\)</span></li>
+<li><span class="math inline">\(\{\{ NA\}, \{NA, A\}\}\)</span></li>
+<li><span class="math inline">\(\{\{A\}, \{NA, A\}\}\)</span></li>
+<li><span class="math inline">\(\{\{ NA, A\}, \{A\}\}\)</span></li>
+<li><span class="math inline">\(\{ \{ NA, A \}, \{NA\}\}\)</span></li>
+</ul>
+<p>By looking closely at the payoffs, however, we can immediately rule out 4 of them, by observing the the Robust type’s payoffs are always higher for <span class="math inline">\(A\)</span> than for <span class="math inline">\(NA\)</span>, so in equilibrium, the robust type will always opt for <span class="math inline">\(A\)</span> rather than <span class="math inline">\(NA\)</span> or some mix of <span class="math inline">\(A\)</span> and <span class="math inline">\(NA\)</span>. Hence, we can suffice ourselves with only investigating <span class="math inline">\(\{\{A\}, \{NA, A\}\}\)</span>:</p>
+<ul>
+<li>In this case, the state must make the vulnerable type indifferent between player <span class="math inline">\(NA\)</span> and <span class="math inline">\(A\)</span>, by mixing with <span class="math inline">\(\sigma_S\)</span> between <span class="math inline">\(R\)</span> and <span class="math inline">\(I\)</span>: <span class="math inline">\(-2 \cdot \sigma_S + 1 \cdot (1- \sigma_S) = 0\)</span>, from which it follows that <span class="math inline">\(\sigma_S = \frac{1}{3}\)</span>.</li>
+<li>In order for the state to mix, however, it must also be indifferent between <span class="math inline">\(R\)</span> and <span class="math inline">\(I\)</span>. What must be the <strong>beliefs (<span class="math inline">\(\mu\)</span>)</strong> by the state in order to realize this indifference?
+<ul>
+<li><span class="math inline">\(U_2 (R) = U_2(I)\)</span>: <span class="math inline">\(\mu \cdot -3 + (1-\mu) \cdot 2 = \mu \cdot -1 + (1-\mu) \cdot -1\)</span>. Hence, <span class="math inline">\(\mu = \frac{3}{5}\)</span>.</li>
+</ul></li>
+<li>The last requirement that we have involve that the beliefs be updated via Bayes’ rule: from this, we can deduce what specific mix between the two strategies <span class="math inline">\(A\)</span> and <span class="math inline">\(NA\)</span> about which the vulnerable type is indifferent: we focus on the node with probability <span class="math inline">\(1-\mu\)</span>, which we have just calculated and must be <span class="math inline">\(\frac{2}{5}\)</span>. We now require that the beliefs be updated by Bayes’ rule under which we parametrize the mixed strategy by the vulnerable type:</li>
+<li>$ 1 - =  =  = $, from which we can solve for <span class="math inline">\(\sigma_V = \frac{4}{9}\)</span>.</li>
+</ul>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Hence, to summarize, we have found one Perfect Bayesian Equilibrium involving the Robust terrorist group always attacking, and the Vulnerable group mixing between attacking and not attacking (attacking with probability <span class="math inline">\(\frac{4}{9}\)</span>. The state then thinks that the group is Robust with probability <span class="math inline">\(\frac{3}{5}\)</span> and plays Resist with probability <span class="math inline">\(\sigma_S = \frac{1}{3}\)</span>.</p>
+</div>
