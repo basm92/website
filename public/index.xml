@@ -2,105 +2,120 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bas Machielsen</title>
-    <link>/</link>
+    <link>https://bas-m.netlify.app/</link>
     <description>Recent content on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Within-Estimator Visualized</title>
+      <link>https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized/</guid>
+      <description>Introduction In this post, I will visualize what the FE-estimator does by benchmarking it to the OLS estimator. I use World Bank data on trade and GDP per capita to estimate (i) a regression equation with OLS, (ii) describing the procedure involved in estimating the FE coefficient and (iii) visualize what that means in this specific setting.
+ Downloading the Data First of all, we make use of the WDI package in R to download some (admittedly, pretty random) World Bank data.</description>
+    </item>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Solving for Bayesian Perfect Equilibrium: A simple example</title>
+      <link>https://bas-m.netlify.app/2020/12/30/solving-for-bayesian-perfect-equilibrium-a-simple-example/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2020/12/30/solving-for-bayesian-perfect-equilibrium-a-simple-example/</guid>
+      <description>Introduction I just want to set up a reminder on how to solve for Perfect Bayesian Equilibria (PBE) in the case there might be no pooling or separating equilibria, or in the case there might be additional equilibria next to pooling or separating equilibria. I will do this on the basis of a short game, which is depicted in the figure below, taken from this video. The game is about a “terrorist group” and a “state”, whose interests are, respectively, committing terrorist attacks and preventing/resisting them.</description>
+    </item>
     
     <item>
       <title>Working with Git from R using usethis</title>
-      <link>/2020/09/26/working-with-git-from-r-using-usethis/</link>
+      <link>https://bas-m.netlify.app/2020/09/26/working-with-git-from-r-using-usethis/</link>
       <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/09/26/working-with-git-from-r-using-usethis/</guid>
+      <guid>https://bas-m.netlify.app/2020/09/26/working-with-git-from-r-using-usethis/</guid>
       <description>Introduction This post serves as a reminder and introduction into the usethis package, which provides an interface (and sometimes, a guide) to efficiently working with git from within R. We suppose that git (a version control system) is already installed on your system. The workflow should not vary between operating systems.
 Packages like blogdown or hugodown often allow the user to create a folder, with lots of auxilary and supplementary files and an appropriate structure to ensure things work as they’re supposed to.</description>
     </item>
     
     <item>
       <title>Selenium in Python</title>
-      <link>/2020/07/15/selenium-in-python/</link>
+      <link>https://bas-m.netlify.app/2020/07/15/selenium-in-python/</link>
       <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/07/15/selenium-in-python/</guid>
+      <guid>https://bas-m.netlify.app/2020/07/15/selenium-in-python/</guid>
       <description>Introduction This is a small user guide to getting Selenium to work in Python (on a MacOS). In my experience, the Python-Selenium combo works a little bit more smoothly than the R variant. Python seems to be a little bit faster, but the real advantage comes from not having to use Docker: your system will just load a browser (which you can see), and then program, using a for loop, for instance.</description>
     </item>
     
     <item>
       <title>Read a Table from the Indonesian Census Data</title>
-      <link>/2020/05/31/read-a-table-from-the-indonesian-census-data/</link>
+      <link>https://bas-m.netlify.app/2020/05/31/read-a-table-from-the-indonesian-census-data/</link>
       <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/31/read-a-table-from-the-indonesian-census-data/</guid>
+      <guid>https://bas-m.netlify.app/2020/05/31/read-a-table-from-the-indonesian-census-data/</guid>
       <description>Introduction In this post, I will briefly explain how to read in a table easily from the Indonesian data sources that I have been planning to use (see here). First, I download the file, containing data about municipalities in every province and their GRDP:
 download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve=OTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2&amp;amp;xzmn=aHR0cHM6Ly93d3cuYnBzLmdvLmlkL3B1YmxpY2F0aW9uLzIwMTkvMTAvMDQvOTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2L3Byb2R1ay1kb21lc3Rpay1yZWdpb25hbC1icnV0by1rYWJ1cGF0ZW4ta290YS1kaS1pbmRvbmVzaWEtMjAxNC0yMDE4Lmh0bWw%3D&amp;amp;twoadfnoarfeauf=MjAyMC0wNS0zMSAyMzo0Njo1Ng%3D%3D&amp;quot;, destfile = &amp;quot;hello.pdf&amp;quot;)  Reading in the table There are different ways in which I can read the table. First, I use the tabulizer package, from which I can use the extract_tables function, with two arguments:</description>
     </item>
     
     <item>
       <title>Batch Downloading with RSelenium</title>
-      <link>/2020/05/29/batch-downloading-with-rselenium/</link>
+      <link>https://bas-m.netlify.app/2020/05/29/batch-downloading-with-rselenium/</link>
       <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/29/batch-downloading-with-rselenium/</guid>
+      <guid>https://bas-m.netlify.app/2020/05/29/batch-downloading-with-rselenium/</guid>
       <description>Introduction In this blogpost, I briefly explain how to batch download files in RSelenium. This can be super useful if you want to download some pdf’s or other files, but you don’t want to click ‘download’ a 1000 times, and there is no other option available.
  Step 1: Setting up a Docker Container In this case, we have to deviate from the standard case of setting up a Docker container.</description>
     </item>
     
     <item>
       <title>Web Scraping with RSelenium</title>
-      <link>/2020/05/27/web-scraping-with-rselenium/</link>
+      <link>https://bas-m.netlify.app/2020/05/27/web-scraping-with-rselenium/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/27/web-scraping-with-rselenium/</guid>
+      <guid>https://bas-m.netlify.app/2020/05/27/web-scraping-with-rselenium/</guid>
       <description>Introduction In this blogpost, I want to tell you about web scraping using RSelenium, something which I’ve recently been learning and which I am very enthusiastic about, because it is very powerful. I want to do this in the context of an example. I have been supervising undergraduate students, and a group of students asked me where they could get a list of members of the Iranian parliament. So I went to the official English-language website of the Iranian parliament, and looked up the list of members.</description>
     </item>
     
     <item>
       <title>R vs. Excel: A Quick Comparison</title>
-      <link>/2020/05/25/r-vs-excel-a-quick-comparison/</link>
+      <link>https://bas-m.netlify.app/2020/05/25/r-vs-excel-a-quick-comparison/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/25/r-vs-excel-a-quick-comparison/</guid>
+      <guid>https://bas-m.netlify.app/2020/05/25/r-vs-excel-a-quick-comparison/</guid>
       <description>Introduction and link to .pdf Once upon a time, I wrote a small pamphlet called &amp;lsquo;R vs. Excel: A quick comparison&amp;rsquo; aimed at former or current Excel users to convince them to take up R, and leave aside Microsoft Excel entirely. I think the pamphlet contains some good arguments, so you can read about it here.</description>
     </item>
     
     <item>
       <title>Dplyr: filtering with across</title>
-      <link>/2020/05/17/dplyr-filtering-with-across/</link>
+      <link>https://bas-m.netlify.app/2020/05/17/dplyr-filtering-with-across/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/17/dplyr-filtering-with-across/</guid>
+      <guid>https://bas-m.netlify.app/2020/05/17/dplyr-filtering-with-across/</guid>
       <description>Introduction The newest versions of the dplyr package introduced a new function, across(), to be used within summarise, mutate and filter functions, and I am trying to learn it. I am, however, having a hard time understanding the use and the mechanics of the function in combination with filter. While this vignette has ample examples on mutate and summarise, the examples on filter are few and not very insightful. The same is true for several non-official guides that I have read.</description>
     </item>
     
     <item>
       <title>First post: Making a website with blogdown</title>
-      <link>/2020/05/17/first-post-making-a-website-with-blogdown/</link>
+      <link>https://bas-m.netlify.app/2020/05/17/first-post-making-a-website-with-blogdown/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/2020/05/17/first-post-making-a-website-with-blogdown/</guid>
+      <guid>https://bas-m.netlify.app/2020/05/17/first-post-making-a-website-with-blogdown/</guid>
       <description>Introduction This is the first blog post on my own website. I&amp;rsquo;ve decided to make this website using the R package blogdown. The website looks very nice now (in my humble opinion), but it was tedious to make. When attempting to create the website, I first tried out a couple of themes before I settled on the basic &amp;ldquo;lithium&amp;rdquo; theme, because it was by far the easiest theme to wrap your head around.</description>
     </item>
     
     <item>
       <title>Blogs</title>
-      <link>/blogs/</link>
+      <link>https://bas-m.netlify.app/blogs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/</guid>
+      <guid>https://bas-m.netlify.app/blogs/</guid>
       <description>On this page, I link to several blog posts. Some of them might serve merely as documentation, or as reminders, and others might take a more specific blog character.</description>
     </item>
     
     <item>
       <title>Classes</title>
-      <link>/classes/</link>
+      <link>https://bas-m.netlify.app/classes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/classes/</guid>
+      <guid>https://bas-m.netlify.app/classes/</guid>
       <description>Here is an overview of classes which I have organized or participated in:
  Introduction to R and Data Science  An extensive course aiming to familiarize students with the R programming language, RStudio, and functional programming.
  Bachelor Thesis: Political Connections  This serves as a repository for the Political Connections in Firms theme for the course Bachelor Thesis at RSM, Erasmus University. Various subthemes, templates, guidse and examples are available.</description>
@@ -108,20 +123,20 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
     
     <item>
       <title>Data overview</title>
-      <link>/data/</link>
+      <link>https://bas-m.netlify.app/data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/data/</guid>
+      <guid>https://bas-m.netlify.app/data/</guid>
       <description> Below you can find reproducible data sources for every one of my papers:
 The Political Elite and The Welfare State  Figures Analyses Tables   Political Rents under a Changing Electoral Regime  Figures Analyses Tables   Political Connections in Colonial Indonesia  Figures Analyses Tables   </description>
     </item>
     
     <item>
       <title>My R Packages</title>
-      <link>/packages/</link>
+      <link>https://bas-m.netlify.app/packages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/packages/</guid>
+      <guid>https://bas-m.netlify.app/packages/</guid>
       <description>Here are some links to some of the R packages I have created:
  Clio   Clio is a package that facilitates the usage of the Clio-Infra database. It helps the user extract data based on simple queries, instead of repeatedly downloading Excel files. In addition, it facilitates reproducible research by explicitly documenting data collection.
   hdng   hdng is a package that serves as an interface for the HDNG Database.</description>
@@ -129,10 +144,10 @@ The Political Elite and The Welfare State  Figures Analyses Tables   Political R
     
     <item>
       <title>My Resume</title>
-      <link>/resume/</link>
+      <link>https://bas-m.netlify.app/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/resume/</guid>
+      <guid>https://bas-m.netlify.app/resume/</guid>
       <description>You can access my resume here.</description>
     </item>
     
