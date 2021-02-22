@@ -7,7 +7,6 @@ disqusShortname = "http-bas-m-netlify-app"
 enableRobotsTXT = true
 canonifyURLs = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
-uglyurls = true
 
 [sitemap]
   changefreq = "monthly"
