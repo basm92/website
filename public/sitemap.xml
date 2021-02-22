@@ -10,120 +10,120 @@
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/post/</loc>
+    <loc>https://bas-m.netlify.app/post.html</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized/</loc>
+    <loc>https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized.html</loc>
     <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/12/30/solving-for-bayesian-perfect-equilibrium-a-simple-example/</loc>
+    <loc>https://bas-m.netlify.app/2020/12/30/solving-for-bayesian-perfect-equilibrium-a-simple-example.html</loc>
     <lastmod>2020-12-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/09/26/working-with-git-from-r-using-usethis/</loc>
+    <loc>https://bas-m.netlify.app/2020/09/26/working-with-git-from-r-using-usethis.html</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/07/15/selenium-in-python/</loc>
+    <loc>https://bas-m.netlify.app/2020/07/15/selenium-in-python.html</loc>
     <lastmod>2020-07-15T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/05/31/read-a-table-from-the-indonesian-census-data/</loc>
+    <loc>https://bas-m.netlify.app/2020/05/31/read-a-table-from-the-indonesian-census-data.html</loc>
     <lastmod>2020-05-31T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/05/29/batch-downloading-with-rselenium/</loc>
+    <loc>https://bas-m.netlify.app/2020/05/29/batch-downloading-with-rselenium.html</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/05/27/web-scraping-with-rselenium/</loc>
+    <loc>https://bas-m.netlify.app/2020/05/27/web-scraping-with-rselenium.html</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/05/25/r-vs-excel-a-quick-comparison/</loc>
+    <loc>https://bas-m.netlify.app/2020/05/25/r-vs-excel-a-quick-comparison.html</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/05/17/dplyr-filtering-with-across/</loc>
+    <loc>https://bas-m.netlify.app/2020/05/17/dplyr-filtering-with-across.html</loc>
     <lastmod>2020-05-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2020/05/17/first-post-making-a-website-with-blogdown/</loc>
+    <loc>https://bas-m.netlify.app/2020/05/17/first-post-making-a-website-with-blogdown.html</loc>
     <lastmod>2020-05-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/blogs/</loc>
+    <loc>https://bas-m.netlify.app/blogs.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/categories/</loc>
+    <loc>https://bas-m.netlify.app/categories.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/classes/</loc>
+    <loc>https://bas-m.netlify.app/classes.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/data/</loc>
+    <loc>https://bas-m.netlify.app/data.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/packages/</loc>
+    <loc>https://bas-m.netlify.app/packages.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/resume/</loc>
+    <loc>https://bas-m.netlify.app/resume.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/tags/</loc>
+    <loc>https://bas-m.netlify.app/tags.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

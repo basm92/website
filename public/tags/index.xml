@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Bas Machielsen</title>
-    <link>https://bas-m.netlify.app/tags/</link>
+    <link>https://bas-m.netlify.app/tags.html</link>
     <description>Recent content in Tags on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://bas-m.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
