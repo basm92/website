@@ -6,7 +6,17 @@
     <description>Recent content on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Within (FE) Estimator Visualized</title>
+      <link>https://bas-m.netlify.app/2021/02/22/the-within-fe-estimator-visualized/</link>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2021/02/22/the-within-fe-estimator-visualized/</guid>
+      <description>Introduction In this post, I will visualize what the FE-estimator does by benchmarking it to the OLS estimator. I use World Bank data on trade and GDP per capita to estimate (i) a regression equation with OLS, (ii) describing the procedure involved in estimating the FE coefficient and (iii) visualize what that means in this specific setting.
+ Downloading the Data First of all, we make use of the WDI package in R to download some (admittedly, pretty random) World Bank data.</description>
+    </item>
+    
     <item>
       <title>Solving for Bayesian Perfect Equilibrium: A simple example</title>
       <link>https://bas-m.netlify.app/2020/12/30/solving-for-bayesian-perfect-equilibrium-a-simple-example/</link>

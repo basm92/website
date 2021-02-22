@@ -4,14 +4,21 @@
   
   <url>
     <loc>https://bas-m.netlify.app/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://bas-m.netlify.app/post/</loc>
-    <lastmod>2020-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://bas-m.netlify.app/2021/02/22/the-within-fe-estimator-visualized/</loc>
+    <lastmod>2021-02-22T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
