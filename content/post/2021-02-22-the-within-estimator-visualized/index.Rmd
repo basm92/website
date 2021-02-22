@@ -32,7 +32,7 @@ After which the data is written to an initial data frame, `data`.
 
 I clean the variable names briefly (I don't like caps), and then I show what happens if you estimate OLS on these data: 
 
-```{r ols and graph, warning = FALSE, message = FALSE}
+```{r ols and graph, message=FALSE, warning=FALSE}
 library(tidyverse); library(janitor)
 
 data <- data %>%
