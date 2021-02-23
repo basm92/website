@@ -47,6 +47,7 @@ data %>%
     geom_smooth(method = "lm") + 
     xlab("Trade in services (% of GDP)") + 
     ylab("GDP per capita")
+
 ```
 
 For clarity's sake, I put observations coming from different countries in different colors. Hopefully, this makes intuitively clear what is going on: by pooling all observations, the least-squares line is way off, because it doesn't consider that the data consists of groups (countries) over time. The fixed effects estimator is a solution to this problem. To start with, the fixed effects estimator transforms the data to a _time-demeaned_ version. Mathematically, that looks as follows. We start with a panel model:
