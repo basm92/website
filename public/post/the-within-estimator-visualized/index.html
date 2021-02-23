@@ -80,7 +80,6 @@
 
     <div class="article-content">
       
-<script src="https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized.htmlindex_files/header-attrs/header-attrs.js"></script>
 
 
 <div id="introduction" class="section level2">
@@ -116,7 +115,7 @@ data %&gt;%
     geom_smooth(method = &quot;lm&quot;) + 
     xlab(&quot;Trade in services (% of GDP)&quot;) + 
     ylab(&quot;GDP per capita&quot;)</code></pre>
-<p><img src="https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized.htmlindex_files/figure-html/ols%20and%20graph-1.png" width="672" /></p>
+<p><img src="https://bas-m.netlify.app/post/the-within-estimator-visualized/index_files/figure-html/ols%20and%20graph-1.png" width="672" /></p>
 <p>For clarity’s sake, I put observations coming from different countries in different colors. Hopefully, this makes intuitively clear what is going on: by pooling all observations, the least-squares line is way off, because it doesn’t consider that the data consists of groups (countries) over time. The fixed effects estimator is a solution to this problem. To start with, the fixed effects estimator transforms the data to a <em>time-demeaned</em> version. Mathematically, that looks as follows. We start with a panel model:</p>
 <p><span class="math display">\[
 Y_{it} = \alpha_0 + X_{it} \beta + \alpha_i + u_{it}
@@ -125,7 +124,7 @@ Y_{it} = \alpha_0 + X_{it} \beta + \alpha_i + u_{it}
 </div>
 <div id="time-demeaning" class="section level2">
 <h2>Time-Demeaning</h2>
-<p>Then, we consider all observations relative to their country-specific mean. That process is called <em>time-demeaning</em>. Mathematically, it looks as follows, where <span class="math inline">\(\bar{Y_i} = \sum_{t-1}^{T} Y_{it}\)</span>, and the other bar-variables are defined in the same way:</p>
+<p>Then, we consider all observations relative to their country-specific mean. That process is called <em>time-demeaning</em>. Mathematically, it looks as follows, where <span class="math inline">\(\bar{Y_i} = \sum_{t=1}^{T} Y_{it}\)</span>, and the other bar-variables are defined in the same way:</p>
 <p><span class="math display">\[
 Y_{it} - \bar{Y_i} = \beta (X_{it} - \bar{X_i}) + (\alpha_i - \bar{\alpha_i}) + (u_{it} - \bar{u_i})
 \]</span>
@@ -144,7 +143,7 @@ Pay close attention to the <span class="math inline">\(\alpha_i - \bar{\alpha_i}
     geom_smooth(method = &quot;lm&quot;) + 
     xlab(&quot;Trade in services (% of GDP)&quot;) + 
     ylab(&quot;GDP per capita&quot;)</code></pre>
-<p><img src="https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized.htmlindex_files/figure-html/time%20dem%20plot-1.png" width="672" /></p>
+<p><img src="https://bas-m.netlify.app/post/the-within-estimator-visualized/index_files/figure-html/time%20dem%20plot-1.png" width="672" /></p>
 <p>That looks much more comparable. In fact, this line makes use of the variance <em>within</em> country instead of between countries! The line that is drawn through the figure is the OLS-line, which is exactly the estimate of the slope we are looking for. I now extract this coefficient, for future reference.</p>
 <pre class="r"><code>#Extracting the coefficient
 coefficients &lt;- lm(data = data2, 
@@ -163,7 +162,7 @@ data3 %&gt;%
     geom_point(aes(group = country,
                    color = country)) +
     geom_abline(intercept = data3$intercept, slope = coefficients)</code></pre>
-<p><img src="https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized.htmlindex_files/figure-html/est%20fe-1.png" width="672" /></p>
+<p><img src="https://bas-m.netlify.app/post/the-within-estimator-visualized/index_files/figure-html/est%20fe-1.png" width="672" /></p>
 </div>
 <div id="comparison-with-package" class="section level2">
 <h2>Comparison with package</h2>

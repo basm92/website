@@ -13,8 +13,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
   filename = "sitemap.xml"
   priority = 0.5
 
-[permalinks]
-    post = "/:year/:month/:day/:slug/"
+#[permalinks]
+#    post = "/:year/:month/:day/:slug/"
     
 [[menu.main]]
     name = "Home"

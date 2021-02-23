@@ -61,7 +61,7 @@ where $\alpha_i$ are fixed effects. In this specific case, we are considering co
 
 ## Time-Demeaning
 
-Then, we consider all observations relative to their country-specific mean. That process is called _time-demeaning_. Mathematically, it looks as follows, where $\bar{Y_i} = \sum_{t-1}^{T} Y_{it}$, and the other bar-variables are defined in the same way: 
+Then, we consider all observations relative to their country-specific mean. That process is called _time-demeaning_. Mathematically, it looks as follows, where $\bar{Y_i} = \sum_{t=1}^{T} Y_{it}$, and the other bar-variables are defined in the same way: 
 
 $$
 Y_{it} - \bar{Y_i} = \beta (X_{it} - \bar{X_i}) + (\alpha_i - \bar{\alpha_i}) + (u_{it} - \bar{u_i})
