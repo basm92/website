@@ -105,12 +105,6 @@
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/data/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://bas-m.netlify.app/packages/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

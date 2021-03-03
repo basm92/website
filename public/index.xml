@@ -122,16 +122,6 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
     </item>
     
     <item>
-      <title>Data overview</title>
-      <link>https://bas-m.netlify.app/data/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://bas-m.netlify.app/data/</guid>
-      <description>  Below you can find reproducible data sources for every one of my papers:
-The Political Elite and The Welfare State  Figures Analyses Tables   Political Rents under a Changing Electoral Regime  Figures Analyses Tables   Political Connections in Colonial Indonesia  Figures Analyses Tables   </description>
-    </item>
-    
-    <item>
       <title>My R Packages</title>
       <link>https://bas-m.netlify.app/packages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
