@@ -117,6 +117,12 @@
   </url>
   
   <url>
+    <loc>https://bas-m.netlify.app/papers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://bas-m.netlify.app/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

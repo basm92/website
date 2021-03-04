@@ -141,5 +141,15 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
       <description>You can access my resume here.</description>
     </item>
     
+    <item>
+      <title>Papers</title>
+      <link>https://bas-m.netlify.app/papers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/papers/</guid>
+      <description>Below you can find repositories and other information about my papers:
+The Wealth of the Dutch Political Elite Using newly-collected archival data, this study investigates the wealth and investment portfolio’s of Dutch politicians from 1870 to 1922. In a period when the political and economic situation underwent many changes, this study finds that the political arena remains rather static: politicians are wealthy in comparison to the average citizen. Secondly, upper house members are by far the wealthiest politicians followed by executives.</description>
+    </item>
+    
   </channel>
 </rss>
