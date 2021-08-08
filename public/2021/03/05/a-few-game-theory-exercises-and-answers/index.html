@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.80.0" />
+
+
+<title>A few game theory exercises and answers - Bas Machielsen</title>
+<meta property="og:title" content="A few game theory exercises and answers - Bas Machielsen">
+
+
+  <link href='https://bas-m.netlify.app/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://bas-m.netlify.app/css/fonts.css" media="all">
+<link rel="stylesheet" href="https://bas-m.netlify.app/css/main.css" media="all">
+
+
+<link rel="icon" href="https://bas-m.netlify.app/img/favicon.ico" type="image/x-icon">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://bas-m.netlify.app/" class="nav-logo">
+    <img src="https://bas-m.netlify.app/images/bas_m.png"
+         width="60"
+         height="60"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="https://bas-m.netlify.app/">Home</a></li>
+    
+    <li><a href="https://bas-m.netlify.app/blogs/">Blog</a></li>
+    
+    <li><a href="https://bas-m.netlify.app/resume/">Resume</a></li>
+    
+    <li><a href="https://bas-m.netlify.app/classes/">Classes</a></li>
+    
+    <li><a href="https://bas-m.netlify.app/packages/">R Packages</a></li>
+    
+    <li><a href="https://bas-m.netlify.app/papers/">Papers</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">A few game theory exercises and answers</h1>
+
+    
+    <span class="article-date">2021-03-05</span>
+    
+
+    <div class="article-content">
+      
+<script src="https://bas-m.netlify.app/2021/03/05/a-few-game-theory-exercises-and-answers/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>I want to work out a couple of exercises from <em>Game Theory: an Introduction</em>, by Tadelis. Since the exercises from later chapters are not available online, and since they represent some of the more creative and fun challenges, I just wanted to post a few exercises which I worked out, as well as some (unasked) variations.</p>
+</div>
+<div id="exercise-12.2-cournot-revisited" class="section level2">
+<h2>Exercise 12.2: Cournot Revisited</h2>
+<p>This exercise asks the following:</p>
+<blockquote>
+<p>Consider the Cournot duopoly model in which two firms, 1 and 2, simultaneously choose the quantities they supply, <span class="math inline">\(q_1\)</span> and <span class="math inline">\(q_2\)</span>. The price each will face is determined by the market demand function <span class="math inline">\(p(q_1, q_2) = a - b(q_1 + q_2)\)</span>. Each firm has a probability <span class="math inline">\(\mu\)</span> of having a marginal unit cost of <span class="math inline">\(c_L\)</span> and a probability <span class="math inline">\(1-\mu\)</span> of having a marginal unit cost of <span class="math inline">\(c_H\)</span>. These probabilities are common knowledge, but the true type is revealed only to each firm individually. Solve for the Bayesian Nash equilibrium.</p>
+</blockquote>
+<p>The exercise makes it clear that there is uncertainty about the marginal cost parameter of both firms, but I will first start with a more simple question, which is that firm 2’s marginal cost parameter is uncertain (for player 1, but observable for themselves), but not vice versa: player 1 has a fixed marginal cost parameter, say <span class="math inline">\(c_1\)</span>.</p>
+<p>Then, the profit function of player 2 is:</p>
+<p><span class="math display">\[
+\Pi_2 = \begin{cases}
+(a - b(q_1 + q_2^L))q_2^L - c_L q_2^L &amp;\mbox{ if } c = c_L \\
+(a - b(q_1 + q_2^H))q_2^H - c_H q_2^H &amp;\mbox{ if } c = c_H
+\end{cases}
+\]</span></p>
+<p>And the profit function for player 1 is:</p>
+<p><span class="math display">\[
+\Pi_1 = \mu((a - b(q_1 + q_2^L))q_1 - c_1 q_1) + (1-\mu) ((a - b(q_1 + q_2^H))q_1 - c_1 q_1)
+\]</span></p>
+<p>From these profit functions, the best responses can be derived by taking the derivative with respect to the control variables. Player 1’s best response will be <span class="math inline">\(q_1 = f(q_2^L, q_2^H)\)</span>. Substituting player 2’s best responses <span class="math inline">\(q_2^L = f(q_1)\)</span> and <span class="math inline">\(q_2^H = f(q_1)\)</span> into player 1’s best responses yields a solution for <span class="math inline">\(q_1\)</span>. Substituting this solution in player 2’s best responses then yields a solution for both incarnations of player 2.</p>
+<p>From this solution, it is also easy to see what the solution for the actual problem would look like: The profit function for player <span class="math inline">\(i\)</span>, given that their marginal costs are low and high respectively, is:</p>
+<p><span class="math display">\[
+\Pi_i^L = \begin{cases}
+(a - b(\mathbb{E}[q_j] + q_i^L)) \cdot q_i^L - c_L q_i^L &amp;\mbox{ if MC = Low}\\
+(a - b(\mathbb{E}[q_j] + q_i^H)) \cdot q_i^L - c_H q_i^H &amp;\mbox{ if MC = High}
+\end{cases}
+\]</span></p>
+<p>The expected value of the other player’s production <span class="math inline">\(\mathbb{E}[q_j]\)</span> equals <span class="math inline">\(\mu q_j^L + (1-\mu)q_j^H\)</span>. Substituting this in the profit function, and then differentiating to find the Best Responses for player <span class="math inline">\(i\)</span> gives:</p>
+<p><span class="math display">\[
+BR_i = \begin{cases} q_i^L = 
+\frac{a - b(\mu q_j^L + (1-\mu) q_j^H) - c_L}{2b} \\
+q_i^H = \frac{a - b(\mu q_j^L + (1-\mu) q_j^H) - c_H}{2b}
+\end{cases}
+\]</span></p>
+<p>Now, recognizing that the problems are symmetric, we can impose that <span class="math inline">\(q_j^L = q_i^L\)</span> and <span class="math inline">\(q_j^H = q_i^H\)</span>. Alternatively, we could just make explicit the best responses for player 2, and then realize that in a Bayesian Nash Equilibrium, each player’s best response should be a best response to the others. That would give us a system of 4 equations, and 4 unknowns. But, recognizing the symmetric nature of the problem, it is easy to make do with a system of only two equations and two unknowns. Substituting <span class="math inline">\(q_j^L = q_i^L\)</span> and <span class="math inline">\(q_j^H = q_i^H\)</span> into the best responses gives:</p>
+<p><span class="math display">\[
+BR_i = \begin{cases} q_i^L = 
+\frac{a - b(\mu q_i^L + (1-\mu) q_i^H) - c_L}{2b} \\
+q_i^H = \frac{a - b(\mu q_i^L + (1-\mu) q_i^H) - c_H}{2b}
+\end{cases}
+\]</span></p>
+<p>After a bit of algebra, the solution to this problem is:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+q_i^L \\
+q_i^H
+\end{bmatrix} = 
+\begin{bmatrix}
+\frac{2a + c_L (\mu-3) - (\mu-1)c_H}{6b} \\
+\frac{2a + c_L \mu - c_H (\mu+2)}{6b}
+\end{bmatrix}
+\]</span></p>
+<p>This solution has an elegant interpretation: suppose <span class="math inline">\(\mu = 1\)</span>, so that there is no uncertainty and all firms have low marginal costs. Then, the problem’s solution reduces to the solution of a standard Cournot problem with:</p>
+<p><span class="math display">\[
+q_i^L = \frac{2a + c_L (1-3) - (1-1) c_H}{6b} = \frac{2a - 2c_L}{6b} = \frac{a - c_L}{3b}
+\]</span></p>
+<p>That is to say, this is the solution to the Cournot problem were <span class="math inline">\(\Pi_i = (a-b(q_i + q_j))q_i - c_L q_i\)</span> where <span class="math inline">\(q_i = q_j\)</span>.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  var disqus_config = function () {
+  
+  };
+  (function() {
+    var inIFrame = function() {
+      var iframe = true;
+      try { iframe = window.self !== window.top; } catch (e) {}
+      return iframe;
+    };
+    if (inIFrame()) return;
+    var d = document, s = d.createElement('script');
+    s.src = '//http-bas-m-netlify-app.disqus.com/embed.js'; s.async = true;
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://bas-m.netlify.app/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="https://bas-m.netlify.app/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="https://bas-m.netlify.app/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

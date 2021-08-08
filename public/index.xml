@@ -6,7 +6,18 @@
     <description>Recent content on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A few game theory exercises and answers</title>
+      <link>https://bas-m.netlify.app/2021/03/05/a-few-game-theory-exercises-and-answers/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2021/03/05/a-few-game-theory-exercises-and-answers/</guid>
+      <description>Introduction I want to work out a couple of exercises from Game Theory: an Introduction, by Tadelis. Since the exercises from later chapters are not available online, and since they represent some of the more creative and fun challenges, I just wanted to post a few exercises which I worked out, as well as some (unasked) variations.
+ Exercise 12.2: Cournot Revisited This exercise asks the following:
+ Consider the Cournot duopoly model in which two firms, 1 and 2, simultaneously choose the quantities they supply, \(q_1\) and \(q_2\).</description>
+    </item>
+    
     <item>
       <title>The Within Estimator Visualized</title>
       <link>https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized/</link>
