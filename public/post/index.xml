@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From-scratch Implementation of Neural Networks in Python</title>
+      <link>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</guid>
+      <description>Introduction In this blog post, I wanted to write down an easy implementation of neural networks in Python. The model architecture of neural networks contains three pillars:
+- the actual model (Multi-layer perceptron network), with inputs, layers, and outputs, and weights connecting these. - Forward propagation - the loop from inputs to subsequent layers and finally, the output, using given weights. - Backward propagation - updating the weights with gradient descent to minimize the loss.</description>
+    </item>
+    
     <item>
       <title>A few game theory exercises and answers</title>
       <link>https://bas-m.netlify.app/2021/03/05/a-few-game-theory-exercises-and-answers/</link>
