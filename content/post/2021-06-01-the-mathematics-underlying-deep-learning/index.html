@@ -1,0 +1,135 @@
+---
+title: The Mathematics underlying Deep Learning
+author: basm92
+date: '2021-05-29'
+slug: the-mathematics-underlying-deep-learning
+categories: []
+tags: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this post, I want to provide a quick primer about the mathematics underlying the backpropagation algorithm in neural networks and deep learning algorithms. I use the notation provided in <a href="http://neuralnetworksanddeeplearning.com/">this book</a>, chapter 2, and prove/explain in-depth where some of the equations come from. I hope this provides an intuitive and clear explanation about the logic underlying backpropagation, and it should make it easy to implement this using code.</p>
+</div>
+<div id="delta" class="section level2">
+<h2>Delta</h2>
+<p><span class="math inline">\(\delta^l\)</span> is defined as <span class="math inline">\(\frac{\partial C}{\partial z^l}\)</span>, or in component form: <span class="math inline">\(\delta^l_j = \frac{\partial C}{\partial z^l_j}\)</span>. The network is define such that the matrix <span class="math inline">\(W^L\)</span> represents the weights from layer <span class="math inline">\(a^{l-1}\)</span> to layer <span class="math inline">\(a^l\)</span>. We start indexation at 1 (so not at 0!). Hence, layer <span class="math inline">\(a^0\)</span> and weights <span class="math inline">\(W^1\)</span> do not exist, and layer <span class="math inline">\(a^1\)</span> is the input layer. There are a total of <span class="math inline">\(L\)</span> layers in the network, each of which can have a variable number of nodes. First, we find an expression for <span class="math inline">\(\delta^L\)</span>, meaning delta in the last layer.</p>
+<p>By the chain rule, and recognizing that the only way <span class="math inline">\(z^L_j\)</span> influences the cost function is through <span class="math inline">\(a^L_j\)</span>, we know that:</p>
+<p><span class="math display">\[
+\delta^L_j = \frac{\partial C}{\partial a^L_j} \cdot \frac{\partial a^L_j}{\partial z^L_j} 
+\]</span></p>
+<p>The first part of this derivative is determined by the cost function, and the second part <span class="math inline">\(\frac{\partial a^L_j}{\partial z^L_j}\)</span> evaluates to <span class="math inline">\(\sigma&#39;(z^L_j)\)</span>. Hence, in matrix form, the expression for <span class="math inline">\(\delta^L\)</span> is:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+\vdots \\
+\delta^L_j \\
+\vdots
+\end{pmatrix} = 
+\begin{pmatrix}
+\frac{\partial C}{\partial a^L_1} \\
+\vdots \\
+\frac{\partial C}{\partial a^L_j} \\
+\vdots 
+\end{pmatrix} \circ \begin{pmatrix} \sigma&#39;(z^L_1) \\ 
+\vdots \\
+\sigma&#39;(z^L_j) \\
+\vdots
+\end{pmatrix}
+\]</span></p>
+<p>or alternatively, simply:</p>
+<p><span class="math display">\[
+\delta^L = \frac{\partial C}{\partial a^L} \cdot \sigma&#39;(z^L)
+\]</span></p>
+</div>
+<div id="from-layer-l-to-layer-l-1" class="section level2">
+<h2>From layer L to layer L-1</h2>
+<p>As soon as we have a <span class="math inline">\(\delta\)</span> for layer <span class="math inline">\(L\)</span>, or layer <span class="math inline">\(l\)</span> more generally, we want to find a delta for the previous layer. In the next subsection, it will become clear why. To fix ideas, suppose there are <span class="math inline">\(K\)</span> elements in layer <span class="math inline">\(l+1\)</span>, indexed by <span class="math inline">\(k\)</span> and there are <span class="math inline">\(J\)</span> elements in layer <span class="math inline">\(l\)</span>, indexed by <span class="math inline">\(j\)</span>. Then, we start off with the definition of <span class="math inline">\(\delta^l\)</span> in component form, which we recognize to be composed of all weights that proceed from that specific node, to one of the nodes <span class="math inline">\(1\)</span> to <span class="math inline">\(K\)</span> in layer <span class="math inline">\(l+1\)</span>:</p>
+<p><span class="math display">\[
+\delta^l_j = \frac{\partial C}{\partial z^l_j} = \sum_k \frac{\partial C}{\partial z^{l+1)}_k} \cdot \frac{\partial z^{l+1}_k}{z^l_j}
+\]</span></p>
+<p>The first term is by definition equal to <span class="math inline">\(\delta^{l+1}_k\)</span>. The second term can be obtained by recognizing that:</p>
+<p><span class="math display">\[
+z^{l+1}_k = \sum_j w^{l+1}_{kj} a^l_j = \sum_j w^{l+1}_{kj} \sigma(z^l_j)
+\]</span></p>
+<p>Differentiating this expression with respect to <span class="math inline">\(z_j\)</span> gives (because there is only 1 specific <span class="math inline">\(z^l_j\)</span>):</p>
+<p><span class="math display">\[
+\frac{\partial z^{l+1}_k}{\partial z^l_j} = w^{l+1}_{kj} \sigma&#39;(z^l_j)
+\]</span></p>
+<p>Substituting this expression back in the expression for <span class="math inline">\(\delta^l_j\)</span> gives:</p>
+<p><span class="math display">\[
+\delta^l_j = \sum_k \delta^{l+1}_k \cdot w_{kj}^{l+1} \cdot \sigma&#39;(z^l_j)
+\]</span></p>
+<p>In matrix form, this expression becomes:</p>
+<p><span class="math display">\[
+\delta^l = W_{kj}^T \delta^{l+1} \circ \sigma&#39;(z^l) \mbox { or } \\
+\begin{bmatrix}
+\delta^l_1 \\
+\vdots \\
+\delta^l_J
+\end{bmatrix} = 
+\begin{bmatrix}
+w_{11} &amp; w_{21} &amp; \dots &amp; w_{k1} \\
+w_{12} &amp; \dots &amp; \dots &amp; w_{k2} \\
+\vdots &amp; \ddots &amp; \ddots &amp; \vdots \\
+w_{1j} &amp; \dots &amp; \dots &amp; w_{kj}
+\end{bmatrix} 
+\begin{bmatrix}
+\delta^{l+1}_1 \\
+\vdots \\
+\delta^{l+1_K}
+\end{bmatrix} \circ 
+\begin{pmatrix}
+\sigma&#39;(z^l_1) \\
+\vdots \\
+\sigma&#39;(z^l_j) 
+\end{pmatrix}
+\]</span>
+with the dimensions <span class="math inline">\(j\)</span> x <span class="math inline">\(1\)</span> (layer <span class="math inline">\(l\)</span>) = <span class="math inline">\(j\)</span> x <span class="math inline">\(k\)</span> (transpose of the weight matrix) times <span class="math inline">\(k\)</span> x <span class="math inline">\(1\)</span> (layer <span class="math inline">\(l+1\)</span>) times <span class="math inline">\(j\)</span> x 1 (layer <span class="math inline">\(l\)</span>.</p>
+</div>
+<div id="relating-deltas-to-derivatives" class="section level2">
+<h2>Relating Delta’s to Derivatives</h2>
+<p>Now that we have an expression for all <span class="math inline">\(\delta^l\)</span>’s, we have to relate the weight derivatives <span class="math inline">\(\frac{\partial C}{\partial w_{jk}}\)</span> to the <span class="math inline">\(\delta\)</span>’s. To see this, we realize that a particular weight to layer <span class="math inline">\(l\)</span> only influences one particular node <span class="math inline">\(z_j^l\)</span> in layer <span class="math inline">\(l\)</span>. Hence, we can write the partial derivative that we are looking for as:</p>
+<p><span class="math display">\[
+\frac{\partial C}{\partial w^l_{jk}} = \frac{\partial C}{\partial z^l_j} \cdot \frac{\partial z^l_j}{\partial w^l_{jk}}
+\]</span>
+Then, by definition, <span class="math inline">\(\frac{\partial C}{\partial z^l_j} = \delta^l_j\)</span>. For the second partial derivative, we realize that, for a layer <span class="math inline">\(l\)</span> with <span class="math inline">\(J\)</span> nodes and a layer <span class="math inline">\(l-1\)</span> with <span class="math inline">\(K\)</span> nodes:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+z^l_1 \\
+\vdots \\
+z^l_J \end{pmatrix} = 
+\begin{pmatrix}
+w_{11} &amp; \dots &amp; w_{1K} \\
+\vdots &amp; \ddots &amp; \vdots \\
+w_{J1} &amp; \dots &amp; w_{JK}
+\end{pmatrix} 
+\begin{pmatrix}
+a^{l-1}_1 \\
+\vdots \\
+a^{l-1}_K
+\end{pmatrix}
+\]</span>
+And thus, the derivative of <span class="math inline">\(z^l_j\)</span> with respect to <span class="math inline">\(w_{jk}\)</span> is just <span class="math inline">\(a^{l-1}_k\)</span>. Substituting that in the expression for <span class="math inline">\(\frac{\partial C}{\partial w_{jk}}\)</span> gives:</p>
+<p><span class="math display">\[
+\frac{\partial C}{\partial w_{jk}} = \delta_j \cdot a^{l-1}_k
+\]</span></p>
+<p>Finally, in matrix form, this amounts to:</p>
+<p><span class="math display">\[
+\begin{pmatrix} \frac{\partial C}{\partial w_{jk}} \end{pmatrix} = 
+\begin{pmatrix}
+\delta^l_1 \\
+\vdots \\
+\delta^l_j 
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a^{l-1}_1 \\
+\vdots \\
+a^{l-1}_K
+\end{pmatrix}^T
+\]</span></p>
+<p>Which gives back a <span class="math inline">\(J\)</span> by <span class="math inline">\(K\)</span> matrix, which after multiplying exactly corresponds to the component form sketched out above. This is also what you would use in an implementation of backpropagation in code.</p>
+</div>

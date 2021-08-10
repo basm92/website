@@ -14,7 +14,16 @@
       
       <guid>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</guid>
       <description>Introduction In this blog post, I wanted to write down an easy implementation of neural networks in Python. The model architecture of neural networks contains three pillars:
-- the actual model (Multi-layer perceptron network), with inputs, layers, and outputs, and weights connecting these. - Forward propagation - the loop from inputs to subsequent layers and finally, the output, using given weights. - Backward propagation - updating the weights with gradient descent to minimize the loss.</description>
+ The actual model (Multi-layer perceptron network), with inputs, layers, and outputs, and weights connecting these. Forward propagation - the loop from inputs to subsequent layers and finally, the output, using given weights. Backward propagation - updating the weights with gradient descent to minimize the loss.</description>
+    </item>
+    
+    <item>
+      <title>The Mathematics underlying Deep Learning</title>
+      <link>https://bas-m.netlify.app/2021/05/29/the-mathematics-underlying-deep-learning/</link>
+      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2021/05/29/the-mathematics-underlying-deep-learning/</guid>
+      <description>Introduction In this post, I want to provide a quick primer about the mathematics underlying the backpropagation algorithm in neural networks and deep learning algorithms. I use the notation provided in this book, chapter 2, and prove/explain in-depth where some of the equations come from. I hope this provides an intuitive and clear explanation about the logic underlying backpropagation, and it should make it easy to implement this using code.</description>
     </item>
     
     <item>
