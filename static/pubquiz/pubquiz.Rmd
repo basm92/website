@@ -1,0 +1,78 @@
+---
+title: "Pubquiz: Holidays Edition"
+author: "PhD Council Humanities" 
+date: "7 Oct 2021"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#43418A",
+  header_font_google = google_font("Lato"),
+  text_font_google   = google_font("Nunito"),
+  base_font_size = "20px",
+  text_font_size = "25px"
+)
+```
+
+class: inverse, middle, center
+
+background-image: url(https://i1.wp.com/romagazine.nl/14nwsite/wp-content/uploads/2020/10/UU-logo.png?resize=1024%2C272)
+background-size: 25%
+
+# Pubquiz
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## PhD Council Humanities
+
+### 7 October 2021
+
+---
+
+class: inverse
+
+# The Rules
+
+  - Teams have a maximum of 4 members
+
+  - No shouting out the correct answers
+ 
+  - Five rounds with 10 questions each, one answer form per round
+  
+  - Each round features a different theme
+  
+  - If there are multiple "good" (or commonly accepted) answers to a question, we will accept them! :) 
+  
+  - Please write legibly! :) 
+
+---
+
+
+class: inverse, center, middle
+
+# Round 1: Quotes
+
+---
+
+## Who is the author of the following quote?
+
+---
+
