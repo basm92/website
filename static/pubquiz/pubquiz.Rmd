@@ -176,34 +176,33 @@ class: inverse, center, middle
 
 ## Which city is this?
 
-<img src="http://bas-m.netlify.app/pubquiz/pics/rio.jpg">
+<img src="https://bas-m.netlify.app/pubquiz/pics/rio.jpg">
 
 ---
 
 
 ## Which city is this?
 
-<img src="http://bas-m.netlify.app/pubquiz/pics/casablanca.jpg">
+<img src="https://bas-m.netlify.app/pubquiz/pics/casablanca.jpg">
 
 ---
 
 ## Which city is this?
 
-<img src="http://bas-m.netlify.app/pubquiz/pics/tokyo.png">
+<img src="https://bas-m.netlify.app/pubquiz/pics/tokyo.jpg">
 
 ---
 
 ## Which city is this?
 
-<img src="http://bas-m.netlify.app/pubquiz/pics/rotterdam.png">
+<img src="https://bas-m.netlify.app/pubquiz/pics/rotterdam.png">
 
 
 ---
 
 ## Which city is this?
 
-<img src="http://bas-m.netlify.app/pubquiz/pics/teheran.png"
->
+<img src="https://bas-m.netlify.app/pubquiz/pics/teheran.png">
 ---
 
 class: inverse, center, middle
@@ -213,4 +212,110 @@ class: inverse, center, middle
 ---
 
 
+## 1. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/jenniferlopez.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 2. Name the movie
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/godfather.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 3. Name the movie
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/harrypotter.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 4. Name the series
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/friendstheme.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 5. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/edsheeran_badhabits.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 6. Name the composer and piece
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/bach_toccata_and_fugue.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 7. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/beyonce.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 8. Name the video game
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/super_mario_theme.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 9. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/tuto_cutugno_lasciate-mi-cantare.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+
+## 10. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/theweathergirls_itsrainingmen.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+
+
+---
+
+class: center, middle, inverse
+
+## The End
+
+---
 
