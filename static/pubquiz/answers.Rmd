@@ -47,8 +47,6 @@ background-size: 25%
 
 ---
 
----
-
 class: inverse, center, middle
 
 # Answers to Round 1
@@ -126,12 +124,18 @@ Answers to Round 2
 
 ---
 
+---
+
+
+---
+
+---
+
+---
 
 class: inverse, center, middle
 
 Answers to Round 3
-
----
 
 ---
 
@@ -185,6 +189,181 @@ Answers to Round 3
 </audio> 
 
 - Swedish
+---
+
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/rio.jpg">
+
+- Rio de Janeiro
+
+---
+
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/casablanca.jpg">
+
+- Casablanca
+
+---
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/tokyo.jpg" width="70%" height="70%">
+
+- Tokyo
+
+---
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/rotterdam.png">
+
+- Rotterdam
+
+
+---
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/teheran.png" width="70%" height="70%">
+
+- Teheran
+
+---
+
+class: middle, center, inverse
+
+## Answers to Round 4
+
+---
+
+
+
+## 1. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/jenniferlopez.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Jennifer Lopez - Jenny from the Block
+
+---
+
+
+## 2. Name the movie
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/godfather.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- The Godfather
+
+---
+
+
+## 3. Name the movie
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/harrypotter.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Harry Potter
+
+---
+
+
+## 4. Name the series
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/friendstheme.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Friends
+
+---
+
+
+## 5. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/edsheeran_badhabits.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Ed Sheeran - Bad Habits
+
+---
+
+
+## 6. Name the composer and piece
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/bach_toccata_and_fugue.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- J.S. Bach - Toccata & Fugue in D Minor
+
+---
+
+
+## 7. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/beyonce.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Beyonce - Brown Skin Girl
+
+---
+
+
+## 8. Name the video game
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/super_mario_theme.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Super Mario
+
+---
+
+
+## 9. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/tuto_cutugno_lasciate-mi-cantare.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Tuto Cutugno - Lasciate Mi Cantare
+
+---
+
+
+## 10. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/theweathergirls_itsrainingmen.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- The Weather Girls - It's Raining Men
+
+---
+
+class: inverse, middle, center 
+
+## The End
 
 ---
 
