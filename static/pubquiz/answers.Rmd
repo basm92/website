@@ -123,13 +123,82 @@ class: inverse, center, middle
 Answers to Round 2
 
 ---
+## 1. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_ladolcevita.png" height="80%" width="80%">
+
+- La Dolce Vita
+---
+
+## 2. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_castaway.jpg" height="50%" width="50%">
+
+- Cast Away
 
 ---
 
+## 3. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_titanic.jpg" height="80%" width="80%">
+
+- The Titanic
 
 ---
 
+## 4. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_eyeswideshut.jpg" height="80%" width="80%">
+
+- Eyes Wide Shut
+
 ---
+
+## 5. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_pulpfiction.jpg" height="80%" width="80%">
+
+- Pulp Fiction
+
+---
+
+## 6. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_fightclub.jpeg" height="80%" width="80%">
+
+- Fight Club
+
+---
+
+## 7. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_theshining.png" height="80%" width="80%">
+
+- The Shining
+
+---
+
+## 8.  Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_thetrumanshow.jpg" height="80%" width="80%">
+
+- The Truman Show
+
+---
+
+## 9. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_scarface.jpg" height="80%" width="80%">
+
+- Scarface
+
+---
+
+## 10. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_backtothefuture.jpeg" height="50%" width="50%">
+
+- Back to the Future
 
 ---
 

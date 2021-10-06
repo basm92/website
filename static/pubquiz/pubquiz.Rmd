@@ -120,7 +120,7 @@ class: inverse, center, middle
 
 class: inverse, center, middle
 
-# Round 2: Movies? 
+# Round 2: Movies
 
 ---
 ## 1. Which movie is this from?
@@ -153,7 +153,7 @@ class: inverse, center, middle
 
 ## 6. Which movie is this from?
 
-<img src="https://bas-m.netlify.app/pubquiz/pics/movie_fightclub.jpg">
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_fightclub.jpeg">
 
 ---
 
