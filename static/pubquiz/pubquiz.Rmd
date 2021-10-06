@@ -129,8 +129,83 @@ class: inverse, center, middle
 
 # Round 3: Guess the country and the language
 
+---
+
+## Which language is this?
+
+ <audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/vietnamese.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
 
 ---
+
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/czech.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/arabic.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/afrikaans.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/swedish.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+---
+
+## Which city is this?
+
+<img src="http://bas-m.netlify.app/pubquiz/pics/rio.jpg">
+
+---
+
+
+## Which city is this?
+
+<img src="http://bas-m.netlify.app/pubquiz/pics/casablanca.jpg">
+
+---
+
+## Which city is this?
+
+<img src="http://bas-m.netlify.app/pubquiz/pics/tokyo.png">
+
+---
+
+## Which city is this?
+
+<img src="http://bas-m.netlify.app/pubquiz/pics/rotterdam.png">
+
+
+---
+
+## Which city is this?
+
+<img src="http://bas-m.netlify.app/pubquiz/pics/teheran.png"
+>
+---
+
 class: inverse, center, middle
 
 # Round 4:  Music

@@ -51,7 +51,7 @@ background-size: 25%
 
 class: inverse, center, middle
 
-# Round 1: Trivia
+# Answers to Round 1
 
 ---
 
@@ -119,3 +119,72 @@ class: inverse, center, middle
 
 - Answer: Neptune
 ---
+
+class: inverse, center, middle
+
+Answers to Round 2
+
+---
+
+
+class: inverse, center, middle
+
+Answers to Round 3
+
+---
+
+---
+
+## Which language is this?
+
+ <audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/vietnamese.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Vietnamese
+
+---
+
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/czech.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Czech
+
+---
+
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/arabic.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Arabic
+
+---
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/afrikaans.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Afrikaans
+
+---
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/swedish.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Swedish
+
+---
+
