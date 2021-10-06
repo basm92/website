@@ -1,5 +1,5 @@
 ---
-title: "Pubquiz: Holidays Edition"
+title: "Pubquiz"
 author: "PhD Council Humanities" 
 date: "7 Oct 2021"
 output:
