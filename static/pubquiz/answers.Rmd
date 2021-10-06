@@ -1,0 +1,121 @@
+---
+title: "Answers to the Pubquiz"
+author: "PhD Council Humanities" 
+date: "7 Oct 2021"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#43418A",
+  header_font_google = google_font("Lato"),
+  text_font_google   = google_font("Nunito"),
+  base_font_size = "20px",
+  text_font_size = "25px"
+)
+```
+
+class: inverse, middle, center
+
+background-image: url(https://i1.wp.com/romagazine.nl/14nwsite/wp-content/uploads/2020/10/UU-logo.png?resize=1024%2C272)
+background-size: 25%
+
+# Pubquiz
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## PhD Council Humanities
+
+### 7 October 2021
+
+---
+
+---
+
+class: inverse, center, middle
+
+# Round 1: Trivia
+
+---
+
+## 1. Who wrote the first human rights charter?
+
+- Cyrus the Great
+
+---
+
+## 2. Who discovered the Higgs boson?
+
+- Peter Higgs
+
+---
+
+## 3. How many stripes and how many stars are there on the US flag? 
+
+- 50 stars, 13 stripes
+
+---
+
+## 4. How many stars are the on the Australian flag?
+
+- 6
+
+---
+
+## 5. Who won the Oscar Best Picture in 2020? (Last Year)
+
+- Nomadland
+
+---
+
+## 6. Which country had the most Coronavirus infections as of today?
+
+- United States
+
+---
+
+## 7. Who is the author of the following quote?
+
+> The world isn't binary. Everything isn't black or white, yes or no. 
+
+- Jeff Garvin
+
+---
+
+## 8. From which movie is the following quote?
+
+> Frankly, my dear, I don't give a damn
+
+- Gone with the wind
+
+---
+
+## 9. Who invented the first succesful aeroplane?
+
+- Brothers Wright
+
+---
+
+## 10. Which planet is the farthest from the sun? 
+
+- Pluto is not a planet
+
+- Answer: Neptune
+---

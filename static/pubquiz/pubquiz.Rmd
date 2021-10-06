@@ -65,14 +65,77 @@ class: inverse
 
 ---
 
+class: inverse, center, middle
+
+# Round 1: Trivia
+
+---
+
+## 1. Who wrote the first human rights charter?
+
+---
+
+## 2. Who discovered the Higgs boson?
+
+---
+
+## 3. How many stripes and how many stars are there on the US flag? 
+
+---
+
+## 4. How many stars are the on the Australian flag?
+
+---
+
+## 5. Who won the Oscar Best Picture in 2020? (Last Year)
+
+---
+
+## 6. Which country had the most Coronavirus infections as of today?
+
+---
+
+## 7. Who is the author of the following quote?
+
+> The world isn't binary. Everything isn't black or white, yes or no. 
+
+---
+
+## 8. From which movie is the following quote?
+
+> Frankly, my dear, I don't give a damn
+
+
+---
+
+## 9. Who invented the first succesful aeroplane?
+
+---
+
+## 10. Which planet is the farthest from the sun? 
+
+- Pluto is not a planet
+
+---
 
 class: inverse, center, middle
 
-# Round 1: Quotes
+# Round 2: Movies? 
 
 ---
 
-## Who is the author of the following quote?
+
+class: inverse, center, middle
+
+# Round 3: Guess the country and the language
+
 
 ---
+class: inverse, center, middle
+
+# Round 4:  Music
+
+---
+
+
 
