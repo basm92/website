@@ -1,0 +1,438 @@
+---
+title: "Answers to the Pubquiz"
+author: "PhD Council Humanities" 
+date: "7 Oct 2021"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#43418A",
+  header_font_google = google_font("Lato"),
+  text_font_google   = google_font("Nunito"),
+  base_font_size = "20px",
+  text_font_size = "25px"
+)
+```
+
+class: inverse, middle, center
+
+background-image: url(https://i1.wp.com/romagazine.nl/14nwsite/wp-content/uploads/2020/10/UU-logo.png?resize=1024%2C272)
+background-size: 25%
+
+# Pubquiz
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+## PhD Council Humanities
+
+### 7 October 2021
+
+---
+
+class: inverse, center, middle
+
+# Answers to Round 1
+
+---
+
+## 1. Who wrote the first human rights charter?
+
+- Cyrus the Great
+
+---
+
+## 2. Who discovered the Higgs boson?
+
+- Peter Higgs
+
+---
+
+## 3. How many stripes and how many stars are there on the US flag? 
+
+- 50 stars, 13 stripes
+
+---
+
+## 4. How many stars are the on the Australian flag?
+
+- 6
+
+---
+
+## 5. Who won the Oscar Best Picture in 2020? (Last Year)
+
+- Nomadland
+
+---
+
+## 6. Which country had the most Coronavirus infections as of today?
+
+- United States
+
+---
+
+## 7. Who is the author of the following quote?
+
+> The world isn't binary. Everything isn't black or white, yes or no. 
+
+- Jeff Garvin
+
+---
+
+## 8. From which movie is the following quote?
+
+> Frankly, my dear, I don't give a damn
+
+- Gone with the wind
+
+---
+
+## 9. Who invented the first succesful aeroplane?
+
+- Brothers Wright
+
+---
+
+## 10. Which planet is the farthest from the sun? 
+
+- Pluto is not a planet
+
+- Answer: Neptune
+---
+
+class: inverse, center, middle
+
+Answers to Round 2
+
+---
+## 1. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_ladolcevita.png" height="80%" width="80%">
+
+- La Dolce Vita
+---
+
+## 2. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_castaway.jpg" height="50%" width="50%">
+
+- Cast Away
+
+---
+
+## 3. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_titanic.jpg" height="80%" width="80%">
+
+- The Titanic
+
+---
+
+## 4. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_eyeswideshut.jpg" height="80%" width="80%">
+
+- Eyes Wide Shut
+
+---
+
+## 5. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_pulpfiction.jpg" height="80%" width="80%">
+
+- Pulp Fiction
+
+---
+
+## 6. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_fightclub.jpeg" height="80%" width="80%">
+
+- Fight Club
+
+---
+
+## 7. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_theshining.png" height="80%" width="80%">
+
+- The Shining
+
+---
+
+## 8.  Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_thetrumanshow.jpg" height="80%" width="80%">
+
+- The Truman Show
+
+---
+
+## 9. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_scarface.jpg" height="80%" width="80%">
+
+- Scarface
+
+---
+
+## 10. Which movie is this from?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/movie_backtothefuture.jpeg" height="50%" width="50%">
+
+- Back to the Future
+
+---
+
+class: inverse, center, middle
+
+Answers to Round 3
+
+---
+
+## Which language is this?
+
+ <audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/vietnamese.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Vietnamese
+
+---
+
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/czech.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Czech
+
+---
+
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/arabic.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Arabic
+
+---
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/afrikaans.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Afrikaans
+
+---
+## Which language is this?
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/swedish.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Swedish
+---
+
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/rio.jpg">
+
+- Rio de Janeiro
+
+---
+
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/casablanca.jpg">
+
+- Casablanca
+
+---
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/tokyo.jpg" width="70%" height="70%">
+
+- Tokyo
+
+---
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/rotterdam.png">
+
+- Rotterdam
+
+
+---
+
+## Which city is this?
+
+<img src="https://bas-m.netlify.app/pubquiz/pics/teheran.png" width="70%" height="70%">
+
+- Teheran
+
+---
+
+class: middle, center, inverse
+
+## Answers to Round 4
+
+---
+
+
+
+## 1. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/jenniferlopez.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Jennifer Lopez - Jenny from the Block
+
+---
+
+
+## 2. Name the movie
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/godfather.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- The Godfather
+
+---
+
+
+## 3. Name the movie
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/harrypotter.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Harry Potter
+
+---
+
+
+## 4. Name the series
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/friendstheme.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Friends
+
+---
+
+
+## 5. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/edsheeran_badhabits.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Ed Sheeran - Bad Habits
+
+---
+
+
+## 6. Name the composer and piece
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/bach_toccata_and_fugue.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- J.S. Bach - Toccata & Fugue in D Minor
+
+---
+
+
+## 7. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/beyonce.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Beyonce - Brown Skin Girl
+
+---
+
+
+## 8. Name the video game
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/super_mario_theme.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Super Mario
+
+---
+
+
+## 9. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/tuto_cutugno_lasciate-mi-cantare.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- Tuto Cutugno - Lasciate Mi Cantare
+
+---
+
+
+## 10. Name the title and artist 
+
+<audio controls>
+  <source src="http://bas-m.netlify.app/pubquiz/audio/theweathergirls_itsrainingmen.mp3" type="audio/mp3">
+  Your browser does not support the audio tag.
+</audio> 
+
+- The Weather Girls - It's Raining Men
+
+---
+
+class: inverse, middle, center 
+
+## The End
+
+---
+

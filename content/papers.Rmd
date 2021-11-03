@@ -13,7 +13,7 @@ Below you can find repositories and other information about my papers:
 
 ### Political Rents under a Changing Electoral Regime (Job Market Paper)
 
-- Find the paper [here](/papers/polrents.pdf)
+- Paper not yet available
 
 **Abstract:** Numerous studies have shown evidence indicating that politicians profit financially from holding office by extracting rents. The mechanisms by which politicians extract these rents, however, remain unclear. In this paper, I focus on one possible determinant of political rents: electoral openness and competition. Exploiting a multitude of district-level elections in the 19th century Netherlands, and using a sample of close elections, I use a regression discontinuity design to investigate the influence of being politically active on personal wealth at the end of politicians' lives relative to runners-up. I relate the results to various electoral reforms that were enacted over the course of the late 19th and early 20th centuries, which culminated in universal suffrage. 
 
