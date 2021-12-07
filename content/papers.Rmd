@@ -7,20 +7,20 @@ Below you can find repositories and other information about my papers:
 
 ### Personal Wealth and Politicians' Voting Behavior
 
-- Find the paper [here](/papers/polelite_votingbehavior.pdf)
+- [Paper](/papers/polelite_votingbehavior.pdf), [Presentation](/papers/pres_polelite_votingbehavior.pdf)
 
 **Abstract:** In the context of inclusive economic development, politicians play a potentially facilitating or obstructing role. In this study, I analyze the effect of Dutch politicians' personal interests on the acceptance of a number of important reforms in an era of democratization and rapid economic growth (1870-1920). More precisely, I analyze whether Dutch politicians prioritized their self-interest in a number of roll-call votes establishing fiscal legislation potentially impacting their personal wealth. Using newly-collected archival data and instrumental variable estimation for politicians' personal wealth, I find convincing evidence that wealthier politicians are less likely to vote in favor of legislation that is likely to decrease their own personal wealth, controlling for a wide array of electoral characteristics. The results also show that these effects are absent in important laws that do not have a direct impact on politicians' wealth, such as votes on suffrage extension and other government intervention. The results are robust to many different assumptions and estimation procedures. 
 
 ### Political Rents under a Changing Electoral Regime (Job Market Paper)
 
-- Paper not yet available
+- [Paper Not Yet Available](/), [Presentation](/papers/pres_polrents.pdf)
 
 **Abstract:** Numerous studies have shown evidence indicating that politicians profit financially from holding office by extracting rents. The mechanisms by which politicians extract these rents, however, remain unclear. In this paper, I focus on one possible determinant of political rents: electoral openness and competition. Exploiting a multitude of district-level elections in the 19th century Netherlands, and using a sample of close elections, I use a regression discontinuity design to investigate the influence of being politically active on personal wealth at the end of politicians' lives relative to runners-up. I relate the results to various electoral reforms that were enacted over the course of the late 19th and early 20th centuries, which culminated in universal suffrage. 
 
 
 ### The Wealth of the Dutch Political Elite
 
-- Find the paper [here](/papers/wealth.pdf)
+- [Paper](/papers/wealth.pdf), [Presentation Not Yet Available](/)
 
 **Abstract:** Using newly-collected archival data, this study investigates the wealth and investment portfolio’s of Dutch politicians from 1870 to 1922. In a period when the political and economic situation underwent many changes, this study finds that the political arena remains rather static: politicians are wealthy in comparison to the average citizen. Secondly, upper house members are by far the wealthiest politicians followed by executives. Lower house politicians are the poorest on average, consistent with the lower house being accessible by the entire male population of the country. Finally, there is no strong trend towards a more equal representation of the Dutch population in the nineteenth century, but towards the 1920’s, a substantial number of poorer politicians was elected and politicians of all kinds were significantly less wealthy than their predecessors. To the authors’ knowledge, this is the first study detailing the trajectory of personal wealth of politicians in the Netherlands in the late 19th and early 20th centuries.
 
@@ -31,3 +31,6 @@ In this paper, we exploit random variation in allocation of conscription to iden
 ### Political Connections in Colonial Indonesia (WIP)
 
 After the abolition of the coercive _Cultuurstelsel_, Dutch and other firms were freely allowed to start commercial operations in Indonesia. In this paper, I investigate the long-term effect of the presence of Dutch firms in colonial Indonesia.
+
+### Strikes and Universal Suffrage (WIP)
+
