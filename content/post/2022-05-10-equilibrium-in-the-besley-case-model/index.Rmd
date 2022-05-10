@@ -343,7 +343,7 @@ def T(v, rm, retention_r):
     v_new = np.empty_like(v)
     p_new = [None]*len(v_new)
 
-    for i, x in tqdm(enumerate(rm.x_grid)):
+    for i, x in enumerate(rm.x_grid):
         # Maximize RHS of Bellman equation at state x
         #replace by my custom maximize function
         sol = maximize_sav(rm.state_action_value, args=(x, v, retention_r))
@@ -398,13 +398,13 @@ def compute_value_function(rm,
 
 ## Solution
 
-The procedure convergence and the model is saved under `out`:
+The procedure convergences and the model is saved under `out`:
 
 ```{python}
 out = compute_value_function(model)
 ```
 
-and the optimal rentention $r$ for this specific case is:
+and the optimal retention $r$ for this specific case is:
 
 ```{python}
 out[2]
