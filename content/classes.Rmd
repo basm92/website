@@ -5,17 +5,25 @@ date: ''
 
 Here is an overview of classes which I have organized or participated in:
 
-- [Introduction to R and Data Science](https://github.com/Introduction-to-R)
+- [Thesis Comments 2022](http://2022-thesis-feedback-bm.netlify.app)
 
-An extensive course aiming to familiarize students with the R programming language, RStudio, and functional programming.
+A website serving as a repository for all my feedback to Msc and Bsc Finance & Investments students in the 2021-2022 academic year.
 
 - [Bachelor Thesis: Political Connections](https://github.com/Bachelor-Thesis-Political-Connections)
 
 This serves as a repository for the Political Connections in Firms theme for the course Bachelor Thesis at RSM, Erasmus University. Various subthemes, templates, guidse and examples are available. 
 
-- [Big Data, Big Questions](https://github.com/Big-Data-Big-Questions)
+- [Thesis Comments 2021](https://thesis-comments-bas-machielsen.netlify.app/blog/)
+
+Archival source where I share all my feedback given to students in the academic year 2020-2021. 
+
+- [Big Data, Big Questions](https://github.com/basm92/Big-Data-Big-Questions)
 
 This is a repository for the course _Big Data, Big Questions_ at Utrecht University, in which I was a teacher for two years. The repository includes data files, as well as slides for a tutorial on how to use Microsoft Excel. 
+
+- [Introduction to R and Data Science](https://github.com/Introduction-to-R)
+
+An extensive course aiming to familiarize students with the R programming language, RStudio, and functional programming.
 
 - [Corporate Finance](https://github.com/Corporate-Finance-with-R)
 
