@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Equilibrium in the Besley-Case Model</title>
+      <link>https://bas-m.netlify.app/2022/05/10/equilibrium-in-the-besley-case-model/</link>
+      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://bas-m.netlify.app/2022/05/10/equilibrium-in-the-besley-case-model/</guid>
+      <description>Hoi  Introduction Besley and Case (1995) have a paper about the influence of term limits for politicians on policy behavior. They use a dynamic game. Politicians can serve either 1, or 2, periods, depending on whether they are retained. In these periods, politicians choose to put in effort. Putting in more or less effort is costly to different extents, according to their type. The chosen effort probabilistically affects a policy outcome.</description>
+    </item>
+    
     <item>
       <title>From-scratch Implementation of Neural Networks in Python</title>
       <link>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</link>

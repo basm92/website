@@ -4,20 +4,27 @@
   
   <url>
     <loc>https://bas-m.netlify.app/</loc>
-    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</loc>
-    <lastmod>2021-06-01T00:00:00+00:00</lastmod>
+    <loc>https://bas-m.netlify.app/2022/05/10/equilibrium-in-the-besley-case-model/</loc>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://bas-m.netlify.app/post/</loc>
+    <lastmod>2022-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</loc>
     <lastmod>2021-06-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
