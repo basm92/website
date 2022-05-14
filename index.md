@@ -7,9 +7,7 @@ categories: []
 tags: []
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Introduction
 
@@ -80,7 +78,8 @@ Now that we have the Bellman, we can use value-function iteration to derive the 
 
 Below, I load the libraries, and I store a Python class called `RetentionModel`. 
 
-```{python}
+
+```python
 #%matplotlib inline
 import matplotlib.pyplot as plt
 plt.rcParams["figure.figsize"] = (11, 5)  #set default figure size
@@ -98,7 +97,8 @@ from tqdm import tqdm
 ```
 
 
-```{python}
+
+```python
 class RetentionModel:
   
     def __init__(self,delta=0.95,alpha=0.2,types=(3, 9),types_freq=(0.2, 0.8),up=6,low=2):
@@ -246,12 +246,12 @@ class RetentionModel:
             else:
                 raise ValueError("No action chosen")
         
-
 ```
 
 I also define a custom maximizer, to take into account that the voter maximizes over a dichotomous $\{$dismiss, retain$\}$ decision. The politician uses a normal (continuous) maximizer, which I also implement. Finally, I use a Monte Carlo approximation for most complicated integrals I calculate:
 
-```{python}
+
+```python
 def maximize(g, a, b, args):
     """
     Maximize the function g over the interval [a, b].
@@ -316,7 +316,6 @@ def monte_carlo_uniform(func,
     s = ((b-a)/n)*u_func.sum()
     
     return s
-
 ```
 
 
@@ -324,11 +323,13 @@ def monte_carlo_uniform(func,
 
 Then, I instantiate an instance of the model and apply value function iteration:
 
-```{python}
+
+```python
 model = RetentionModel(delta=0.99, alpha = 0.2)
 ```
 
-```{python}
+
+```python
 def T(v, rm, retention_r):
     """
     The Bellman operator.  Updates the guess of the value function.
@@ -350,10 +351,10 @@ def T(v, rm, retention_r):
     new_retention_r = rm.x_grid[p_new.index('k')][1]
 
     return p_new, v_new, new_retention_r
-
 ```
 
-```{python}
+
+```python
 def compute_value_function(rm,
                            tol=1e-3,
                            max_iter=200,
@@ -390,19 +391,37 @@ def compute_value_function(rm,
         print(f"\nConverged in {i} iterations.")
 
     return p_new, v_new, rr_new
-
 ```
 
 ## Solution
 
 The procedure converges and the model is saved under `out`:
 
-```{python}
+
+```python
 out = compute_value_function(model)
+```
+
+```
+## Error at iteration 1 is 4.09024743100576.
+## Error at iteration 2 is 1.608588398221574.
+## Error at iteration 3 is 0.17448573956574087.
+## Error at iteration 4 is 0.14479551187642237.
+## Error at iteration 5 is 0.06623950959972902.
+## Error at iteration 6 is 0.03690126342482625.
+## Error at iteration 7 is 0.03690126342482625.
+## Error at iteration 8 is 0.0003930360580230996.
+## 
+## Converged in 8 iterations.
 ```
 
 and the optimal retention $r$ for this specific case is:
 
-```{python}
+
+```python
 out[2]
+```
+
+```
+## 3.3
 ```
