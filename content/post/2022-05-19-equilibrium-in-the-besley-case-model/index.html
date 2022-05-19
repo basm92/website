@@ -1,7 +1,7 @@
 ---
-title: Equilibrium in the Besley-Case Model
+title: "Equilibrium in the Besley-Case Model"
 author: ''
-date: '2022-05-10'
+date: '2022-05-19'
 slug: equilibrium-in-the-besley-case-model
 categories: []
 tags: []
@@ -9,12 +9,9 @@ tags: []
 
 
 
-<div id="hoi" class="section level2">
-<h2>Hoi</h2>
-</div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Besley and Case (1995) have a paper about the influence of term limits for politicians on policy behavior. They use a dynamic game. Politicians can serve either 1, or 2, periods, depending on whether they are retained. In these periods, politicians choose to put in effort. Putting in more or less effort is costly to different extents, according to their type. The chosen effort probabilistically affects a policy outcome. An infinitely-lived voter makes decisions to retain or dismiss the politician after observing the outcome. Their solution, based on Banks and Sundaram (1998) involves a <em>cut-off equilibrium</em>, with voters reelecting an incumbent policy if the probabilistically-influenced policy variable realization is higher than some threshold <span class="math inline">\(r_min\)</span>.</p>
+<p>Besley and Case (1995) aahave a paper about the influence of term limits for politicians on policy behavior. They use a dynamic game. Politicians can serve either 1, or 2, periods, depending on whether they are retained. In these periods, politicians choose to put in effort. Putting in more or less effort is costly to different extents, according to their type. The chosen effort probabilistically affects a policy outcome. An infinitely-lived voter makes decisions to retain or dismiss the politician after observing the outcome. Their solution, based on Banks and Sundaram (1998) involves a <em>cut-off equilibrium</em>, with voters reelecting an incumbent policy if the probabilistically-influenced policy variable realization is higher than some threshold <span class="math inline">\(r_{min}\)</span>.</p>
 <p>One of their predictions is that the equilibrium amount of effort put in by the politicians who are in their first period is higher than in their last period, irrespective of the politician’s type. Also, politicians who are in their second period are more likely to be high-type politicians, so that cross-sectionally, it seems that politicians in the second period have put in more effort than politicians in the first period, even though, if one looks at a “panel” of politicians over two periods, the first period effort is higher than the second period. The interpretation is that the policy outcome is better when there is politicians who do not face a term limit, irrespective of the type (ability) of the politicians. As they put it:</p>
 <blockquote>
 <p>If two terms are allowed, then incumbents who give higher first-term payoffs to voters are more likely to be retained to serve a second term. Those in their last term put in less effort and give lower payoffs to voters, on average, compared with their first term in office.</p>
@@ -228,7 +225,7 @@ from tqdm import tqdm</code></pre>
             else:
                 raise ValueError(&quot;No action chosen&quot;)
         </code></pre>
-<p>I also define a custom maximizer, to take into account that the voter maximizes over a dichotomous <span class="math inline">\(\{\)</span> dismiss, retain<span class="math inline">\(\}\)</span> decision. The politician uses a normal (continous) maximizer, which I also implement. Finally, I use a Monte Carlo approximation for most complicated integrals I calculate:</p>
+<p>I also define a custom maximizer, to take into account that the voter maximizes over a dichotomous <span class="math inline">\(\{\)</span>dismiss, retain<span class="math inline">\(\}\)</span> decision. The politician uses a normal (continuous) maximizer, which I also implement. Finally, I use a Monte Carlo approximation for most complicated integrals I calculate:</p>
 <pre class="python"><code>def maximize(g, a, b, args):
     &quot;&quot;&quot;
     Maximize the function g over the interval [a, b].
@@ -296,7 +293,7 @@ def monte_carlo_uniform(func,
 </div>
 <div id="value-function-iteration" class="section level2">
 <h2>Value Function Iteration</h2>
-<p>Then, I instatiate an instance of the model and apply value function iteration:</p>
+<p>Then, I instantiate an instance of the model and apply value function iteration:</p>
 <pre class="python"><code>model = RetentionModel(delta=0.99, alpha = 0.2)</code></pre>
 <pre class="python"><code>def T(v, rm, retention_r):
     &quot;&quot;&quot;
@@ -358,7 +355,7 @@ def monte_carlo_uniform(func,
 </div>
 <div id="solution" class="section level2">
 <h2>Solution</h2>
-<p>The procedure convergences and the model is saved under <code>out</code>:</p>
+<p>The procedure converges and the model is saved under <code>out</code>:</p>
 <pre class="python"><code>out = compute_value_function(model)</code></pre>
 <pre><code>## Error at iteration 1 is 4.09024743100576.
 ## Error at iteration 2 is 1.608588398221574.
