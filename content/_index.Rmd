@@ -7,14 +7,13 @@ output:
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 # Introduction
 
 :::: {style="display: grid; grid-template-columns: 2fr 1fr; grid-column-gap: 30px;"}
 
 ::: {}
 
-I am a PhD Candidate in Economic History at Utrecht University, and I am on the job market. My PhD research attempts to combine archival research, econometric methods, historical insights and economic theory to investigate the influence of personal wealth on the voting behavior of the Dutch political elite in the late 19th and early 20th centuries. It also focuses on the personal financial returns to politics, and the drivers of democratization of the Netherlands. In addition, I work on the effects of workers mobilization on politicians and electorates in the Netherlands, and I am investigating the long-term effects of Dutch firms in Indonesia. I also work part-time  at Erasmus University (the Netherlands), where I supervise theses in Finance. 
+I am a PhD Candidate at Utrecht University specializing in Economic History . My PhD research attempts to combine archival research, econometric methods, historical insights and economic theory to investigate the influence of personal wealth on the voting behavior of the Dutch political elite in the late 19th and early 20th centuries. It also focuses on the personal financial returns to politics, and the drivers of democratization of the Netherlands. In addition, I work on the effects of workers' mobilization on politicians and electorates in the Netherlands, the dynamics of wealth and inequality in the Netherlands, and I investigate the long-term effects of Dutch firms in Indonesia. I also work part-time  at Erasmus University (the Netherlands), where I supervise theses in various areas of Finance.  
 
 :::
 
@@ -22,14 +21,14 @@ I am a PhD Candidate in Economic History at Utrecht University, and I am on the 
 
 ![](/bas.JPG){width=80%}
 
-__Contact:__
-
+__Contact:__        
 <a href="http://www.twitter.com/basss92" class="fa fa-twitter"></a> Twitter  
-<a href="#" class="fa fa-google"></a> Google Scholar  
+<a href="https://scholar.google.com/citations?user=bS8uo44AAAAJ&hl=en&oi=ao" class="fa fa-google"></a> Google Scholar  
 <a href="http://www.github.com/basm92" class="fa fa-github"></a>  Github  
-<a href="mailto:a.h.machielsen@uu.nl" class="fa fa-envelope"></a>  Mail  
-<a href="https://www.uu.nl/staff/AHMachielsen/Profile" class="fa fa-globe"></a>  University
+<a href="mailto:a.h.machielsen@uu.nl" class="fa fa-envelope"></a>  Mail [University]  
+<a href="mailto:basmachielsen@live.nl" class="fa fa-envelope"></a>  Mail [Personal]  
 
+<p style="font-size:10px">Sometimes e-mails to my work e-mail get stuck in my spam filter. Please contact me in one of the other ways above!</p>
 :::
 
 ::::
