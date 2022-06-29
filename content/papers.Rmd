@@ -36,6 +36,10 @@ Below you can find information about my papers:
 
 In this paper, we exploit random variation in allocation of conscription to identify the effects of military conscription on career opportunities, the access to financial networks, and consequently, personal wealth. 
 
+### The Influence of Suffrage Extensions on Political Selection
+
+Suffrage extensions, extending the right to vote to larger parts of the population, have been essential to democratization in many countries. In addition to electorates becoming more diverse, parliaments can also change: suffrage extensions also influence who stands as a candidate, which candidates win, and how political parties pick candidates to support. In this paper, I study the effects of suffrage extensions on political selection. 
+
 ### Political Connections in Colonial Indonesia (WIP)
 
 After the abolition of the coercive _Cultuurstelsel_, Dutch and other firms were freely allowed to start commercial operations in Indonesia. In this paper, I investigate the long-term effect of the presence of Dutch firms in colonial Indonesia.
