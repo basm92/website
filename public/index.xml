@@ -6,16 +6,7 @@
     <description>Recent content on Bas Machielsen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Equilibrium in the Besley-Case Model</title>
-      <link>https://bas-m.netlify.app/2022/05/19/equilibrium-in-the-besley-case-model/</link>
-      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://bas-m.netlify.app/2022/05/19/equilibrium-in-the-besley-case-model/</guid>
-      <description>Introduction Besley and Case (1995) aahave a paper about the influence of term limits for politicians on policy behavior. They use a dynamic game. Politicians can serve either 1, or 2, periods, depending on whether they are retained. In these periods, politicians choose to put in effort. Putting in more or less effort is costly to different extents, according to their type. The chosen effort probabilistically affects a policy outcome.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bas-m.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From-scratch Implementation of Neural Networks in Python</title>
       <link>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</link>
@@ -23,7 +14,7 @@
       
       <guid>https://bas-m.netlify.app/2021/06/01/from-scratch-implementation-of-neural-networks-in-python/</guid>
       <description>Introduction In this blog post, I wanted to write down an easy implementation of neural networks in Python. The model architecture of neural networks contains three pillars:
- The actual model (Multi-layer perceptron network), with inputs, layers, and outputs, and weights connecting these. Forward propagation - the loop from inputs to subsequent layers and finally, the output, using given weights. Backward propagation - updating the weights with gradient descent to minimize the loss.</description>
+The actual model (Multi-layer perceptron network), with inputs, layers, and outputs, and weights connecting these. Forward propagation - the loop from inputs to subsequent layers and finally, the output, using given weights. Backward propagation - updating the weights with gradient descent to minimize the loss.</description>
     </item>
     
     <item>
@@ -42,8 +33,8 @@
       
       <guid>https://bas-m.netlify.app/2021/03/05/a-few-game-theory-exercises-and-answers/</guid>
       <description>Introduction I want to work out a couple of exercises from Game Theory: an Introduction, by Tadelis. Since the exercises from later chapters are not available online, and since they represent some of the more creative and fun challenges, I just wanted to post a few exercises which I worked out, as well as some (unasked) variations.
- Exercise 12.2: Cournot Revisited This exercise asks the following:
- Consider the Cournot duopoly model in which two firms, 1 and 2, simultaneously choose the quantities they supply, \(q_1\) and \(q_2\).</description>
+Exercise 12.2: Cournot Revisited This exercise asks the following:
+Consider the Cournot duopoly model in which two firms, 1 and 2, simultaneously choose the quantities they supply, \(q_1\) and \(q_2\).</description>
     </item>
     
     <item>
@@ -53,7 +44,7 @@
       
       <guid>https://bas-m.netlify.app/2021/02/22/the-within-estimator-visualized/</guid>
       <description>Introduction In this post, I will visualize what the FE-estimator does by benchmarking it to the OLS estimator. I use World Bank data on trade and GDP per capita to estimate (i) a regression equation with OLS, (ii) describing the procedure involved in estimating the FE coefficient and (iii) visualize what that means in this specific setting.
- Downloading the Data First of all, we make use of the WDI package in R to download some (admittedly, pretty random) World Bank data.</description>
+Downloading the Data First of all, we make use of the WDI package in R to download some (admittedly, pretty random) World Bank data.</description>
     </item>
     
     <item>
@@ -91,7 +82,7 @@ Packages like blogdown or hugodown often allow the user to create a folder, with
       
       <guid>https://bas-m.netlify.app/2020/05/31/read-a-table-from-the-indonesian-census-data/</guid>
       <description>Introduction In this post, I will briefly explain how to read in a table easily from the Indonesian data sources that I have been planning to use (see here). First, I download the file, containing data about municipalities in every province and their GRDP:
-download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve=OTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2&amp;amp;xzmn=aHR0cHM6Ly93d3cuYnBzLmdvLmlkL3B1YmxpY2F0aW9uLzIwMTkvMTAvMDQvOTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2L3Byb2R1ay1kb21lc3Rpay1yZWdpb25hbC1icnV0by1rYWJ1cGF0ZW4ta290YS1kaS1pbmRvbmVzaWEtMjAxNC0yMDE4Lmh0bWw%3D&amp;amp;twoadfnoarfeauf=MjAyMC0wNS0zMSAyMzo0Njo1Ng%3D%3D&amp;quot;, destfile = &amp;quot;hello.pdf&amp;quot;)  Reading in the table There are different ways in which I can read the table. First, I use the tabulizer package, from which I can use the extract_tables function, with two arguments:</description>
+download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve=OTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2&amp;amp;xzmn=aHR0cHM6Ly93d3cuYnBzLmdvLmlkL3B1YmxpY2F0aW9uLzIwMTkvMTAvMDQvOTgxMmExYzRlYTI1Mjk4MDA0ODM5NTk2L3Byb2R1ay1kb21lc3Rpay1yZWdpb25hbC1icnV0by1rYWJ1cGF0ZW4ta290YS1kaS1pbmRvbmVzaWEtMjAxNC0yMDE4Lmh0bWw%3D&amp;amp;twoadfnoarfeauf=MjAyMC0wNS0zMSAyMzo0Njo1Ng%3D%3D&amp;quot;, destfile = &amp;quot;hello.pdf&amp;quot;) Reading in the table There are different ways in which I can read the table. First, I use the tabulizer package, from which I can use the extract_tables function, with two arguments:</description>
     </item>
     
     <item>
@@ -101,7 +92,7 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
       
       <guid>https://bas-m.netlify.app/2020/05/29/batch-downloading-with-rselenium/</guid>
       <description>Introduction In this blogpost, I briefly explain how to batch download files in RSelenium. This can be super useful if you want to download some pdf’s or other files, but you don’t want to click ‘download’ a 1000 times, and there is no other option available.
- Step 1: Setting up a Docker Container In this case, we have to deviate from the standard case of setting up a Docker container.</description>
+Step 1: Setting up a Docker Container In this case, we have to deviate from the standard case of setting up a Docker container.</description>
     </item>
     
     <item>
@@ -156,8 +147,8 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
       
       <guid>https://bas-m.netlify.app/classes/</guid>
       <description>Here is an overview of classes which I have organized or participated in:
- Thesis Comments 2022  A website serving as a repository for all my feedback to Msc and Bsc Finance &amp;amp; Investments students in the 2021-2022 academic year.
- Bachelor Thesis: Political Connections  This serves as a repository for the Political Connections in Firms theme for the course Bachelor Thesis at RSM, Erasmus University. Various subthemes, templates, guidse and examples are available.</description>
+Thesis Comments 2022 A website serving as a repository for all my feedback to Msc and Bsc Finance &amp;amp; Investments students in the 2021-2022 academic year.
+Bachelor Thesis: Political Connections This serves as a repository for the Political Connections in Firms theme for the course Bachelor Thesis at RSM, Erasmus University. Various subthemes, templates, guidse and examples are available.</description>
     </item>
     
     <item>
@@ -167,8 +158,8 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
       
       <guid>https://bas-m.netlify.app/packages/</guid>
       <description>Here are some links to some of the R packages I have created:
- Clio   Clio is a package that facilitates the usage of the Clio-Infra database. It helps the user extract data based on simple queries, instead of repeatedly downloading Excel files. In addition, it facilitates reproducible research by explicitly documenting data collection.
-  hdng   hdng is a package that serves as an interface for the HDNG Database.</description>
+Clio Clio is a package that facilitates the usage of the Clio-Infra database. It helps the user extract data based on simple queries, instead of repeatedly downloading Excel files. In addition, it facilitates reproducible research by explicitly documenting data collection.
+hdng hdng is a package that serves as an interface for the HDNG Database. It allows the user to browse and search through the data, and submit queries to obtain data in an organized manner.</description>
     </item>
     
     <item>
@@ -187,7 +178,7 @@ download.file(&amp;quot;https://www.bps.go.id/publication/download.html?nrbvfeve
       
       <guid>https://bas-m.netlify.app/papers/</guid>
       <description>Below you can find information about my papers:
-Returns to Politics under Changing Electoral Institutions (Job Market Paper)  Paper, Presentation  Abstract: Economists frequently assert that politicians derive financial returns from a political career, but it is unclear what allows them to do so. In this paper, I derive estimates of the returns to consecutive lower house mandates exploiting the repeated treatment assignment resulting from Dutch district-level elections (1860-1917).</description>
+Returns to Politics under Changing Electoral Institutions (Job Market Paper) Paper, Presentation Abstract: Economists frequently assert that politicians derive financial returns from a political career, but it is unclear what allows them to do so. In this paper, I derive estimates of the returns to consecutive lower house mandates exploiting the repeated treatment assignment resulting from Dutch district-level elections (1860-1917). Based on newly-collected data from probate inventories, I obtain a measure of personal wealth for a sample of just-elected politicians and their losing contenders.</description>
     </item>
     
   </channel>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.101.0" />
 
 
 <title>Dplyr: filtering with across - Bas Machielsen</title>
@@ -87,41 +87,41 @@ After reading this pamphlet, you should be familiar enough with <code>across()</
 <p>First, let us look at the most basic usage of <code>across</code> in <code>filter</code>: filtering a dataset based on all rows meeting a certain condition or requirement.</p>
 <p>Suppose we want to select rows in a dataset such that for every character variable, the length of the string should be larger than a particular number, in this example, 5. This would be the equivalent of <code>filter_all</code> in a data.frame consisting purely of character vectors, or otherwise, of <code>filter_at</code>.</p>
 <p>First, load the relevant packages..</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(tidyverse)
-</code></pre></div><pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-</code></pre><pre><code>## ✓ ggplot2 3.2.1           ✓ purrr   0.3.4      
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(tidyverse)
+</span></span></code></pre></div><pre tabindex="0"><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+</code></pre><pre tabindex="0"><code>## ✓ ggplot2 3.2.1           ✓ purrr   0.3.4      
 ## ✓ tibble  3.0.1           ✓ dplyr   0.8.99.9002
 ## ✓ tidyr   1.0.2           ✓ stringr 1.4.0      
 ## ✓ readr   1.3.1           ✓ forcats 0.5.0
-</code></pre><pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+</code></pre><pre tabindex="0"><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(stringr)
-</code></pre></div><p>As mentioned in the vignette, the across function without any additions works automatically as <code>all_vars</code>, as evidenced by the following behavior:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">numbers <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(a <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">90000</span>, <span style="color:#ae81ff">60000</span>, <span style="color:#ae81ff">3000</span>), b <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">20000</span>, <span style="color:#ae81ff">4000</span>, <span style="color:#ae81ff">30000</span>))
-
-numbers
-</code></pre></div><pre><code>##       a     b
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(stringr)
+</span></span></code></pre></div><p>As mentioned in the vignette, the across function without any additions works automatically as <code>all_vars</code>, as evidenced by the following behavior:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>numbers <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(a <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">90000</span>, <span style="color:#ae81ff">60000</span>, <span style="color:#ae81ff">3000</span>), b <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">20000</span>, <span style="color:#ae81ff">4000</span>, <span style="color:#ae81ff">30000</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>numbers
+</span></span></code></pre></div><pre tabindex="0"><code>##       a     b
 ## 1 10000 10000
 ## 2 90000 20000
 ## 3 60000  4000
 ## 4  3000 30000
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">numbers <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(),<span style="color:#f92672">~</span>.x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9999</span>))
-</code></pre></div><pre><code>##       a     b
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>numbers <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(),<span style="color:#f92672">~</span>.x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9999</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>##       a     b
 ## 1 10000 10000
 ## 2 90000 20000
 </code></pre><p>We can also specify which variables we want to meet the condition. Let&rsquo;s take the dataset from before and apply the filter only on the first column:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">numbers <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(a, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9999</span>))
-</code></pre></div><pre><code>##       a     b
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>numbers <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(a, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9999</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>##       a     b
 ## 1 10000 10000
 ## 2 90000 20000
 ## 3 60000  4000
 </code></pre><p>As as second example, et&rsquo;s implement a condition requiring that the string length of every character variable be greater than 2 (or 3) in the dplyr::starwars dataset:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">starwars <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>))
-</code></pre></div><pre><code>## # A tibble: 69 x 14
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>starwars <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 69 x 14
 ##    name  height  mass hair_color skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke…    172    77 blond      fair       blue            19   male  mascu…
@@ -136,9 +136,9 @@ numbers
 ## 10 Chew…    228   112 brown      unknown    blue           200   male  mascu…
 ## # … with 59 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">starwars <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>))
-</code></pre></div><pre><code>## # A tibble: 63 x 14
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>starwars <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 63 x 14
 ##    name  height  mass hair_color skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke…    172    77 blond      fair       blue            19   male  mascu…
@@ -155,37 +155,37 @@ numbers
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
 </code></pre><p>We select all character variables with <code>is.character</code>, and condition the filter on the string length of all variables being larger than 5.</p>
 <p>Similarly, consider the following modified dataframe from the colwise vignette I mentioned above:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>), 
-             y <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), 
-             z <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>),
-             w <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Hanz&#34;</span>, <span style="color:#e6db74">&#34;Genghis Khan&#34;</span>),
-             u <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Werner&#34;</span>, <span style="color:#e6db74">&#34;Monsieur Eugene Duchene&#34;</span>))
-
-df
-</code></pre></div><pre><code>## # A tibble: 2 x 5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>), 
+</span></span><span style="display:flex;"><span>             y <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), 
+</span></span><span style="display:flex;"><span>             z <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>             w <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Hanz&#34;</span>, <span style="color:#e6db74">&#34;Genghis Khan&#34;</span>),
+</span></span><span style="display:flex;"><span>             u <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Werner&#34;</span>, <span style="color:#e6db74">&#34;Monsieur Eugene Duchene&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 2 x 5
 ##   x         y     z w            u                      
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
 ## 1 a         1    -1 Hanz         Werner                 
 ## 2 b         1     1 Genghis Khan Monsieur Eugene Duchene
 </code></pre><p>Supppose we want to select, in parallel to the example given in the vignete, the rows for which all numeric variables are greater than -1:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">-1</span>))
-</code></pre></div><pre><code>## # A tibble: 1 x 5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">-1</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 1 x 5
 ##   x         y     z w            u                      
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
 ## 1 b         1     1 Genghis Khan Monsieur Eugene Duchene
 </code></pre><p>So it is very straightforward to use the <code>filter()</code> function if you want to filter such that <strong>all</strong> variables meet a criterion. It is also very straightforward to filter using multiple criteria, as long as you want all variables, and <strong>NOT</strong> some variables, to which you apply the criterion have to meet it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">-1</span>), <span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">c</span>(w,u), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>))
-</code></pre></div><pre><code>## # A tibble: 1 x 5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">-1</span>), <span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">c</span>(w,u), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 1 x 5
 ##   x         y     z w            u                      
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
 ## 1 b         1     1 Genghis Khan Monsieur Eugene Duchene
 </code></pre><p>.. or perhaps better illustrated by:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># All numeric variables must be larger than 10</span>
-starwars <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>))
-</code></pre></div><pre><code>## # A tibble: 35 x 14
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># All numeric variables must be larger than 10</span>
+</span></span><span style="display:flex;"><span>starwars <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 35 x 14
 ##    name  height  mass hair_color skin_color eye_color birth_year sex   gender
 ##    &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ##  1 Luke…    172    77 blond      fair       blue            19   male  mascu…
@@ -200,13 +200,13 @@ starwars <span style="color:#f92672">%&gt;%</span>
 ## 10 Anak…    188    84 blond      fair       blue            41.9 male  mascu…
 ## # … with 25 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
 ## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># All numeric variables must be larger than 10 </span>
-<span style="color:#75715e"># and both name AND hair_color should contain an a. </span>
-
-starwars <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>), 
-         <span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">c</span>(name, hair_color), <span style="color:#f92672">~</span> <span style="color:#a6e22e">grepl</span>(<span style="color:#e6db74">&#34;a&#34;</span>, .)))
-</code></pre></div><pre><code>## # A tibble: 7 x 14
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># All numeric variables must be larger than 10 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># and both name AND hair_color should contain an a. </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>starwars <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">across</span>(is.numeric, <span style="color:#f92672">~</span> . <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span>), 
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">c</span>(name, hair_color), <span style="color:#f92672">~</span> <span style="color:#a6e22e">grepl</span>(<span style="color:#e6db74">&#34;a&#34;</span>, .)))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 7 x 14
 ##   name  height  mass hair_color skin_color eye_color birth_year sex   gender
 ##   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
 ## 1 Bigg…    183  84   black      light      brown           24   male  mascu…
@@ -221,28 +221,28 @@ starwars <span style="color:#f92672">%&gt;%</span>
 </code></pre><h1 id="filter-with-any_vars">Filter with any_vars</h1>
 <p>Problems arise when we attempt to do the following: Suppose we want to laxen the condition, and instead, we want to require that at least one condition be met.</p>
 <p>For example, in the data.frame <code>df</code> below, we want <em>at least</em> one character string to be larger than 7. How do we go about this? Instead of using the <code>any_vars</code> and <code>all_vars</code> helpers, we must use an auxiliary function, as documented <a href="https://dplyr.tidyverse.org/dev/articles/colwise.html">here</a>. In my opinion, this way of filtering is far from intuitive and transparent, and it took me a while to figure it out what I should do in each specific case: it is the reason why I wrote this pamphlet.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>), y <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), z <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>), w <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Harry&#34;</span>, <span style="color:#e6db74">&#34;Potterisverycool&#34;</span>))
-
-df
-</code></pre></div><pre><code>## # A tibble: 2 x 4
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(x <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>), y <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), z <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">1</span>), w <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Harry&#34;</span>, <span style="color:#e6db74">&#34;Potterisverycool&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 2 x 4
 ##   x         y     z w               
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
 ## 1 a         1    -1 Harry           
 ## 2 b         1     1 Potterisverycool
 </code></pre><p>Now, suppose we want to filter the data.frame <code>df</code> to include only the rows in which at least one character vector has a string length greater than 6. The vignette advises us to use a helper function, which is defined to be:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">rowAny <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">rowSums</span>(x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
-</code></pre></div><p>In my view, this seems to be pretty much the only &lsquo;helper&rsquo; function I can think of and that works, so I don&rsquo;t see why it is not included as a function in the package. In any case, the job consists of apply the <code>across()</code> function as an argument to <code>rowAny</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(stringr)
-
-df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">6</span>)))
-</code></pre></div><pre><code>## # A tibble: 1 x 4
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>rowAny <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">rowSums</span>(x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>In my view, this seems to be pretty much the only &lsquo;helper&rsquo; function I can think of and that works, so I don&rsquo;t see why it is not included as a function in the package. In any case, the job consists of apply the <code>across()</code> function as an argument to <code>rowAny</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(stringr)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">6</span>)))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 1 x 4
 ##   x         y     z w               
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
 ## 1 b         1     1 Potterisverycool
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>)))
-</code></pre></div><pre><code>## # A tibble: 2 x 4
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>)))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 2 x 4
 ##   x         y     z w               
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
 ## 1 a         1    -1 Harry           
@@ -266,52 +266,52 @@ df <span style="color:#f92672">%&gt;%</span>
 </li>
 </ol>
 <p>Let&rsquo;s go over each of these individual steps quickly and try to emulate R&rsquo;s behavior over this function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#First, this is what we get when we evaluate the condition in each cell</span>
-df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>))
-</code></pre></div><pre><code>## # A tibble: 2 x 4
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e">#First, this is what we get when we evaluate the condition in each cell</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 2 x 4
 ##   x     y     z     w    
 ##   &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
 ## 1 FALSE FALSE FALSE FALSE
 ## 2 FALSE FALSE FALSE TRUE
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#Then, we sum the value of all the logicals per row:</span>
-df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">rowwise</span>() <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">rowSums</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
-</code></pre></div><pre><code>## [1] FALSE  TRUE
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e">#which gives us back the rows eligible for inclusion</span>
-  
-df[df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)) <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">rowwise</span>() <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">rowSums</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>,
-]
-</code></pre></div><pre><code>## # A tibble: 1 x 4
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e">#Then, we sum the value of all the logicals per row:</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rowwise</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rowSums</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] FALSE  TRUE
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e">#which gives us back the rows eligible for inclusion</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>df[df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">summarise</span>(<span style="color:#a6e22e">across</span>(<span style="color:#a6e22e">everything</span>(), <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rowwise</span>() <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rowSums</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 1 x 4
 ##   x         y     z w               
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           
 ## 1 b         1     1 Potterisverycool
 </code></pre><p>Similarly, going back to the df example, we could have also changed the zero to go from &ldquo;at least one&rdquo; to &ldquo;at least two&rdquo;, for example. So this would mean &ldquo;select all Rows in which at least 2 variables meet a certain condition&rdquo;. More concretely:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">rowAny <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">rowSums</span>(x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">mutate</span>(u <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Hermione&#34;</span>, <span style="color:#e6db74">&#34;Granger&#34;</span>))
-
-df
-</code></pre></div><pre><code>## # A tibble: 2 x 5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>rowAny <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(x) <span style="color:#a6e22e">rowSums</span>(x) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mutate</span>(u <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Hermione&#34;</span>, <span style="color:#e6db74">&#34;Granger&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 2 x 5
 ##   x         y     z w                u       
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;   
 ## 1 a         1    -1 Harry            Hermione
 ## 2 b         1     1 Potterisverycool Granger
 </code></pre><p>Let&rsquo;s see if filter now works as expected, that is to say, it should only include the second row, as I&rsquo;ve specified that the amount of occurrences (the count of the logical vectors) should be larger than one. (In case of the first row, it is 1.)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)))
-</code></pre></div><pre><code>## # A tibble: 1 x 5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>)))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 1 x 5
 ##   x         y     z w                u      
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;  
 ## 1 b         1     1 Potterisverycool Granger
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">df <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">7</span>)))
-</code></pre></div><pre><code>## # A tibble: 0 x 5
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>df <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">rowAny</span>(<span style="color:#a6e22e">across</span>(is.character, <span style="color:#f92672">~</span> <span style="color:#a6e22e">str_length</span>(.) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">7</span>)))
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 0 x 5
 ## # … with 5 variables: x &lt;chr&gt;, y &lt;dbl&gt;, z &lt;dbl&gt;, w &lt;chr&gt;, u &lt;chr&gt;
 </code></pre><h1 id="conclusion">Conclusion</h1>
 <p>Whereas <code>across()</code> has many other benefits clearly demonstrated in various vignettes, and has enormous potential, in the specific case of filtering, it might have become more awkward to use: the functions of <code>filter_all</code> or <code>filter_at</code> in combination with <code>any_vars</code> and <code>all_vars</code> were (i) at least as, or more intuitive, and (ii) did not require the user to specify a helper function. As for me, I hope this <code>rowAny</code> will get a place inside <code>dplyr</code>, preferably under an intuitive monniker. In any case, I hope you&rsquo;ve found the small demonstration useful. Feel free to contact me at any time via <a href="mailto:a.h.machielsen@uu.nl">e-mail</a> or <a href="https://www.github.com/basm92">Github</a>.</p>

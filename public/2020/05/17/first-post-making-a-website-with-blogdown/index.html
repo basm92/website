@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.101.0" />
 
 
 <title>First post: Making a website with blogdown - Bas Machielsen</title>
@@ -83,19 +83,19 @@
 <p>This is the first blog post on my own website. I&rsquo;ve decided to make this website using the R package <code>blogdown</code>. The website looks very nice now (in my humble opinion), but it was tedious to make. When attempting to create the website, I first tried out a couple of themes before I settled on the basic &ldquo;lithium&rdquo; theme, because it was by far the easiest theme to wrap your head around. I want to summarize some difficulties I experienced while making the website, thereby (possibly) helping people who run into the same or similar problems.</p>
 <h1 id="good-things">Good things</h1>
 <p>First of all, I think it pays to go over the good things of <code>blogdown</code>. You can literally create a site in seconds, by executing:</p>
-<pre><code class="language-{r}" data-lang="{r}">install.packages('blogdown')
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">install.packages(&#39;blogdown&#39;)
 
 library(blogdown)
 
-# If you haven't done so yet:
+# If you haven&#39;t done so yet:
 blogdown::install_hugo()
 
-blogdown::new_site(theme = &quot;githubrepo/theme&quot;) 
-# It will pick this 'lithium' theme as the default.
+blogdown::new_site(theme = &#34;githubrepo/theme&#34;) 
+# It will pick this &#39;lithium&#39; theme as the default.
 </code></pre><p>RStudio will start up a new directory with a .Rproj file, and you can start filling out some information in the <code>config.toml</code> file, which is very intuitive, and you can create some posts by executing <code>blogdown::new_post()</code> and your blog is up and running (albeit off-line :) ). You can preview your website by running <code>blogdown::serve_site()</code>, in which case it will pop up in your viewer. You also have the possibility to preview your site in your browsers by clicking the 3rd icon on the left (in the viewer). So far the easy part: picking a theme is the first tedious aspect.</p>
 <h1 id="picking-a-theme">Picking A Theme</h1>
 <p>There are a variety of Hugo themes available <a href="https://themes.gohugo.io/"><strong>here</strong></a>. To reiterate, you can install any one of those themes with <code>blogdown</code> by entering <code>blogdown::new_site(theme = &quot;alex-shpak/hugo-book&quot;)</code> to pick just one random example. As soon as you do that, your website will look exactly like this one:</p>
-<p><img src="https://bas-m.netlify.app/post/2020-05-17-first-post-making-a-website-with-blogdown_files/themescrsho.png" width="450" /></p>
+<img src="https://bas-m.netlify.app/post/2020-05-17-first-post-making-a-website-with-blogdown_files/themescrsho.png" width="450" />
 <p>And you can start changing the .toml header to include your own preferences. If you want to keep to the basics, this is pretty much all there is to create a site.</p>
 <p>But.</p>
 <p>It seems that the way themes are configured internally differs greatly among themes. So themes have wildly different built-in possibilities, and some themes facilitate doing some thing (e.g., creating a timeline of blog posts), whereas others facilitate doing something else (e.g. make an overview of pictures on some page), while making it <em>very</em> difficult to do the other thing.</p>
@@ -105,8 +105,8 @@ blogdown::new_site(theme = &quot;githubrepo/theme&quot;)
 <h1 id="changing-your-favicon">Changing your favicon</h1>
 <p>The next thing which I insisted on doing was to change the icon of my website in your browser to my custom <code>bas_m</code> icon. The standard icon is the symbol of the chemical element Lithium, and I thought that wasn&rsquo;t <em>that</em> appropriate for my website. After a while, I figured out the thing is called a <em>favicon</em>, and if you have a picture, you can generate free <em>favicons</em> on, for example, <a href="https://favicon.io/">this website</a>. Any other website you find with a Google search will also do. The website will give you a couple of <em>favicons</em> as output, of which you can select the most appropriate, and place it in the <code>/static/img/</code> folder of your website. At least, this is the case in the <code>Lithium</code> theme which I use. It might be supposed that the <em>favicon</em> should end up somewhere else in a different theme, which illustrate the point that I was trying to get across before: there is a large heterogeneity in configurations among Hugo themes, which does not contribute to user-friendliness, especially for the uninitiated in web development.</p>
 <p>By the way, if you&rsquo;re looking for a nice <em>favicon</em>, you can generate one using the R package <code>hexSticker</code>. The package&rsquo;s <a href="https://github.com/GuangchuangYu/hexSticker"><strong>github page</strong></a> provides some nice examples you can get started with. You might have to install some new fonts, first on your system, and then in R using:</p>
-<pre><code class="language-{r}" data-lang="{r}">library(extrafont)
-font_import(pattern=&quot;Roboto&quot;)
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">library(extrafont)
+font_import(pattern=&#34;Roboto&#34;)
 </code></pre><p>Anyway, that&rsquo;s basically it: you&rsquo;re set-up with your own website, and you got rid of the most annoying features of the standard theme. Next, I address some of the layout which I wanted to get done, and because of which I had to deviate from the standard theme.</p>
 <h1 id="html-code">Html code</h1>
 <p>One advantage of <code>blogdown</code> and similar tools is that you don&rsquo;t have to manually code huge chunks of .html and .css yourself: you can just build a website practically without any knowledge of html or css. However, one of the things that I wanted to get done is including some of my contact information next to the introduction on my <a href="https://bas-m.netlify.app">home page</a>. As far as I know, I could do this in two ways:</p>
@@ -118,24 +118,24 @@ font_import(pattern=&quot;Roboto&quot;)
 <h1 id="arranging-the-site-and-blog">Arranging the site and blog</h1>
 <p>Lastly, I wanted to get one more thing done. The Lithium-theme comes with a blog integration, and the Hugo/javascript backend makes it such that as soon as you make a new blog post, a link to the title and the date end up on the index page. I didn&rsquo;t want that. I wanted my index page to be just my own text, and I wanted to relegate my blogs to appear on the page &lsquo;Blogs&rsquo;! As you&rsquo;ve guessed, I worked that out, but I thought it was quite tricky, and I ended up finding the solution using my own common sense: the Hugo documentation and searching the fora provided no significant help.</p>
 <p>(To be fair, I know nothing about the Hugo language, but I thought its documentation and fora weren&rsquo;t that accessible either.)</p>
-<p>So what I did was the following: I created a new folder in the root directory called <code>layouts</code> (this I got from the forums), a subfolder called <code>_default</code>, which allows the user to include page-specific layouts that differ from the default, and I copied the first part of the &lsquo;list&rsquo; default layout to a new file called <code>index.html</code>:</p>
-<pre><code>{{ partial &quot;header.html&quot; . }}
+<p>So what I did was the following: I created a new folder in the root directory called <code>layouts</code> (this I got from the forums), a subfolder called <code>_default</code>, which allows the user to include page-specific layouts that differ from the default, and I copied the first part of the &rsquo;list&rsquo; default layout to a new file called <code>index.html</code>:</p>
+<pre tabindex="0"><code>{{ partial &#34;header.html&#34; . }}
 
-&lt;main class=&quot;content&quot; role=&quot;main&quot;&gt;
+&lt;main class=&#34;content&#34; role=&#34;main&#34;&gt;
 
   {{ if .Content }}
-  &lt;article class=&quot;article&quot;&gt;
+  &lt;article class=&#34;article&#34;&gt;
     {{ if .Title }}
-    &lt;h1 class=&quot;article-title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+    &lt;h1 class=&#34;article-title&#34;&gt;{{ .Title }}&lt;/h1&gt;
     {{ end }}
-    &lt;div class=&quot;article-content&quot;&gt;
+    &lt;div class=&#34;article-content&#34;&gt;
       {{ .Content }}
     &lt;/div&gt;
   &lt;/article&gt;
   {{ end }}
 
 &lt;/main&gt;
-{{ partial &quot;footer.html&quot; . }}
+{{ partial &#34;footer.html&#34; . }}
 </code></pre><p>As far as I understand, this gives me an index page with <em>just</em> a header, the content with the appropriate <code>&lt;h1&gt;, &lt;h2&gt;</code>&rsquo;s, etc., and a footer. That worked for the index page.</p>
 <p>Next, I wanted to relegate the blog widget to the blogs page. This was a little more confusing, but what I did was the following:</p>
 <ol>
@@ -149,32 +149,32 @@ font_import(pattern=&quot;Roboto&quot;)
 <p>Finally, what solved the issue was the following: the code of <code>list.html</code>, and up until this point, of my <code>blogs.html</code> looked like this:</p>
 </li>
 </ol>
-<pre><code>{{ partial &quot;header.html&quot; . }}
+<pre tabindex="0"><code>{{ partial &#34;header.html&#34; . }}
 
-&lt;main class=&quot;content&quot; role=&quot;main&quot;&gt;
+&lt;main class=&#34;content&#34; role=&#34;main&#34;&gt;
 
   {{ if .Content }}
-  &lt;article class=&quot;article&quot;&gt;
+  &lt;article class=&#34;article&#34;&gt;
     {{ if .Title }}
-    &lt;h1 class=&quot;article-title&quot;&gt;{{ .Title }}&lt;/h1&gt;
+    &lt;h1 class=&#34;article-title&#34;&gt;{{ .Title }}&lt;/h1&gt;
     {{ end }}
-    &lt;div class=&quot;article-content&quot;&gt;
+    &lt;div class=&#34;article-content&#34;&gt;
       {{ .Content }}
     &lt;/div&gt;
   &lt;/article&gt;
   {{ end }}
-  &lt;div class=&quot;archive&quot;&gt;
+  &lt;div class=&#34;archive&#34;&gt;
     {{ $pages := .Pages }}
     {{ if .IsHome }}
     {{ $pages = .Site.RegularPages }}
     {{ end }}
-    {{ range (where $pages &quot;Section&quot; &quot;!=&quot; &quot;&quot;).GroupByDate &quot;2006&quot; }}
-    &lt;h2 class=&quot;archive-title&quot;&gt;{{ .Key }}&lt;/h2&gt;
+    {{ range (where $pages &#34;Section&#34; &#34;!=&#34; &#34;&#34;).GroupByDate &#34;2006&#34; }}
+    &lt;h2 class=&#34;archive-title&#34;&gt;{{ .Key }}&lt;/h2&gt;
     {{ range .Pages }}
-    &lt;article class=&quot;archive-item&quot;&gt;
-      &lt;a href=&quot;{{ .RelPermalink }}&quot; class=&quot;archive-item-link&quot;&gt;{{ .Title }}&lt;/a&gt;
-      &lt;span class=&quot;archive-item-date&quot;&gt;
-        {{ .Date.Format &quot;2006-01-02&quot; }}
+    &lt;article class=&#34;archive-item&#34;&gt;
+      &lt;a href=&#34;{{ .RelPermalink }}&#34; class=&#34;archive-item-link&#34;&gt;{{ .Title }}&lt;/a&gt;
+      &lt;span class=&#34;archive-item-date&#34;&gt;
+        {{ .Date.Format &#34;2006-01-02&#34; }}
       &lt;/span&gt;
     &lt;/article&gt;
     {{ end }}
@@ -183,7 +183,7 @@ font_import(pattern=&quot;Roboto&quot;)
 
 &lt;/main&gt;
 
-{{ partial &quot;footer.html&quot; . }}
+{{ partial &#34;footer.html&#34; . }}
 </code></pre><ol start="4">
 <li>
 <p>Specifically, I started to pay attention to the <code>{{ if .IsHome}}</code> line, and I thought: &ldquo;Given that my Blogs page isn&rsquo;t the homepage, shouldn&rsquo;t I change <code>{{ if .IsHome }}</code> to <code>{{ if not .IsHome }}</code>?&rdquo; As soon as I did that, the issue was solved!</p>
